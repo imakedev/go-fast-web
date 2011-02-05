@@ -21,7 +21,7 @@ public class ListItems extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	System.out.println("doProcess");
+    	//System.out.println("doProcess");
     	String page=request.getParameter("page");
     	if(!(page!=null && page.length()>0))
     		page = "items";
