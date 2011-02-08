@@ -4,19 +4,60 @@
 <head>
 <title>Item Detail</title>
 <script>
+	var _path='<%=request.getContextPath()%>';
+	//alert(_path)
 	function goBack() {
 	//	alert("goPage")
-		window.location.href = "http://localhost:8080/GoFastServtlet/listitems"; 
+		window.location.href = _path+"/listitems"; 
 	}
 	function goPage(_page) {
 		//alert("goPage")
-		window.location.href = "http://localhost:8080/GoFastServtlet/listitems?page="
+		window.location.href = _path+"/listitems?page="
 				+ _page;
 	}
 </script>
 </head>
+<style>
+body {	color:#000000;	text-align:left;margin:0;font-family:Tahoma, sans-serif; font-size:12px;	}
+/* Paragraph and headings */
+span {  padding:0px 5px 5px 5px;font-family:Tahoma, sans-serif; color:#000000;font-size:12px;}
+.topic { padding:5px 5px 0px 5px;font-size:14px;font-family:Tahoma, sans-serif;color:#005DB0; font-weight:bold;}
+.more,.more a:link ,.more a:visited ,.more a:active { 
+font-family:Tahoma, sans-serif; font-size:12px; color:#06A800; line-height:14px; text-decoration:none;font-weight:bold;}
+.more a:hover{ font-family:Tahoma, sans-serif; font-size:12px; color:#06A800; line-height:14px; text-decoration:underline;font-weight:bold;}
+
+img{padding:5px;}
+
+a.button {
+/* Sliding right image */
+
+background: transparent url('<%=request.getContextPath()%>/image/button_right.png') no-repeat scroll top right; 
+display: block;
+float: left;
+height: 35px; /* CHANGE THIS VALUE ACCORDING TO IMAGE HEIGHT */
+margin-right: 6px;
+padding-right: 20px; /* CHENGE THIS VALUE ACCORDING TO RIGHT IMAGE WIDTH */
+/* FONT PROPERTIES */
+text-decoration: none;
+color: #000000;
+font-family: Arial, Helvetica, sans-serif;
+font-size:12px;
+font-weight:bold;
+}
+a.button span {
+/* Background left image */ 
+background: transparent url('<%=request.getContextPath()%>/image/button_left.png') no-repeat; 
+display: block;
+line-height: 22px; /* CHANGE THIS VALUE ACCORDING TO BUTTONG HEIGHT */
+padding: 7px 0 5px 18px;
+} 
+a.button:hover span{
+text-decoration:underline;
+}
+
+</style>
 <body>
-<table border="1" width="100%">
+<table border="0" width="100%" cellspacing="2" cellpadding="0" style=" border:#003399 1px solid; background-color:#F3F8FF;">
 <tr valign="top">
 <td width="150">
 <table>
@@ -26,21 +67,26 @@
 		</td>
 	</tr>
 	<tr>
-		<td align="center">
-		<input type="button" value=" Map " onclick="goPage('map')"></input>
+		<td align="center" height="35">
+<table width="100" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><a class="button" href="#"  onclick="goPage('map')" ><span>Map</span></a></td>
+  </tr>
+</table>
+
+		
+		
 		</td>
 	</tr>
 </table>
 	</td>
 <td>
-<table>
+<table width="100%" cellpadding="0" cellspacing="2">
 	<tr>
-		<td align="center">Header 1
-		</td>
-	</tr>
-	<tr>
-		<td>
-		 Description xxxxx
+		<td align="left" valign="top">
+		<span class="topic">Header 1</span>	
+		<br>		
+		<span class="detail"> Description xxxxx</span>
 		</td>
 	</tr>
 </table>
@@ -55,7 +101,7 @@
  --%>
  </tr>
 </table>
-<table border="1" width="100%">
+<table border="0" width="100%">
 <tr valign="top">
 <td width="75" align="center"><img
 	src="<%=request.getContextPath()%>/image/app1.gif"></img></td>
@@ -68,9 +114,16 @@
 
 </tr>
 </table>
-<table border="1" width="100%">
+<table border="0" width="100%">
 <tr valign="top">
-<td align="center"><input type="button" value=" Back " onclick="goBack()"></input></td>
+<td align="center">
+<table width="100" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center"><a class="button" href="#" onclick="goBack()"><span>Back</span></a></td>
+  </tr>
+</table>
+
+</td>
 </tr>
 </table>
 </body>
