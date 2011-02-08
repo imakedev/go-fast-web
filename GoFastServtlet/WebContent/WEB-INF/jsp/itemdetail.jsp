@@ -3,20 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Item Detail</title>
-<script>
-	var _path='<%=request.getContextPath()%>';
-	//alert(_path)
-	function goBack() {
-	//	alert("goPage")
-		window.location.href = _path+"/listitems"; 
-	}
-	function goPage(_page) {
-		//alert("goPage")
-		window.location.href = _path+"/listitems?page="
-				+ _page;
-	}
-</script>
-</head>
 <style>
 body {	color:#000000;	text-align:left;margin:0;font-family:Tahoma, sans-serif; font-size:12px;	}
 /* Paragraph and headings */
@@ -53,9 +39,23 @@ padding: 7px 0 5px 18px;
 } 
 a.button:hover span{
 text-decoration:underline;
-}
-
+} 
 </style>
+<script>
+	var _path='<%=request.getContextPath()%>';
+	//alert(_path)
+	function goBack() {
+	//	alert("goPage")
+		window.location.href = _path+"/listitems"; 
+	}
+	function goPage(_page) {
+		//alert("goPage")
+		window.location.href = _path+"/listitems?page="
+				+ _page;
+	}
+</script>
+</head>
+
 <body>
 <table border="0" width="100%" cellspacing="2" cellpadding="0" style=" border:#003399 1px solid; background-color:#F3F8FF;">
 <tr valign="top">
@@ -85,7 +85,7 @@ text-decoration:underline;
 	<tr>
 		<td align="left" valign="top">
 		<span class="topic">Header 1</span>	
-		<br>		
+		<br/>		
 		<span class="detail"> Description xxxxx</span>
 		</td>
 	</tr>
