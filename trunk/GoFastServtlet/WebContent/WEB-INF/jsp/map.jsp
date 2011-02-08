@@ -3,19 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Map</title>
-<script>
-	var _path='<%=request.getContextPath()%>';
-	function goBack() {
-		//	alert("goPage")
-		window.location.href = _path+"/listitems";
-	}
-	function goPage(_page) {
-		//alert("goPage")
-		window.location.href = _path+"/listitems?page="
-				+ _page;
-	}
-</script>
-</head>
 <style>
 body {	color:#000000;	text-align:left;margin:0;font-family:Tahoma, sans-serif; font-size:12px;	}
 /* Paragraph and headings */
@@ -55,19 +42,33 @@ text-decoration:underline;
 }
 
 </style>
+<script>
+	var _path='<%=request.getContextPath()%>';
+	function goBack() {
+		//	alert("goPage")
+		window.location.href = _path+"/listitems";
+	}
+	function goPage(_page) {
+		//alert("goPage")
+		window.location.href = _path+"/listitems?page="
+				+ _page;
+	}
+</script>
+</head> 
 <body>
 <table border="0" width="100%">
 <tr valign="top">
 <td align="center"> <img 
 	src="http://maps.google.com/maps/api/staticmap?center=40.714728,-73.998672&zoom=12&size=400x400&sensor=false"></img>
 </td>
-
+</tr>
+</table>
 <table border="0" width="100%">
 <tr valign="top">
 <td align="center">
 <table width="100" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td align="center"><a class="button" href="#" onclick="goPage('itemdetail')"><span>Back</span></a></td>
+    <td align="center"><a class="button"  onclick="goPage('itemdetail')"><span>Back</span></a></td>
   </tr>
 </table>
 </td>
