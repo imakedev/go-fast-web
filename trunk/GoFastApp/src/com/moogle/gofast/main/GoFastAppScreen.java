@@ -2,51 +2,83 @@ package com.moogle.gofast.main;
 
 import net.rim.device.api.browser.field2.BrowserField;
 import net.rim.device.api.system.Bitmap;
+import net.rim.device.api.ui.Color;
 import net.rim.device.api.ui.Field;
 import net.rim.device.api.ui.FieldChangeListener;
 import net.rim.device.api.ui.component.BitmapField;
+import net.rim.device.api.ui.component.Dialog;
+import net.rim.device.api.ui.component.LabelField;
 import net.rim.device.api.ui.container.GridFieldManager;
 import net.rim.device.api.ui.container.MainScreen;
 import net.rim.device.api.ui.container.VerticalFieldManager;
+import net.rim.device.api.ui.decor.BackgroundFactory;
+import net.rim.device.api.ui.extension.component.PictureScrollField;
+import net.rim.device.api.ui.extension.component.PictureScrollField.HighlightStyle;
+import net.rim.device.api.ui.extension.component.PictureScrollField.ScrollEntry;
  
 
 public class GoFastAppScreen  extends MainScreen  implements FieldChangeListener{
 	   /*private Runnable _popRunnable;
 	   private BrowserField myBrowserField;*/
+	private BitmapField _banner ;
 	private BitmapField bt1 ;
 	private BitmapField bt2 ;
 	private BitmapField bt3 ;
 	private BitmapField bt4 ;
 	private BitmapField bt5 ;
+	private BitmapField bg ;
 	public VerticalFieldManager vfm ;
 	public BrowserField myBrowserField;
+	public LabelField labelname;
+	
 	public GoFastAppScreen() {
 		//super(NO_VERTICAL_SCROLL);
+		HeaderBar h = new HeaderBar("Application Title");
+//		h.showDate(false);
+//		h.showSignal(false);
+//		h.showTime(false);
+		h.setBackgroundColour(0xCCE9FD);
+		h.setBatteryBackground(0xEE1155);
+		h.setFontColour(0x2233FF);
+		setTitle(h);
+		
+		
+		//setTitle("GoFast");
+		
+		
+		
 
-		setTitle("GoFast");
+
 		// Define rows and columns
 		int rows = 1;
 		int cols = 5;
 
+		labelname = new LabelField("", FIELD_HCENTER);
+		
 		// Instantiate a GridFieldManager with 1 rows and 5 columns
 		GridFieldManager gridFieldManager = new GridFieldManager(rows, cols,
 				Field.FIELD_HCENTER);
+		
+		Bitmap bgImage = Bitmap.getBitmapResource("img/bg.png");
+		
 		  bt1 = new MyBitmapField("bt1",Bitmap
-				.getBitmapResource("img/64.png"), BitmapField.FOCUSABLE );
+				.getBitmapResource("img/28-star.png"), BitmapField.FOCUSABLE );
 		  bt1.setChangeListener(this); 
-		  bt2 = new MyBitmapField("b12",Bitmap
-				.getBitmapResource("img/64_2.png"), BitmapField.FOCUSABLE );
+		  bt2 = new MyBitmapField("bt2",Bitmap
+				.getBitmapResource("img/48-fork-and-knife.png"), BitmapField.FOCUSABLE );
 		  bt2.setChangeListener(this); 
 		  bt3 = new MyBitmapField("bt3",Bitmap
-				.getBitmapResource("img/64_3.png"), BitmapField.FOCUSABLE );
+				.getBitmapResource("img/53-house.png"), BitmapField.FOCUSABLE );
 		  bt3.setChangeListener(this); 
 		  bt4 = new MyBitmapField("bt4",Bitmap
-				.getBitmapResource("img/64_4.png"), BitmapField.FOCUSABLE );
+				.getBitmapResource("img/80-shopping-cart.png"), BitmapField.FOCUSABLE );
 		  bt4.setChangeListener(this); 
 		  bt5 = new MyBitmapField("bt5",Bitmap
-				.getBitmapResource("img/64_5.png"), BitmapField.FOCUSABLE );
+				.getBitmapResource("img/82-dog-paw.png"), BitmapField.FOCUSABLE );
 		  bt5.setChangeListener(this); 
 		gridFieldManager.setChangeListener(this);
+		//gridFieldManager.setBackground(BackgroundFactory.createBitmapBackground(bgImage));
+		gridFieldManager.setCellPadding(10);
 		// Add button fields to the GridFieldManager
 		gridFieldManager.add(bt1);
 		gridFieldManager.add(bt2);
@@ -56,7 +88,11 @@ public class GoFastAppScreen  extends MainScreen  implements FieldChangeListener
 
 		vfm = new VerticalFieldManager(USE_ALL_WIDTH);
 		vfm.setChangeListener(this);
+		//vfm.setBackground(BackgroundFactory.createBitmapBackground(bgImage));
+		vfm.setBackground(BackgroundFactory.createSolidBackground(0xD8D8D8));
+
 		vfm.add(gridFieldManager);
+		//vfm.add(labelname);
 		//add(vfm);
 		myBrowserField = new BrowserField();
 	/*	BrowserField myBrowserField = new BrowserField();
@@ -152,14 +188,27 @@ public class GoFastAppScreen  extends MainScreen  implements FieldChangeListener
 			// TODO Auto-generated method stub
 			System.out.println(" click on "+this.name);
 			
-			myBrowserField.requestContent("http://localhost:8080/GoFastServtlet/listitems");
-			//myBrowserField.requestContent("http://localhost:8080/GoFastServtlet/index.html");
-			//myBrowserField.requestContent("http://mooglefast.appspot.com");
+				myBrowserField.requestContent("http://mooglefast.appspot.com/listitems");
+			//myBrowserField.requestContent("http://localhost:8080/GoFastServtlet/listitems");
 			vfm.add(myBrowserField);
+
 			add(vfm);
 			return super.navigationClick(arg0, arg1);
 		}
 		
+            public void onFocus(int direction) {labelname.setText(this.name);}
+            protected void onUnfocus() {labelname.setText("");}
+
+
+
+
+		
 	}
 	 
+	
+	 
+	
+	
+	
+	
 }
