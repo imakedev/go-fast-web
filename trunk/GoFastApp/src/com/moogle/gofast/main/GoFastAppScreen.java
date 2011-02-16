@@ -8,6 +8,9 @@ import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.system.Display;
 import net.rim.device.api.ui.Field;
 import net.rim.device.api.ui.FieldChangeListener;
+import net.rim.device.api.ui.Graphics;
+import net.rim.device.api.ui.Manager;
+import net.rim.device.api.ui.ScrollChangeListener;
 import net.rim.device.api.ui.component.BitmapField;
 import net.rim.device.api.ui.component.LabelField;
 import net.rim.device.api.ui.container.GridFieldManager;
@@ -43,6 +46,7 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 	public LabelField labelname;
 	ConnectionFactory cf;
 	int[] preferredTransportTypes = { TransportInfo.TRANSPORT_BIS_B };
+	private ScrollChangeListener paramScrollChangeListener;
 
 	public GoFastAppScreen() {
 		// super(NO_VERTICAL_SCROLL);
@@ -55,8 +59,8 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 		h.setBackgroundColour(0xCCE9FD);
 		h.setBatteryBackground(0xEE1155);
 		h.setFontColour(0x2233FF);
-		// h.set
-		setTitle(h);
+		
+		
 
 		// setTitle("GoFast");
 
@@ -133,8 +137,11 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 		 */
 
 		gridFieldManager.setChangeListener(this);
-		// gridFieldManager.setBackground(BackgroundFactory.createBitmapBackground(bgImage));
-		gridFieldManager.setCellPadding(11);
+		gridFieldManager.setBackground(BackgroundFactory.createBitmapBackground(bgImage));
+		gridFieldManager.setCellPadding(1);
+		gridFieldManager.setColumnPadding(20);
+		
+		
 		// Add button fields to the GridFieldManager
 		gridFieldManager.add(bt1);
 		gridFieldManager.add(bt2);
@@ -145,6 +152,9 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 		gridFieldManager.add(bt6);
 
 		gridFieldManager.add(bt7);
+		
+		
+		
 	/*	gridFieldManager.add(bt8);
 		gridFieldManager.add(bt9);*/
 		//gridFieldManager.add(bt10);
@@ -157,10 +167,15 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 
 		vfm = new VerticalFieldManager(USE_ALL_WIDTH);
 		vfm.setChangeListener(this);
-		// vfm.setBackground(BackgroundFactory.createBitmapBackground(bgImage));
-		vfm.setBackground(BackgroundFactory.createSolidBackground(0xD8D8D8));
-
-		vfm.add(gridFieldManager);
+		
+		 //vfm.setBackground(BackgroundFactory.createBitmapBackground(bgImage));
+		//vfm.setBackground(BackgroundFactory.createSolidBackground(0xD8D8D8));
+		//gridFieldManager.setBackground();
+		setBanner(h);
+		setTitle(gridFieldManager);
+		setScrollListener(paramScrollChangeListener);
+		//setBackground(BackgroundFactory.createSolidBackground(0xD8D8D8));
+		//vfm.add(gridFieldManager);
 		// vfm.add(labelname);
 		// add(vfm);
 		cf = new ConnectionFactory();
@@ -176,8 +191,7 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 		// BrowserFieldConfig.NAVIGATION_MODE_POINTER);
 		bfc.setProperty(BrowserFieldConfig.NAVIGATION_MODE,
 				BrowserFieldConfig.NAVIGATION_MODE_CARET);
-		bfc.setProperty(BrowserFieldConfig.VIEWPORT_WIDTH, new Integer(Display
-				.getWidth()));
+		bfc.setProperty(BrowserFieldConfig.VIEWPORT_WIDTH, new Integer(Display.getWidth()));
 		// bfc.setProperty(BrowserFieldConfig.CONNECTION_FACTORY, cf);
 
 		// myBrowserField= new BrowserField();
@@ -255,6 +269,17 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 
 	}
 
+	class MyparamScrollChangeListener implements ScrollChangeListener {
+
+		public void scrollChanged(Manager paramManager, int paramInt1,
+				int paramInt2) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		
+	}
+	
 	class MyBitmapField extends BitmapField {
 		public MyBitmapField(String name, Bitmap bitmapField, long syte) {
 			super(bitmapField, syte);
