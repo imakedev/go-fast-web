@@ -103,14 +103,14 @@ a.button:hover span {
 <tr>
 <td colspan=3 align=center>
 <a href="/GoFastServtlet/listitems?page=view_image_left&brand=bb&direction=1"><img src=/GoFastServtlet/image/app1.jpg width=120 height=90/> </a>
-<img src=/GoFastServtlet/image/app2.jpg width=120 height=90/>
-<a href="/GoFastServtlet/listitems?page=view_image_right&brand=bb&direction=1"><img src=/GoFastServtlet/image/app3.jpg width=120 height=90/> </a>
+<a href="/GoFastServtlet/listitems?page=view_image&brand=bb&direction=1"><img src=/GoFastServtlet/image/app2.jpg width=120 height=90/></a>
+<img src=/GoFastServtlet/image/app3.jpg width=120 height=90/>
 </td>
 </tr>
 <tr>
-<td width=10% align=left><a href="/GoFastServtlet/listitems?page=view_image_left&brand=bb&direction=1"><img src=/GoFastServtlet/image/leftarrow.png /></a> </td>
-<td align=center><img src=/GoFastServtlet/image/app2.jpg width=400 height=300/></td>
-<td width=10% align=right><a href="/GoFastServtlet/listitems?page=view_image_right&brand=bb&direction=1"><img src=/GoFastServtlet/image/rightarrow.png /></a></td>
+<td width=10% align=left><a href="/GoFastServtlet/listitems?page=view_image&brand=bb&direction=1"><img src=/GoFastServtlet/image/leftarrow.png /></a> </td>
+<td align=center><img src=/GoFastServtlet/image/app3.jpg width=400 height=300/></td>
+<td width=10% align=right></td>
 </tr>
 </table>
 
