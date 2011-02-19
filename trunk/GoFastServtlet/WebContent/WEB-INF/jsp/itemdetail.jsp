@@ -20,16 +20,25 @@ span {
 	font-size: 12px;
 }
 
-.topic { padding:5px 5px 0px 5px;font-size:14px;font-family:Tahoma,
+.topic { padding:5px 5px 0px 5px;font-size:18px;font-family:Tahoma,
 sans-serif;color:#005DB0; font-weight:bold;}
-.detail2 { padding:5px 5px 0px 5px;font-size:13px;font-family:Tahoma,
+.detail { padding:5px 5px 0px 5px;font-size:13px;font-family:Tahoma,
 sans-serif;color:#ff0000; font-weight:bold;}
+.detail2 { padding:5px 5px 0px 5px;font-size:16px;font-family:Tahoma,
+sans-serif;color:#ff0000; font-weight:bold;}
+.detail3 { padding:5px 5px 0px 5px;font-size:12px;font-family:Tahoma,
+sans-serif;color:#747170;}
 
 .more,.more a:link ,.more a:visited ,.more a:active {
 font-family:Tahoma, sans-serif; font-size:12px; color:#151b54;
 line-height:14px; text-decoration:none;font-weight:bold;}
 .more a:hover{ font-family:Tahoma, sans-serif; font-size:12px;
-color:#06A800; line-height:14px;
+color:#06A800; line-height:14px;}
+
+
+.button,.button a:link ,.button a:visited ,.button a:active {
+font-family:Tahoma, sans-serif; font-size:14px; color:#151b54;
+line-height:14px; text-decoration:none;font-weight:bold;}
 
 .copyright,.copyright a:link ,.copyright a:visited ,.copyright a:active {
 font-family:Tahoma, sans-serif; font-size:12px; color:#585858;
@@ -81,70 +90,117 @@ a.button:hover span {
 		window.location.href = _path + "/listitems?page=" + _page;
 	} 
 </script>
+
+	<link rel="stylesheet" href="css/iphone_img_style.css" type="text/css" media="screen" charset="utf-8">
+	<script src="js/jquery-1.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/iphone_slider.js" type="text/javascript" charset="utf-8"></script>
+	
 <meta http-equiv="Page-Enter" content="blendTrans(Duration=1.0)" />
 <meta http-equiv="Page-Exit" content="blendTrans(Duration=1.0)" />
 <meta http-equiv="Site-Enter" content="blendTrans(Duration=1.0)" />
 <meta http-equiv="Site-Exit" content="blendTrans(Duration=1.0)" />
 </head>
 
-<body>
+<body >
 <table border="0" width="100%" cellspacing="2" cellpadding="0"
 	style="border: #003399 1px solid; background-color: #F3F8FF;">
 	<tr valign="top">
 		<td width="150">
 		<table>
 			<tr>
+				<td rowspan=2><img
+			src="<%=request.getContextPath()%>/image/app1.jpg"></img>
+				</td>
 				<td colspan=3 align=center><span class="topic">นางกวัก ร้านอาหาร</span></td>
 			</tr>
 			<tr>
-				<td><img
-			src="<%=request.getContextPath()%>/image/app1.jpg"></img>
-				</td>
-				<td width=80%><span class="detail"> คลองตันเหนือ วัฒนา กรุงเทพฯ <br/>027147938,</span></td>
+				<td width=80% valign=top><span class="detail3"> คลองตันเหนือ วัฒนา กรุงเทพฯ <br/>027147938,</span></td>
 			</tr>
 				
 			<tr>
-				<td colspan=2><span class="detail2"> ส่วนลด 10 %</span></td>
+				<td colspan=2 align=left><span class="detail2"> ส่วนลด 10 %</span></td>
 			</tr>
 			
 			<tr>
-				<td colspan=2><span class="detail">เพียงนำคูปองไปแสดงที่ร้าน พิเศษสุดๆ เมื่อทานอาหารครบ 2,000 บาท รับฟรีพิซซ่า 1 ถาด (ราคา 330 บาท)</span></td>
+				<td colspan=2><span class="">เพียงนำคูปองไปแสดงที่ร้าน พิเศษสุดๆ เมื่อทานอาหารครบ 2,000 บาท รับฟรีพิซซ่า 1 ถาด (ราคา 330 บาท)</span></td>
 			</tr>
 
 		</table>
 		</td>
 		<td></td>
-
-		<%--
-10_percent_discount2.jpg
-10_percent_discount3.jpg
-10_percent_discount4.png
-10_percent_discount5.jpg
-20_percent_discount6.jpg
- --%>
 	</tr>
 </table>
-<table border="0" width="100%">
+
+<table  border="0" width="100%">
 <tr>
-<td>
-<br/></td>
-</tr>
-	<tr valign="top">
-		<td width="55" align="center"><img
-			src="<%=request.getContextPath()%>/image/app1.jpg"  width=55></img></td>
+<td> <div id="wrapper">
+        <div id="slider">    
 
-		<td width="55" align="center"><img
-			src="<%=request.getContextPath()%>/image/app2.jpg"  width=55></img></td>
+            <img class="scrollButtons left" src="image/leftarrow.png">
 
-		<td width="55" align="center"><img
-			src="<%=request.getContextPath()%>/image/app3.jpg" width=55></img></td>
+			<div style="overflow: hidden;" class="scroll">
+	
+				<div class="scrollContainer">
+	
+	                <div class="panel" id="panel_1">
+						<div class="inside">
+							<img src="image/app1.jpg" alt="picture" />
+							<h2></h2>
+							<p></p>
+						</div>
+					</div>
 
-	</tr>
-	<tr>
-<td>
-<br/></td>
-</tr>
+	                <div class="panel" id="panel_2">
+						<div class="inside">
+							<img src="image/app2.jpg" alt="picture" />
+							<h2></h2>
+							<p></p>
+						</div>
+					</div>
+				
+	                <div class="panel" id="panel_3">
+						<div class="inside">
+							<img src="image/app3.jpg" alt="picture" />
+							<h2></h2>
+							<p></p>
+						</div>
+					</div>
+				
+	                <div class="panel" id="panel_4">
+						<div class="inside">
+							<img src="image/app3.jpg" alt="picture" />
+							<h2></h2>
+							<p></p>
+						</div>
+					</div>
+				
+	                <div class="panel" id="panel_5">
+						<div class="inside">
+							<img src="image/app3.jpg" alt="picture" />
+							<h2></h2>
+							<p></p>
+						</div>
+					</div>
+					
+					
+				
+                </div>
+
+				<div id="left-shadow"></div>
+				<div id="right-shadow"></div>
+
+            </div>
+
+			<img class="scrollButtons right" src="image/rightarrow.png">
+
+        </div>
+        
+    </div></td>
+    </tr>
 </table>
+
+
+
 
 
 
@@ -153,25 +209,21 @@ a.button:hover span {
 		<tr valign="top">
 			<td align="center">
 
-			<table width="60%" border="0" cellspacing="0" cellpadding="0" align=center>
+			<table width="100%" border="1" cellspacing="0" cellpadding="0" align=center
+		style="border: #ffffff 0px solid; background-color: #F3F8FF;">
 				<tbody>
 					<tr>
-						<td align="center"><a href="#" onclick="goBack()"><img
-							src="<%=request.getContextPath()%>/image/back.png" border=0/></a></td>
-						<td align=center><a href="#" onclick="goPage('map')"><img
-							src="<%=request.getContextPath()%>/image/map.png"  border=0/></a></td>
+						<td bgcolor=#C0C0C0 align="center" height=50 width=50% class=button onclick="goBack()"><a href="#" >กลับ</a></td>
+						<td  bgcolor=#C0C0C0 align=center height=50 width=50% class=button onclick="goPage('map')"><a href="#" >แผนที่</a></td>
 					</tr>
 
 				</tbody>
 			</table>
-
-			<br />
-			<br />
 			</td>
 		</tr>
 		<tr bgcolor=#C0C0C0>
 			<td width=100% colspan=3 height=30>
-			<span class=more>Term of user</span> |<span class=more>
+			<span class=more>Term of use</span> |<span class=more>
 Help</span> |<span class=more> Contact Us</span> <br/>
         <span class=copyright>copyright 2011</span></td>
 		</tr>

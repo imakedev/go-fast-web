@@ -59,19 +59,22 @@ img {
 </head>
 
 <body>
+
+<%
+// Init Value
+
+%>
+
 <table border="0" width="100%" cellspacing="2" cellpadding="0"
 	style="border: #003399 1px solid; background-color: #F3F8FF;">
 	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="55" align="center"><img
-			src="<%=request.getContextPath()%>/image/app1.jpg" width=50px ></img></td>
+		<td width="115" align="center"><img
+			src="<%=request.getContextPath()%>/image/app1.jpg" width=110px ></img></td>
 		<td align="left"><span class="topic">นาทอง สวนอาหาร</span> <br />
 		<span class="detail2">ส่วนลด 10%<br />
 		</span>
 		<span class=detail>
 		- เฉพาะค่าอาหาร (ยกเว้นโต๊ะจีน และบุฟเฟ่ต์)</span></td>
-		<%-- 
-		<td width="55" height="55" align="center"><img src="<%=request.getContextPath()%>/image/10_percent_discount1.gif"  width="50" height="50" /></td>
-		 --%>
 	</tr>
 	<tr>
 		<td colspan="3">
@@ -79,16 +82,13 @@ img {
 		</td>
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="55" align="center"><img
-			src="<%=request.getContextPath()%>/image/app2.jpg" width=50px /></td>
+		<td width="115" align="center"><img
+			src="<%=request.getContextPath()%>/image/app2.jpg" width=110px /></td>
 		<td align="left"><span class="topic">นางกวัก ร้านอาหาร</span> <br />
 		<span class="detail2">ส่วนลด 10 % สำหรับค่าอาหาร<br /></span>
 		<span class=detail>
 		เพียงนำคูปองไปแสดงที่ร้าน พิเศษสุดๆ เมื่อทานอาหารครบ 2,000 บาท
 		รับฟรีพิซซ่า 1 ถาด (ราคา 330 บาท) </span></td>
-		<%-- 
-		<td width="55" height="75" align="center"><img  width="50" height="50" src="<%=request.getContextPath()%>/image/10_percent_discount2.jpg"></img></td>
-		 --%>
 	</tr>
 	<tr>
 		<td colspan="3">
@@ -96,8 +96,8 @@ img {
 		</td>
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="55" align="center"><img
-			src="<%=request.getContextPath()%>/image/app3.jpg" width=50px /></td>
+		<td width="115" align="center"><img
+			src="<%=request.getContextPath()%>/image/app3.jpg" width=110px /></td>
 		<td align="left"><span class="topic">De Facto View </span> <br />
 		<span class="detail2">ส่วนลด 5% <br /></span>
 		<span class=detail>
@@ -112,8 +112,8 @@ img {
 		</td>
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="55" align="center"><img
-			src="<%=request.getContextPath()%>/image/app4.jpg" width=50px /></td>
+		<td width="115" align="center"><img
+			src="<%=request.getContextPath()%>/image/app4.jpg" width=110px /></td>
 		<td align="left"><span class="topic">เรือนสำราญรีสอร์ท</span> <br />
 		<span class="detail2">ส่วนลด 25 %<br /></span>
 		<span class=detail>
@@ -128,8 +128,8 @@ img {
 		</td>
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="55" align="center"><img
-			src="<%=request.getContextPath()%>/image/app5.jpg" width=50px /></td>
+		<td width="115" align="center"><img
+			src="<%=request.getContextPath()%>/image/app5.jpg" width=110px /></td>
 		<td align="left"><span class="topic">กินเส้น ร้านอาหาร</span> <br />
 		<span class="detail2">ส่วนลด 10%<br /></span>
 		<span class=detail>
@@ -144,8 +144,8 @@ img {
 		</td>
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="55" align="center"><img
-			src="<%=request.getContextPath()%>/image/app6.jpg" width=50px /></td>
+		<td width="115" align="center"><img
+			src="<%=request.getContextPath()%>/image/app6.jpg" width=110px /></td>
 		<td align="left"><span class="topic">Lee Cafe @ Number 1</span> <br />
 		<span class="detail2">ส่วนลด 10 % สำหรับค่าอาหาร<br /></span>
 		<span class=detail>
@@ -171,7 +171,7 @@ img {
 	</tr>
 	<tr bgcolor=#C0C0C0>
 		<td width=100% colspan=3 height=40 valign=bottom><span class=more>Term
-		of user</span> |<span class=more> Help</span> |<span class=more>
+		of use</span> |<span class=more> Help</span> |<span class=more>
 		Contact Us</span> <br> <span class=copyright>copyright 2011</span>
 		</td>
 	</tr>
