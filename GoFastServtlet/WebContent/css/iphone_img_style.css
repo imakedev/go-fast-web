@@ -1,0 +1,113 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body { 
+    font: 11px Helvetica, Arial, sans-serif;
+}
+
+#wrapper {
+    width: 245px;
+    margin: 0px 25px 0px 25px;
+}
+
+#intro {
+    padding-bottom: 10px;
+}
+
+#slider {
+    width: 245px;
+    margin: 1px auto;
+    position: relative;
+	border: 10px solid #ccc;
+}
+
+.scroll {
+	overflow: hidden;
+	width: 245px;
+    margin: 1px auto;
+    position: relative;
+}
+
+.scrollContainer {
+	position: relative;
+}
+
+.scrollContainer div.panel {
+    padding: 5px;
+    width: 100px;
+	height: 90px;
+}
+
+#left-shadow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 12px;
+	bottom: 0;
+	background: url(../images/leftshadow.png) repeat-y;
+}
+
+#right-shadow {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 12px;
+	bottom: 0;
+	background: url(../images/rightshadow.png) repeat-y;
+}
+
+.inside {
+	padding: 1px;
+	border: 1px solid #999;
+}
+
+.inside img {
+	display: block;
+	border: 1px solid #666;
+	padding: 0px;
+	margin: 0 0 0 0;
+	width: 94px;
+}
+
+.inside h2 {
+	font-weight: normal;
+	color: #111;
+	font-size: 10px;
+	margin: 0 0 0px 0;
+}
+
+.inside p {
+	font-size: 11px;
+	color: #ccc;
+}
+
+a {
+	color: #999;
+	text-decoration: none;
+	border-bottom: 1px dotted #ccc;
+}
+
+a:hover {
+	border-bottom: 1px solid #999;
+}
+
+.scrollButtons {
+	position: absolute;
+    top: 25px;
+	width: 30px;
+    cursor: pointer;
+}
+
+.scrollButtons.left {
+    left: -35px;
+}
+
+.scrollButtons.right {
+    right: -35px;
+}
+
+.hide {
+    display: none;
+}
