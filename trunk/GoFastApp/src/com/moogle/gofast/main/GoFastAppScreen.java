@@ -367,7 +367,7 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 	            _tooltip = null;
 	        }
 	        // Display tooltip at 50,50 for 5 seconds
-	        _tooltip = MyTooltip.addToolTip(UiApplication.getUiApplication(), this.name,this.getContentLeft(), hiBanner+10, 5);;
+	        _tooltip = MyTooltip.addToolTip(UiApplication.getUiApplication(), this.name,this.getContentLeft(), hiBanner, 5);;
 	    
 		}
 
