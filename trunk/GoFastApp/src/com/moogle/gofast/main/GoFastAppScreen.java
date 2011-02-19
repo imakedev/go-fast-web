@@ -8,7 +8,6 @@ import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.system.Display;
 import net.rim.device.api.ui.Field;
 import net.rim.device.api.ui.FieldChangeListener;
-import net.rim.device.api.ui.Graphics;
 import net.rim.device.api.ui.Manager;
 import net.rim.device.api.ui.ScrollChangeListener;
 import net.rim.device.api.ui.component.BitmapField;
@@ -72,7 +71,8 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 
 		// Instantiate a GridFieldManager with 1 rows and 5 columns
 		GridFieldManager gridFieldManager = new GridFieldManager(rows, cols,
-				Field.FIELD_HCENTER);
+				Field.FIELD_LEFT | Manager.USE_ALL_WIDTH | Manager.NO_HORIZONTAL_SCROLL
+			 | Manager.NO_VERTICAL_SCROLL);
 
 		Bitmap bgImage = Bitmap.getBitmapResource("img/bg.png");
 
@@ -137,9 +137,10 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 		 */
 
 		gridFieldManager.setChangeListener(this);
-		gridFieldManager.setBackground(BackgroundFactory.createBitmapBackground(bgImage));
+		//gridFieldManager.setBackground(BackgroundFactory.createBitmapBackground(bgImage));
+		gridFieldManager.setBackground(BackgroundFactory.createSolidBackground(0xD8D8D8));
 		gridFieldManager.setCellPadding(1);
-		gridFieldManager.setColumnPadding(20);
+		gridFieldManager.setColumnPadding(23);
 		
 		
 		// Add button fields to the GridFieldManager
@@ -153,7 +154,8 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 
 		gridFieldManager.add(bt7);
 		
-		
+		/*gridFieldManager.add(bt8);
+		gridFieldManager.add(bt9);*/
 		
 	/*	gridFieldManager.add(bt8);
 		gridFieldManager.add(bt9);*/
@@ -169,8 +171,10 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 		vfm.setChangeListener(this);
 		
 		 //vfm.setBackground(BackgroundFactory.createBitmapBackground(bgImage));
-		//vfm.setBackground(BackgroundFactory.createSolidBackground(0xD8D8D8));
+		vfm.setBackground(BackgroundFactory.createSolidBackground(0xD8D8D8));
+		setBackground(BackgroundFactory.createSolidBackground(0xD8D8D8));
 		//gridFieldManager.setBackground();
+		//gridFieldManager.setColumnProperty(0, GridFieldManager.FIXED_SIZE, 478);
 		setBanner(h);
 		setTitle(gridFieldManager);
 		setScrollListener(paramScrollChangeListener);
