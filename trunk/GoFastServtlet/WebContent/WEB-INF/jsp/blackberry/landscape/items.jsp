@@ -9,7 +9,7 @@ body {
 	text-align: left;
 	margin: 0;
 	font-family: Tahoma, sans-serif;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 /* Paragraph and headings */
@@ -17,12 +17,12 @@ span {
 	padding: 0px 5px 5px 5px;
 	font-family: Tahoma, sans-serif;
 	color: #000000;
-	font-size: 12px;
+	font-size: 14px;
 }
 
-.topic { padding:5px 5px 0px 5px;font-size:14px;font-family:Tahoma,
+.topic { padding:5px 5px 0px 5px;font-size:16px;font-family:Tahoma,
 sans-serif;color:#005DB0; font-weight:bold;}
-.detail2 { padding:5px 5px 0px 5px;font-size:13px;font-family:Tahoma,
+.detail2 { padding:5px 5px 0px 5px;font-size:15px;font-family:Tahoma,
 sans-serif;color:#ff0000; font-weight:bold;}
 
 .more,.more a:link ,.more a:visited ,.more a:active {
@@ -62,8 +62,8 @@ img {
 <table border="0" width="100%" cellspacing="2" cellpadding="0"
 	style="border: #003399 1px solid; background-color: #F3F8FF;">
 	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="55" align="center"><img
-			src="<%=request.getContextPath()%>/image/app1.jpg" width=50px ></img></td>
+		<td width="75" align="center"><img
+			src="<%=request.getContextPath()%>/image/app1.jpg" width=75px ></img></td>
 		<td align="left"><span class="topic">นาทอง สวนอาหาร</span> <br />
 		<span class="detail2">ส่วนลด 10%<br />
 		</span>
