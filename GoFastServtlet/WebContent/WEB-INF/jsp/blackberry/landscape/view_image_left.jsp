@@ -102,14 +102,14 @@ a.button:hover span {
 <table width=100%>
 <tr>
 <td colspan=3 align=center>
-<img border=0 src=/GoFastServtlet/image/app1.jpg width=120 height=90/> 
-<a href="/GoFastServtlet/listitems?page=view_image&brand=bb&direction=1"><img  border=0 src=/GoFastServtlet/image/app2.jpg width=120 height=90/> </a>
-<a href="/GoFastServtlet/listitems?page=view_image_right&brand=bb&direction=1"><img  border=0 src=/GoFastServtlet/image/app3.jpg width=120 height=90/> </a>
+<img border=0 src=/GoFastServtlet/image/app1.jpg width=100 height=70/> 
+<a href="/GoFastServtlet/listitems?page=view_image&brand=bb&direction=1"><img  border=0 src=/GoFastServtlet/image/app2.jpg width=100 height=70/> </a>
+<a href="/GoFastServtlet/listitems?page=view_image_right&brand=bb&direction=1"><img  border=0 src=/GoFastServtlet/image/app3.jpg width=100 height=70/> </a>
 </td>
 </tr>
 <tr>
 <td width=10% align=left></td>
-<td align=center><img src=/GoFastServtlet/image/app1.jpg width=400 height=300/></td>
+<td align=center><img src=/GoFastServtlet/image/app1.jpg width=300 height=200/></td>
 <td width=10% align=right><a href="/GoFastServtlet/listitems?page=view_image&brand=bb&direction=1"><img  border=0 src=/GoFastServtlet/image/rightarrow.png /></a></td>
 </tr>
 </table>
