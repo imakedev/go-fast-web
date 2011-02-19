@@ -8,6 +8,7 @@ import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.system.Display;
 import net.rim.device.api.ui.Field;
 import net.rim.device.api.ui.FieldChangeListener;
+import net.rim.device.api.ui.Graphics;
 import net.rim.device.api.ui.Manager;
 import net.rim.device.api.ui.ScrollChangeListener;
 import net.rim.device.api.ui.component.BitmapField;
@@ -58,6 +59,9 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 		h.setBackgroundColour(0xCCE9FD);
 		h.setBatteryBackground(0xEE1155);
 		h.setFontColour(0x2233FF);
+		
+		
+		VerticalFieldManager vfmBanner = new VerticalFieldManager(USE_ALL_WIDTH);
 		
 		
 
@@ -175,8 +179,12 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 		setBackground(BackgroundFactory.createSolidBackground(0xD8D8D8));
 		//gridFieldManager.setBackground();
 		//gridFieldManager.setColumnProperty(0, GridFieldManager.FIXED_SIZE, 478);
-		setBanner(h);
-		setTitle(gridFieldManager);
+		
+		vfmBanner.add(h);
+		vfmBanner.add(gridFieldManager);
+		setBanner(vfmBanner);
+		
+		//setTitle("--------------------------");
 		setScrollListener(paramScrollChangeListener);
 		//setBackground(BackgroundFactory.createSolidBackground(0xD8D8D8));
 		//vfm.add(gridFieldManager);
@@ -212,7 +220,7 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 		// add(myBrowserField);
 		add(vfm);
 		myBrowserField
-				.requestContent("http://mooglefast.appspot.com/listitems");
+				.requestContent("http://mooglefast.appspot.com/listitems");//("http://css-tricks.com/examples/MovingBoxes/");
 		// myBrowserField.direquestContent("http://mooglefast.appspot.com/listitems");
 
 		vfm.add(myBrowserField);
