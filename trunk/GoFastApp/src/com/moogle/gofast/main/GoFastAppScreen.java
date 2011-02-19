@@ -8,15 +8,24 @@ import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.system.Display;
 import net.rim.device.api.ui.Field;
 import net.rim.device.api.ui.FieldChangeListener;
+import net.rim.device.api.ui.Font;
+import net.rim.device.api.ui.FontFamily;
+import net.rim.device.api.ui.FontManager;
 import net.rim.device.api.ui.Graphics;
 import net.rim.device.api.ui.Manager;
 import net.rim.device.api.ui.ScrollChangeListener;
+import net.rim.device.api.ui.UiApplication;
+import net.rim.device.api.ui.XYRect;
 import net.rim.device.api.ui.component.BitmapField;
+import net.rim.device.api.ui.component.ButtonField;
+import net.rim.device.api.ui.component.Dialog;
 import net.rim.device.api.ui.component.LabelField;
 import net.rim.device.api.ui.container.GridFieldManager;
 import net.rim.device.api.ui.container.MainScreen;
 import net.rim.device.api.ui.container.VerticalFieldManager;
 import net.rim.device.api.ui.decor.BackgroundFactory;
+import net.rim.device.api.ui.decor.Border;
+import net.rim.device.api.ui.decor.BorderFactory;
 
 public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 	/*
@@ -44,32 +53,44 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 	public BrowserFieldConfig bfc;
 	public BrowserField myBrowserField;
 	public LabelField labelname;
+    public XYRect xyTool;
 	ConnectionFactory cf;
 	int[] preferredTransportTypes = { TransportInfo.TRANSPORT_BIS_B };
 	private ScrollChangeListener paramScrollChangeListener;
+	private int hiBanner=100;
 
 	public GoFastAppScreen() {
 		// super(NO_VERTICAL_SCROLL);
 		int dirction = Display.getOrientation();
-
-		HeaderBar h = new HeaderBar("Application Title " + dirction);
+        
+		HeaderBar h = new HeaderBar("Pomotion " + dirction);
 		// h.showDate(false);
 		// h.showSignal(false);
 		// h.showTime(false);
 		h.setBackgroundColour(0xCCE9FD);
 		h.setBatteryBackground(0xEE1155);
 		h.setFontColour(0x2233FF);
-		
-		
 		VerticalFieldManager vfmBanner = new VerticalFieldManager(USE_ALL_WIDTH);
-		
-		
 
-		// setTitle("GoFast");
+        LabelField lfTitle = new LabelField("Promotion",USE_ALL_WIDTH);
+        
 
+            try 
+            {
+                FontFamily typeface = FontFamily.forName("MyFont");
+                Font myFont = typeface.getFont(Font.PLAIN, hiBanner);
+                lfTitle.setFont(myFont); 
+            }
+            catch (ClassNotFoundException e) 
+            {
+               Dialog.inform(e.getMessage());
+            }
+        
+        lfTitle.setBackground(BackgroundFactory.createSolidBackground(0xEE1155));
+		
 		// Define rows and columns
 		int rows = 1;
-		int cols = 7;
+		int cols = 8;
 
 		labelname = new LabelField("", FIELD_HCENTER);
 
@@ -157,7 +178,7 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 		gridFieldManager.add(bt6);
 
 		gridFieldManager.add(bt7);
-		
+		gridFieldManager.add(bt8);
 		/*gridFieldManager.add(bt8);
 		gridFieldManager.add(bt9);*/
 		
@@ -176,11 +197,11 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 		
 		 //vfm.setBackground(BackgroundFactory.createBitmapBackground(bgImage));
 		vfm.setBackground(BackgroundFactory.createSolidBackground(0xD8D8D8));
-		setBackground(BackgroundFactory.createSolidBackground(0xD8D8D8));
+		//setBackground(BackgroundFactory.createSolidBackground(0xD8D8D8));
 		//gridFieldManager.setBackground();
 		//gridFieldManager.setColumnProperty(0, GridFieldManager.FIXED_SIZE, 478);
 		
-		vfmBanner.add(h);
+		vfmBanner.add(lfTitle);
 		vfmBanner.add(gridFieldManager);
 		setBanner(vfmBanner);
 		
@@ -220,7 +241,7 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 		// add(myBrowserField);
 		add(vfm);
 		myBrowserField
-				.requestContent("http://mooglefast.appspot.com/listitems");//("http://css-tricks.com/examples/MovingBoxes/");
+				.requestContent("http://192.168.1.11:8080/GoFastServtlet/listitems");//("http://css-tricks.com/examples/MovingBoxes/");
 		// myBrowserField.direquestContent("http://mooglefast.appspot.com/listitems");
 
 		vfm.add(myBrowserField);
@@ -296,6 +317,7 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 		public MyBitmapField(String name, Bitmap bitmapField, long syte) {
 			super(bitmapField, syte);
 			this.name = name;
+			
 		}
 
 		private String name;
@@ -331,14 +353,35 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 
 			return super.navigationClick(arg0, arg1);
 		}
-
+		 MyTooltip _tooltip;
+		
 		public void onFocus(int direction) {
+			
+			
 			labelname.setText(this.name);
+			
+			
+			//this.setBorder(BorderFactory.createRoundedBorder(null));
+			if ( _tooltip != null ) {
+	            _tooltip.removeToolTip();
+	            _tooltip = null;
+	        }
+	        // Display tooltip at 50,50 for 5 seconds
+	        _tooltip = MyTooltip.addToolTip(UiApplication.getUiApplication(), this.name,this.getContentLeft(), hiBanner+10, 5);;
+	    
 		}
 
 		protected void onUnfocus() {
 			labelname.setText("");
+			 if ( _tooltip != null ) {
+		            // We have displayed a Tooltip - remove it
+		            _tooltip.removeToolTip();
+		            _tooltip = null;
+		        }
 		}
+		
+		
+		
 
 	}
 
