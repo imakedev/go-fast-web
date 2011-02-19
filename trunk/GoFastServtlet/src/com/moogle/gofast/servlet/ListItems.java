@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ListItems extends HttpServlet {
 	private static final long serialVersionUID = 1L; 
-	private static final String BB_ORIENTATION_PORTRAIT_PATH  ="/WEB-INF/jsp/blackberry/landscape/";
-	private static final String BB_ORIENTATION_LANDSCAPE_PATH  ="/WEB-INF/jsp/blackberry/portrait/";
+	private static final String BB_ORIENTATION_PORTRAIT_PATH  ="/WEB-INF/jsp/blackberry/portrait/";
+	private static final String BB_ORIENTATION_LANDSCAPE_PATH  ="/WEB-INF/jsp/blackberry/landscape/";
 	private static final String BB_ORIENTATION_SQUARE_PATH  ="/WEB-INF/jsp/blackberry/square/"; 
 	private static final int BB_DIRECTION_LANDSCAPE=1;
 	private static final int BB_DIRECTION_PORTRAIT=2;
