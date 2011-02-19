@@ -83,7 +83,7 @@ a.button:hover span {
 	var _path='<%=request.getContextPath()%>';
 	function goBack() {
 		//	alert("goPage")
-		window.location.href = _path+"/listitems";
+		window.location.href = _path+"/listitems?page=" + _page;
 	}
 	function goPage(_page) {
 		//alert("goPage")
@@ -102,14 +102,14 @@ a.button:hover span {
 <table width=100%>
 <tr>
 <td colspan=3 align=center>
-<a href="/GoFastServtlet/listitems?page=view_image_left&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/app1.jpg width=120 height=90/> </a>
-<a href="/GoFastServtlet/listitems?page=view_image&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/app2.jpg width=120 height=90/></a>
-<img src=/GoFastServtlet/image/app3.jpg width=120 height=90/>
+<a href="/GoFastServtlet/listitems?page=view_image_left&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/app1.jpg width=100 height=70/> </a>
+<a href="/GoFastServtlet/listitems?page=view_image&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/app2.jpg width=100 height=70/></a>
+<img src=/GoFastServtlet/image/app3.jpg width=100 height=70/>
 </td>
 </tr>
 <tr>
 <td width=10% align=left><a href="/GoFastServtlet/listitems?page=view_image&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/leftarrow.png /></a> </td>
-<td align=center><img src=/GoFastServtlet/image/app3.jpg width=400 height=300/></td>
+<td align=center><img src=/GoFastServtlet/image/app3.jpg width=300 height=200/></td>
 <td width=10% align=right></td>
 </tr>
 </table>
