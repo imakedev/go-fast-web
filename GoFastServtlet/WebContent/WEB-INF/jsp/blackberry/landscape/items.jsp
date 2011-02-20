@@ -45,7 +45,8 @@ img {
 }
 </style>
 <script>
-	var _path='<%=request.getContextPath()%>';
+	var _path='<%=request.getContextPath()%>';
+
 	//alert(_path)
 	function goPage(_page) {
 		//alert("goPage")
@@ -61,9 +62,9 @@ img {
 <body>
 <table border="0" width="100%" cellspacing="2" cellpadding="0"
 	style="border: #003399 1px solid; background-color: #F3F8FF;">
-	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="75" align="center"><img
-			src="<%=request.getContextPath()%>/image/app1.jpg" width=75px ></img></td>
+	<tr valign="top" onclick="goPage('itemdetail&brand=bb&direction=1')">
+		<td width="130" align="center" style="padding-left: 2px;padding-top: 2px;"><img
+			src="<%=request.getContextPath()%>/image/app1.jpg" width=130px ></img></td>
 		<td align="left"><span class="topic">นาทอง สวนอาหาร</span> <br />
 		<span class="detail2">ส่วนลด 10%<br />
 		</span>
@@ -79,8 +80,8 @@ img {
 		</td>
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="55" align="center"><img
-			src="<%=request.getContextPath()%>/image/app2.jpg" width=50px /></td>
+		<td width="130" align="center" style="padding-left: 2px;padding-top: 2px;"><img
+			src="<%=request.getContextPath()%>/image/app2.jpg" width="130px" /></td>
 		<td align="left"><span class="topic">นางกวัก ร้านอาหาร</span> <br />
 		<span class="detail2">ส่วนลด 10 % สำหรับค่าอาหาร<br /></span>
 		<span class=detail>
@@ -96,8 +97,8 @@ img {
 		</td>
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="55" align="center"><img
-			src="<%=request.getContextPath()%>/image/app3.jpg" width=50px /></td>
+		<td width="130" align="center" style="padding-left: 2px;padding-top: 2px;"><img
+			src="<%=request.getContextPath()%>/image/app3.jpg" width="130px" /></td>
 		<td align="left"><span class="topic">De Facto View </span> <br />
 		<span class="detail2">ส่วนลด 5% <br /></span>
 		<span class=detail>
@@ -112,8 +113,8 @@ img {
 		</td>
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="55" align="center"><img
-			src="<%=request.getContextPath()%>/image/app4.jpg" width=50px /></td>
+		<td width="130" align="center" style="padding-left: 2px;padding-top: 2px;"><img
+			src="<%=request.getContextPath()%>/image/app4.jpg" width="130px" /></td>
 		<td align="left"><span class="topic">เรือนสำราญรีสอร์ท</span> <br />
 		<span class="detail2">ส่วนลด 25 %<br /></span>
 		<span class=detail>
@@ -128,8 +129,8 @@ img {
 		</td>
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="55" align="center"><img
-			src="<%=request.getContextPath()%>/image/app5.jpg" width=50px /></td>
+		<td width="130" align="center" style="padding-left: 2px;padding-top: 2px;"><img
+			src="<%=request.getContextPath()%>/image/app5.jpg" width="130px" /></td>
 		<td align="left"><span class="topic">กินเส้น ร้านอาหาร</span> <br />
 		<span class="detail2">ส่วนลด 10%<br /></span>
 		<span class=detail>
@@ -144,8 +145,8 @@ img {
 		</td>
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="55" align="center"><img
-			src="<%=request.getContextPath()%>/image/app6.jpg" width=50px /></td>
+		<td width="130" align="center" style="padding-left: 2px;padding-top: 2px;"><img
+			src="<%=request.getContextPath()%>/image/app6.jpg" width="130px" /></td>
 		<td align="left"><span class="topic">Lee Cafe @ Number 1</span> <br />
 		<span class="detail2">ส่วนลด 10 % สำหรับค่าอาหาร<br /></span>
 		<span class=detail>
