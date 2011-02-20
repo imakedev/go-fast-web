@@ -63,21 +63,33 @@ text-decoration:underline;
 <table border="0" width="100%">
 <tr valign="top">
 <td align="center"> <img 
-	src="http://maps.google.com/maps/api/staticmap?center=40.714728,-73.998672&zoom=12&size=400x400&sensor=false"></img>
+	src="http://maps.google.com/maps/api/staticmap?center=40.714728,-73.998672&zoom=12&size=400x200&sensor=false"></img>
 </td>
 </tr>
 </table>
 <table border="0" width="100%">
-<tr valign="top">
-<td align="center">
-<table width="100" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td align="center"><a href="#" onclick="goBack()"><img
-							src="<%=request.getContextPath()%>/image/back.png" border=0/></a></td>
-  </tr>
-</table>
-</td>
-</tr>
+	<tr valign="top">
+		<td align="center">
+		<table width="100%" border="1" cellspacing="0" cellpadding="0"
+			align=center
+			style="border: #ffffff 0px solid; background-color: #F3F8FF;">
+			<tbody>
+				<tr>
+					<td bgcolor=#C0C0C0 align="center" height=50 width=100% class=button
+						onclick="goBack()"><a href="#">กลับ</a></td>
+				</tr>
+
+			</tbody>
+		</table>
+		</td>
+	</tr>
+			<tr bgcolor=#C0C0C0>
+			<td width=100% colspan=3 height=30>
+			<span class=more>Term of use</span> |<span class=more>
+Help</span> |<span class=more> Contact Us</span> <br/>
+        <span class=copyright>copyright 2011</span></td>
+		</tr>
+ 
 </table>
 </body>
 </html>

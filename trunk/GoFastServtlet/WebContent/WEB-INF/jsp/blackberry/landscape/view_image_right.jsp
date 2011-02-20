@@ -83,7 +83,7 @@ a.button:hover span {
 	var _path='<%=request.getContextPath()%>';
 	function goBack() {
 		//	alert("goPage")
-		window.location.href = _path+"/listitems?page=" + _page;
+		window.location.href = _path+"/listitems";
 	}
 	function goPage(_page) {
 		//alert("goPage")
@@ -108,9 +108,9 @@ a.button:hover span {
 </td>
 </tr>
 <tr>
-<td width=10% align=left><a href="/GoFastServtlet/listitems?page=view_image&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/leftarrow.png /></a> </td>
-<td align=center><img src=/GoFastServtlet/image/app3.jpg width=300 height=200/></td>
-<td width=10% align=right></td>
+<td  align=left><a href="/GoFastServtlet/listitems?page=view_image&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/leftarrow.png /></a> </td>
+<td align=center><img src=/GoFastServtlet/image/app3.jpg  width=250 height=130/></td>
+<td  align=right></td>
 </tr>
 </table>
 
@@ -124,7 +124,7 @@ a.button:hover span {
 			<tbody>
 				<tr>
 					<td bgcolor=#C0C0C0 align="center" height=50 width=100% class=button
-						onclick="goBack()"><a href="#">กลับ</a></td>
+						onclick="goPage('itemdetail&brand=bb&direction=1')"><a href="#">กลับ</a></td>
 				</tr>
 
 			</tbody>
