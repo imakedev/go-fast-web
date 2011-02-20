@@ -10,22 +10,17 @@ import net.rim.device.api.ui.Field;
 import net.rim.device.api.ui.FieldChangeListener;
 import net.rim.device.api.ui.Font;
 import net.rim.device.api.ui.FontFamily;
-import net.rim.device.api.ui.FontManager;
-import net.rim.device.api.ui.Graphics;
 import net.rim.device.api.ui.Manager;
 import net.rim.device.api.ui.ScrollChangeListener;
 import net.rim.device.api.ui.UiApplication;
 import net.rim.device.api.ui.XYRect;
 import net.rim.device.api.ui.component.BitmapField;
-import net.rim.device.api.ui.component.ButtonField;
 import net.rim.device.api.ui.component.Dialog;
 import net.rim.device.api.ui.component.LabelField;
 import net.rim.device.api.ui.container.GridFieldManager;
 import net.rim.device.api.ui.container.MainScreen;
 import net.rim.device.api.ui.container.VerticalFieldManager;
 import net.rim.device.api.ui.decor.BackgroundFactory;
-import net.rim.device.api.ui.decor.Border;
-import net.rim.device.api.ui.decor.BorderFactory;
 
 public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 	/*
@@ -63,30 +58,37 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 		// super(NO_VERTICAL_SCROLL);
 		int dirction = Display.getOrientation();
         
-		HeaderBar h = new HeaderBar("Pomotion " + dirction);
+		HeaderBar headerBar = new HeaderBar("Pomotion " + dirction);
 		// h.showDate(false);
 		// h.showSignal(false);
 		// h.showTime(false);
-		h.setBackgroundColour(0xCCE9FD);
-		h.setBatteryBackground(0xEE1155);
-		h.setFontColour(0x2233FF);
+		headerBar.setBackgroundColour(0xCCE9FD);
+		headerBar.setBatteryBackground(0xEE1155);
+		headerBar.setFontColour(0x2233FF);
 		VerticalFieldManager vfmBanner = new VerticalFieldManager(USE_ALL_WIDTH);
 
-        LabelField lfTitle = new LabelField("Promotion",USE_ALL_WIDTH);
+        LabelField lfTitle = new LabelField("Promotions",USE_ALL_WIDTH );
         
 
             try 
             {
-                FontFamily typeface = FontFamily.forName("MyFont");
-                Font myFont = typeface.getFont(Font.PLAIN, hiBanner);
+                FontFamily typeface = FontFamily.forName("Tahoma, sans-serif");
+                Font myFont = typeface.getFont(Font.PLAIN, 30);
+                Font[] fonts = typeface.getFonts();
+                for(int i =0 ;i < fonts.length;i++){
+                	System.out.println("chatchai debug font="+fonts[i].toString());
+                }
                 lfTitle.setFont(myFont); 
+                
             }
             catch (ClassNotFoundException e) 
             {
                Dialog.inform(e.getMessage());
             }
         
-        lfTitle.setBackground(BackgroundFactory.createSolidBackground(0xEE1155));
+       // lfTitle.setBackground(BackgroundFactory.createSolidBackground(0xEE1155));
+            lfTitle.setBackground(BackgroundFactory.createSolidBackground(0xACB0B0));
+            
 		
 		// Define rows and columns
 		int rows = 1;
@@ -102,24 +104,24 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 		Bitmap bgImage = Bitmap.getBitmapResource("img/bg.png");
 
 		bt1 = new MyBitmapField("bt1", Bitmap
-				.getBitmapResource("img/ic_newsfeed_titlebar.png"),
+				.getBitmapResource("img/car.png"),
 				BitmapField.FOCUSABLE);
 		bt1.setChangeListener(this);
 		bt2 = new MyBitmapField("bt2", Bitmap
-				.getBitmapResource("img/ic_notifications_titlebar.png"),
+				.getBitmapResource("img/computer.png"),
 				BitmapField.FOCUSABLE);
 		bt2.setChangeListener(this);
 		bt3 = new MyBitmapField("bt3", Bitmap
-				.getBitmapResource("img/ic_search_text.png"),
+				.getBitmapResource("img/fan.png"),
 				BitmapField.FOCUSABLE);
 		bt3.setChangeListener(this);
 
 		bt4 = new MyBitmapField("bt4", Bitmap
-				.getBitmapResource("img/ic_pick_album.png"),
+				.getBitmapResource("img/food.png"),
 				BitmapField.FOCUSABLE);
 		bt4.setChangeListener(this);
 		bt5 = new MyBitmapField("bt5", Bitmap
-				.getBitmapResource("img/ic_profile_titlebar.png"),
+				.getBitmapResource("img/home.png"),
 				BitmapField.FOCUSABLE);
 		bt5.setChangeListener(this);
 		/*
@@ -128,11 +130,11 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 		 */
 
 		bt6 = new MyBitmapField("bt1", Bitmap
-				.getBitmapResource("img/ic_friends_titlebar.png"),
+				.getBitmapResource("img/pet.png"),
 				BitmapField.FOCUSABLE);
 		bt6.setChangeListener(this);
 		bt7 = new MyBitmapField("bt2", Bitmap
-				.getBitmapResource("img/ic_photos_titlebar.png"),
+				.getBitmapResource("img/sport.png"),
 				BitmapField.FOCUSABLE);
 		bt7.setChangeListener(this);
 		bt8 = new MyBitmapField("bt3", Bitmap
@@ -213,17 +215,22 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 		// add(vfm);
 		cf = new ConnectionFactory();
 		cf.setPreferredTransportTypes(preferredTransportTypes);
-
+	
 		bfc = new BrowserFieldConfig();
 		bfc.setProperty(BrowserFieldConfig.ALLOW_CS_XHR, Boolean.TRUE);
+		//bfc.setProperty(BrowserFieldConfig.ALLOW_CS_XHR, Boolean.TRUE);
+		//  bfc.setProperty(BrowserFieldConfig.ENABLE_GEARS, Boolean.TRUE);
+		 //Default = Set by rendering engine contentType="text/html; charset=utf-8"
+		//bfc.setProperty(BrowserFieldConfig.HTTP_HEADERS, "Content-Type=text/html;charset=utf-8");    
 		bfc.setProperty(BrowserFieldConfig.JAVASCRIPT_ENABLED, Boolean.TRUE);
-		bfc.setProperty(BrowserFieldConfig.USER_SCALABLE, Boolean.TRUE);
-		// bfc.setProperty(BrowserFieldConfig.MDS_TRANSCODING_ENABLED,
+		bfc.setProperty(BrowserFieldConfig.USER_SCALABLE, Boolean.FALSE);
+		  
+		  bfc.setProperty(BrowserFieldConfig.MDS_TRANSCODING_ENABLED,Boolean.FALSE);
 		// Boolean.FALSE);
-		// bfc.setProperty(BrowserFieldConfig.NAVIGATION_MODE,
-		// BrowserFieldConfig.NAVIGATION_MODE_POINTER);
-		bfc.setProperty(BrowserFieldConfig.NAVIGATION_MODE,
-				BrowserFieldConfig.NAVIGATION_MODE_CARET);
+		 bfc.setProperty(BrowserFieldConfig.NAVIGATION_MODE,
+		  BrowserFieldConfig.NAVIGATION_MODE_POINTER);
+		/*bfc.setProperty(BrowserFieldConfig.NAVIGATION_MODE,
+				BrowserFieldConfig.NAVIGATION_MODE_CARET);*/
 		bfc.setProperty(BrowserFieldConfig.VIEWPORT_WIDTH, new Integer(Display.getWidth()));
 		// bfc.setProperty(BrowserFieldConfig.CONNECTION_FACTORY, cf);
 
@@ -240,9 +247,10 @@ public class GoFastAppScreen extends MainScreen implements FieldChangeListener {
 		 */
 		// add(myBrowserField);
 		add(vfm);
-		myBrowserField
+		/*myBrowserField
 				.requestContent("http://192.168.1.11:8080/GoFastServtlet/listitems");//("http://css-tricks.com/examples/MovingBoxes/");
-		// myBrowserField.direquestContent("http://mooglefast.appspot.com/listitems");
+*/
+		 myBrowserField.requestContent("http://localhost:8080/GoFastServtlet/listitems?page=items&brand=bb&direction=1");
 
 		vfm.add(myBrowserField);
 		/*
