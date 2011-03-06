@@ -48,7 +48,7 @@ FoodOrder.java
 		Object obj = null;
 		Session  session = sessionAnnotationFactory.getCurrentSession();
 		try {
-			obj = session.get("com.moogle.gofast.services.hibernate.domain.GoFastLocation", gflId);
+			obj = session.get("com.moogle.gofast.hibernate.domain.GoFastLocation", gflId);
 			if(obj!=null)
 				goFastLocation = (GoFastLocation)obj;
 		} catch (RuntimeException re) {
@@ -487,7 +487,7 @@ FoodOrder.java
 		Object obj = null;
 		Session  session = sessionAnnotationFactory.getCurrentSession();
 		try {
-			obj = session.get("com.moogle.gofast.services.hibernate.domain.GoFastCat", gfcaId);
+			obj = session.get("com.moogle.gofast.hibernate.domain.GoFastCat", gfcaId);
 			if(obj!=null)
 				goFastCat = (GoFastCat)obj;
 		} catch (RuntimeException re) {
@@ -614,7 +614,7 @@ FoodOrder.java
 		Object obj = null;
 		Session  session = sessionAnnotationFactory.getCurrentSession();
 		try {
-			obj = session.get("com.moogle.gofast.services.hibernate.domain.GoFastArea", gfaId);
+			obj = session.get("com.moogle.gofast.hibernate.domain.GoFastArea", gfaId);
 			if(obj!=null)
 				goFastArea = (GoFastArea)obj;
 		} catch (RuntimeException re) {
@@ -736,7 +736,7 @@ FoodOrder.java
 		Object obj = null;
 		Session  session = sessionAnnotationFactory.getCurrentSession();
 		try {
-			obj = session.get("com.moogle.gofast.services.hibernate.domain.GoFastCustomer", gfaId);
+			obj = session.get("com.moogle.gofast.hibernate.domain.GoFastCustomer", gfaId);
 			if(obj!=null)
 				goFastCustomer = (GoFastCustomer)obj;
 		} catch (RuntimeException re) {
@@ -885,7 +885,7 @@ FoodOrder.java
 		Object obj = null;
 		Session  session = sessionAnnotationFactory.getCurrentSession();
 		try {
-			obj = session.get("com.moogle.gofast.services.hibernate.domain.GoFastItem", gfiId);
+			obj = session.get("com.moogle.gofast.hibernate.domain.GoFastItem", gfiId);
 			if(obj!=null)
 				goFastItem = (GoFastItem)obj;
 		} catch (RuntimeException re) {
