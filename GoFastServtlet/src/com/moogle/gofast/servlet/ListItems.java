@@ -3,10 +3,21 @@ package com.moogle.gofast.servlet;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import com.moogle.gofast.hibernate.GoFastService;
+import com.moogle.gofast.hibernate.impl.HibernateGoFast;
+
+ 
 
 /**
  * Servlet implementation class ListItems
@@ -22,10 +33,24 @@ public class ListItems extends HttpServlet {
 	private static final String IPHONE_PATH= "/WEB-INF/jsp/";
     private static final String IPHONE="iphone";
     private static final String BB="bb";
+    private GoFastService goFastService;
     /**
      * Default constructor. 
      */
     public ListItems() {
+    	/*ServletContext servletContext =this.getServletContext();
+
+    	WebApplicationContext wac = WebApplicationContextUtils.
+    	getRequiredWebApplicationContext(servletContext);*/
+    	 ApplicationContext springContext = new ClassPathXmlApplicationContext(
+                 new String[] {
+                		 "hibernate-config.xml"
+                         });
+
+    	goFastService = (GoFastService)springContext.getBean("goFastService");
+    //	ApplicationContext springContext = new ClassPathXmlApplicationContext();
+    //	goFastService = new HibernateGoFast();
+    	// <property name="goFastService" ref="goFastService"></property>
         // TODO Auto-generated constructor stub
     }
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -50,6 +75,7 @@ public class ListItems extends HttpServlet {
     	}else {
     		// iphone
     	}
+    	System.out.println("goFastService="+goFastService.findGoFastCatById(1));
     	if(!(page!=null && page.length()>0))
     		page = "items";
     	RequestDispatcher dispatcher = 
