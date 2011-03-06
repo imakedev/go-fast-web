@@ -15,12 +15,12 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.moogle.gofast.services.GoFastService;
-import com.moogle.gofast.services.hibernate.domain.GoFastArea;
-import com.moogle.gofast.services.hibernate.domain.GoFastCat;
-import com.moogle.gofast.services.hibernate.domain.GoFastCustomer;
-import com.moogle.gofast.services.hibernate.domain.GoFastItem;
-import com.moogle.gofast.services.hibernate.domain.GoFastLocation;
+import com.moogle.gofast.hibernate.GoFastService;
+import com.moogle.gofast.hibernate.domain.GoFastArea;
+import com.moogle.gofast.hibernate.domain.GoFastCat;
+import com.moogle.gofast.hibernate.domain.GoFastCustomer;
+import com.moogle.gofast.hibernate.domain.GoFastItem;
+import com.moogle.gofast.hibernate.domain.GoFastLocation;
 import com.moogle.gofast.utils.Paging;
  
  
@@ -41,7 +41,6 @@ public class HibernateGoFast   implements  GoFastService{
 FoodMenu.java
 FoodOrder.java
 	 */
-	@Override
 	@Transactional(readOnly = true)
 	public GoFastLocation findGoFastLocationById(Integer gflId) throws DataAccessException {
 		// TODO Auto-generated method stub
@@ -61,7 +60,7 @@ FoodOrder.java
 		}
 		 return goFastLocation;		 
 	}
-	@Override
+	
 	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
 		public int updateGoFastLocation(GoFastLocation transientInstance)
 				throws DataAccessException {
@@ -80,7 +79,6 @@ FoodOrder.java
 					}
 					return canUpdate;
 		}
-	@Override
 	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
 	public Integer saveGoFastLocation(GoFastLocation transientInstance) throws DataAccessException {
 			// TODO Auto-generated method stub
@@ -100,7 +98,7 @@ FoodOrder.java
 				}
 			return returnId;	
 		}
-	 @Override
+	 
 	 @Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
 	 public void deleteGoFastLocation(GoFastLocation persistentInstance)
 				throws DataAccessException {
@@ -429,7 +427,7 @@ FoodOrder.java
 					}
 					return canUpdate;
 		} */
-	@Override
+	
 	@Transactional(readOnly = true)
 	public List searchGoFastLocation(GoFastLocation persistentInstance,Paging paging) {
 		// TODO Auto-generated method stub		 
@@ -481,7 +479,7 @@ FoodOrder.java
 	
 	
 	}
-	@Override
+	
 	@Transactional(readOnly = true)
 	public GoFastCat findGoFastCatById(Integer gfcaId) {
 		// TODO Auto-generated method stub
@@ -501,7 +499,7 @@ FoodOrder.java
 		}
 		 return goFastCat;	
 	}
-	@Override
+	
 	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
 	public int updateGoFastCat(GoFastCat goFastCat) {
 		// TODO Auto-generated method stub
@@ -519,7 +517,7 @@ FoodOrder.java
 				}
 				return canUpdate;
 	}
-	@Override
+	
 	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
 	public Integer saveGoFastCat(GoFastCat transientInstance) {
 		// TODO Auto-generated method stub
@@ -538,7 +536,7 @@ FoodOrder.java
 			}
 		return returnId;	
 	}
-	@Override
+	
 	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
 	public void deleteGoFastCat(GoFastCat persistentInstance) {
 		// TODO Auto-generated method stub
@@ -551,7 +549,7 @@ FoodOrder.java
 				} 
 			}
 	}
-	@Override
+	
 	@Transactional(readOnly = true)
 	public List searchGoFastCat(GoFastCat persistentInstance,Paging paging){
 		// TODO Auto-generated method stub
@@ -608,7 +606,7 @@ FoodOrder.java
 	
 	
 	}
-	@Override
+	
 	@Transactional(readOnly = true)
 	public GoFastArea findGoFastAreaById(Integer gfaId) {
 		// TODO Auto-generated method stub
@@ -628,7 +626,7 @@ FoodOrder.java
 		}
 		 return goFastArea;	
 	}
-	@Override
+	
 	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
 	public int updateGoFastArea(GoFastArea goFastArea) {
 		// TODO Auto-generated method stub
@@ -646,7 +644,7 @@ FoodOrder.java
 				}
 				return canUpdate;
 	}
-	@Override
+	
 	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
 	public Integer saveGoFastArea(GoFastArea transientInstance) {
 		// TODO Auto-generated method stub
@@ -665,7 +663,7 @@ FoodOrder.java
 			}
 		return returnId;	
 	}
-	@Override
+	
 	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
 	public void deleteGoFastArea(GoFastArea persistentInstance) {
 		// TODO Auto-generated method stub
@@ -678,7 +676,7 @@ FoodOrder.java
 				} 
 			}
 	}
-	@Override
+	
 	@Transactional(readOnly = true)
 	public List searchGoFastArea(GoFastArea persistentInstance,Paging paging){
 		// TODO Auto-generated method stub
@@ -730,7 +728,7 @@ FoodOrder.java
 	
 	
 	}
-	@Override
+	
 	@Transactional(readOnly = true)
 	public GoFastCustomer findGoFastCustomerById(Integer gfaId) {
 		// TODO Auto-generated method stub
@@ -750,7 +748,7 @@ FoodOrder.java
 		}
 		 return goFastCustomer;	
 	}
-	@Override
+	
 	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
 	public int updateGoFastCustomer(GoFastCustomer goFastCustomer) {
 		// TODO Auto-generated method stub
@@ -768,7 +766,7 @@ FoodOrder.java
 				}
 				return canUpdate;
 	}
-	@Override
+	
 	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
 	public Integer saveGoFastCustomer(GoFastCustomer transientInstance) {
 		// TODO Auto-generated method stub
@@ -787,7 +785,7 @@ FoodOrder.java
 			}
 		return returnId;	
 	}
-	@Override
+	
 	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
 	public void deleteGoFastCustomer(GoFastCustomer persistentInstance) {
 		// TODO Auto-generated method stub
@@ -800,7 +798,7 @@ FoodOrder.java
 				} 
 			}
 	}
-	@Override
+	
 	@Transactional(readOnly = true)
 	public List searchGoFastCustomer(GoFastCustomer persistentInstance,Paging paging){
 		// TODO Auto-generated method stub
@@ -879,7 +877,7 @@ FoodOrder.java
 	
 	
 	}
-	@Override
+	
 	@Transactional(readOnly = true)
 	public GoFastItem findGoFastItemById(Integer gfiId) {
 		// TODO Auto-generated method stub
@@ -899,7 +897,7 @@ FoodOrder.java
 		}
 		 return goFastItem;	
 	}
-	@Override
+	
 	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
 	public int updateGoFastItem(GoFastItem goFastItem) {
 		// TODO Auto-generated method stub
@@ -917,7 +915,7 @@ FoodOrder.java
 				}
 				return canUpdate;
 	}
-	@Override
+	
 	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
 	public Integer saveGoFastItem(GoFastItem transientInstance) {
 		// TODO Auto-generated method stub
@@ -936,7 +934,7 @@ FoodOrder.java
 			}
 		return returnId;	
 	}
-	@Override
+	
 	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
 	public void deleteGoFastItem(GoFastItem persistentInstance) {
 		// TODO Auto-generated method stub
@@ -949,7 +947,7 @@ FoodOrder.java
 				} 
 			}
 	}
-	@Override
+	
 	@Transactional(readOnly = true)
 	public List searchGoFastItem(GoFastItem persistentInstance,Paging paging){
 		// TODO Auto-generated method stub
