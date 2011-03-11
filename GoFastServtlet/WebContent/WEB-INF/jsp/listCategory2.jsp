@@ -72,13 +72,13 @@ span {
 }
 </style>
 <script>
-	var _path='';
+	var _path='/GoFastServtlet';
 
 	//alert(_path)
 	function goPage(_page) {
 		//alert("goPage")
-		//window.location.href = _path + "/listitems?page=" + _page;
-		window.location.href = _path + "/listitems.htm";
+		window.location.href = _path + "/listitems?page=" + _page;
+		//window.location.href = _path + "/listitems.htm";
 	}
 </script>
 <meta http-equiv="Page-Enter" content="blendTrans(Duration=1.0)">
@@ -92,10 +92,11 @@ span {
 	border="0" cellpadding="0" cellspacing="2" width="100%">
 	<tbody>
 		<tr valign="top">
-			<td onclick="goPage('itemdetail')" align="center" width="100"><img
-				src="image/app1.jpg"  class = "corner iradius16" width=90px></td>
+			<td onclick="goPage('items')" align="center" width="100" style="padding: 1px 1px 1px 1px;"><img
+				src="image/category/restraurant.jpg"  class = "corner iradius16" width=60px></td>
 			<td align="left"><span class="topic">Restraurant</span> <br>
 			<span class="detail"> ร้านอาหาร</span></td>
+			<td align=right valign=middle><img src=image/next.png></td>
 		</tr>
 		<tr>
 			<td colspan="5">
@@ -104,12 +105,13 @@ span {
 		</tr>
 
 		<tr>
-			<td onclick="goPage('itemdetail')" align="center" width="100"><img
-				src="image/app2.jpg" class = "corner iradius16" width=90px></td>
+			<td onclick="goPage('items')" align="center" width="80"  style="padding: 1px 1px 1px 1px;"><img
+				src="image/category/sport.jpg" class = "corner iradius16" width=60px></td>
 			<td align="left"><span class="topic">Sport</span> <br> <span
-				class="detail"> ร้านอุปกรณ์กีฬา, คลับ, บัตรเข้าชมกีฬา ... </span>
+				class="detail"> ร้านอุปกรณ์กีฬา, คลับ, บัตรเข้าชมกีฬา </span>
 			</td>
 
+			<td align=right valign=middle><img src=image/next.png></td>
 		</tr>
 
 		<tr>
@@ -118,11 +120,13 @@ span {
 			</td>
 		</tr>
 
-		<tr onclick="goPage('itemdetail')" valign="top">
-			<td align="center" width="100"><img src="image/app3.jpg"
-				width=90px class = "corner iradius16"></td>
+		<tr onclick="goPage('items')" valign="top">
+			<td align="center" width="80" style="padding: 1px 1px 1px 1px;"><img src="image/category/home.jpg"
+				width=60px class = "corner iradius16"></td>
 			<td align="left"><span class="topic">House</span> <br>
 			<span class="detail"> อุปกรณ์บ้าน, บ้าน ...</span></td>
+			
+			<td align=right valign=middle><img src=image/next.png></td>
 		</tr>
 		<tr>
 			<td colspan="5">
@@ -132,11 +136,12 @@ span {
 
 		<tr>
 
-			<td align="center" width="100"><img src="image/app4.jpg"
-				width=90px class = "corner iradius16"></td>
+			<td align="center" width="80" style="padding: 1px 1px 1px 1px;"><img src="image/category/pet.jpg"
+				width=60px class = "corner iradius16"></td>
 			<td align="left"><span class="topic">Pet</span> <br> <span
 				class="detail"> สัตว์เลี้ยง, บริการสัตว์เลี้ยง ...</span>
 			</td>
+			<td align=right valign=middle><img src=image/next.png></td>
 
 		</tr>
 
@@ -146,11 +151,12 @@ span {
 			</td>
 		</tr>
 
-		<tr onclick="goPage('itemdetail')" valign="top">
-			<td align="center" width="100"><img src="image/app5.jpg"
-				width=90px class = "corner iradius16"></td>
+		<tr onclick="goPage('items')" valign="top">
+			<td align="center" width="80" style="padding: 1px 1px 1px 1px;"><img src="image/category/hospital.jpg"
+				width=60px class = "corner iradius16"></td>
 			<td align="left"><span class="topic">Medical</span> <br>
 			<span class="detail"> รักษาพยาบาล</span></td>
+			<td align=right valign=middle><img src=image/next.png></td>
 		</tr>
 
 		<tr>
@@ -160,11 +166,12 @@ span {
 		</tr>
 		<tr>
 
-			<td align="center" width="100"><img src="image/app6.jpg"
-				width=90px class = "corner iradius16"></td>
+			<td align="center" width="80" style="padding: 1px 1px 1px 1px;"><img src="image/category/fasion.jpg"
+				width=60px class = "corner iradius16"></td>
 			<td align="left"><span class="topic">Fasion</span> <br> <span
 				class="detail"> เสื้อผ้า</span>
 			</td>
+			<td align=right valign=middle><img src=image/next.png></td>
 
 		</tr>
 

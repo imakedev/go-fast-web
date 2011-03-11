@@ -71,13 +71,13 @@ span {
 }
 </style>
 <script>
-	var _path='';
+	var _path='/GoFastServtlet';
 
 	//alert(_path)
 	function goPage(_page) {
 		//alert("goPage")
 		//window.location.href = _path + "/listitems?page=" + _page;
-		window.location.href = _path + "/listitems.htm";
+		window.location.href = _path + "/listitems?page=items";
 	}
 </script>
 <meta http-equiv="Page-Enter" content="blendTrans(Duration=1.0)">
@@ -92,19 +92,19 @@ span {
 	<tbody>
 		<tr valign="top">
 			<td onclick="goPage('itemdetail')" align="center" width="50%"><img
-				src="image/app1.jpg"  class = "corner iradius16" width=90> <br><span class="topic">Restraurant</span></td>
+				src="image/category/restraurant.jpg"  class = "corner iradius16" width=90> <br><span class="topic">Restraurant</span></td>
 
 			<td onclick="goPage('itemdetail')" align="center" width="50%"><img
-				src="image/app2.jpg"  class = "corner iradius16" width=90><br> <span class="topic">Sport</span></td>
+				src="image/category/sport.jpg"  class = "corner iradius16" width=90><br> <span class="topic">Sport</span></td>
 
 		</tr>
 
 		<tr onclick="goPage('itemdetail')" valign="top">
-			<td align="center" width="50%"><img src="image/app3.jpg" class = "corner iradius16"
+			<td align="center" width="50%"><img src="image/category/home.jpg" class = "corner iradius16"
 				width=90> <span class="topic"><br>House
 			</span></td>
 
-			<td align="center" width="50%"><img src="image/app4.jpg" class = "corner iradius16"
+			<td align="center" width="50%"><img src="image/category/pet.jpg" class = "corner iradius16"
 				width=90> <span class="topic"><br>Pet
 			</span></td>
 
@@ -112,11 +112,11 @@ span {
 
 
 		<tr onclick="goPage('itemdetail')" valign="top">
-			<td align="center" width="50%"><img src="image/app5.jpg" class = "corner iradius16"
+			<td align="center" width="50%"><img src="image/category/hospital.jpg" class = "corner iradius16"
 				width=90> <span class="topic"><br>Medical
 			</span></td>
 
-			<td align="center" width="50%"><img src="image/app6.jpg" class = "corner iradius16"
+			<td align="center" width="50%"><img src="image/category/fasion.jpg" class = "corner iradius16"
 				width=90> <span class="topic"><br>Fasion
 			</span></td>
 
