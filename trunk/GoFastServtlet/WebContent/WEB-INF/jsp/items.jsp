@@ -3,6 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Promotion</title>
+<script type="text/javascript" src="js/corner/justcorners.js"></script>
+<script type="text/javascript" src="js/corner/corner.js"></script>
+
 <style>
 body {
 	color: #000000;
@@ -19,27 +22,61 @@ span {
 	color: #000000;
 	font-size: 12px;
 }
-
-.topic { padding:5px 5px 0px 5px;font-size:14px;font-family:Tahoma,
-sans-serif;color:#005DB0; font-weight:bold;}
-.detail2 { padding:5px 5px 0px 5px;font-size:13px;font-family:Tahoma,
-sans-serif;color:#ff0000; font-weight:bold;}
-
-.more,.more a:link ,.more a:visited ,.more a:active {
-font-family:Tahoma, sans-serif; font-size:12px; color:#151b54;
+.button,.button a:link ,.button a:visited ,.button a:active {
+font-family:Tahoma, sans-serif; font-size:14px; color:#151b54;
 line-height:14px; text-decoration:none;font-weight:bold;}
-.more a:hover{ font-family:Tahoma, sans-serif; font-size:12px;
-color:#06A800; line-height:14px;
 
-img {
-	padding: 5px;
+.topic {
+	padding: 5px 5px 0px 5px;
+	font-size: 14px;
+	font-family: Tahoma, sans-serif;
+	color: #005DB0;
+	font-weight: bold;
+}
+
+.header-topic {
+	padding: 5px 5px 0px 5px;
+	font-size: 16px;
+	font-family: Tahoma, sans-serif;
+	color: #005DB0;
+	font-weight: bold;
+}
+
+.detail2 {
+	padding: 5px 5px 0px 5px;
+	font-size: 13px;
+	font-family: Tahoma, sans-serif;
+	color: #ff0000;
+	font-weight: bold;
+}
+
+.more,.more a:link,.more a:visited,.more a:active {
+	font-family: Tahoma, sans-serif;
+	font-size: 12px;
+	color: #151b54;
+	line-height: 14px;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.more a:hover {
+	font-family: Tahoma, sans-serif;
+	font-size: 12px;
+	color: #06A800;
+	line-height: 14px;
+	img
+	{
+	padding
+	:
+	5px;
 }
 
 .box {
 	border: 1px solid #A7C0E0;
 	width: 300px;
 	height: 250px;
-	background-image: url(<%=request.getContextPath()%>/image/widget-bg.png);
+	background-image: url(<%=request.getContextPath()%>/ image/
+		widget-bg.png );
 	background-repeat: no-repeat;
 	background-color: white;
 }
@@ -51,6 +88,11 @@ img {
 		//alert("goPage")
 		window.location.href = _path + "/listitems?page=" + _page;
 	}
+
+	function goBack() {
+		//	alert("goPage")
+		window.location.href = _path + "/listitems?page=listCategory2";
+	}
 </script>
 <meta http-equiv="Page-Enter" content="blendTrans(Duration=1.0)" />
 <meta http-equiv="Page-Exit" content="blendTrans(Duration=1.0)" />
@@ -61,20 +103,27 @@ img {
 <body>
 
 <%
-// Init Value
-
+	// Init Value
 %>
+
+<table width=100%>
+	<tr>
+		<td bgcolor=#C0C0C0 align="center" height=50 width=20% class=button onclick="goBack()"><a href="#" >กลับ</a></td>
+		<td align=center class=header-topic>Restraurant</td>
+		<td align="center" height=50 width=20% class=button onclick="goBack()"><img src=image/favoriteIcon.png></img></td>
+	</tr>
+</table>
 
 <table border="0" width="100%" cellspacing="2" cellpadding="0"
 	style="border: #003399 1px solid; background-color: #F3F8FF;">
 	<tr valign="top" onclick="goPage('itemdetail')">
 		<td width="115" align="center"><img
-			src="<%=request.getContextPath()%>/image/app1.jpg" width=110px ></img></td>
+			src="<%=request.getContextPath()%>/image/app1.jpg"
+			class="corner iradius16" width=110px></img></td>
 		<td align="left"><span class="topic">นาทอง สวนอาหาร</span> <br />
 		<span class="detail2">ส่วนลด 10%<br />
-		</span>
-		<span class=detail>
-		- เฉพาะค่าอาหาร (ยกเว้นโต๊ะจีน และบุฟเฟ่ต์)</span></td>
+		</span> <span class=detail> - เฉพาะค่าอาหาร (ยกเว้นโต๊ะจีน
+		และบุฟเฟ่ต์)</span></td>
 	</tr>
 	<tr>
 		<td colspan="3">
@@ -83,12 +132,12 @@ img {
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
 		<td width="115" align="center"><img
-			src="<%=request.getContextPath()%>/image/app2.jpg" width=110px /></td>
+			src="<%=request.getContextPath()%>/image/app2.jpg"
+			class="corner iradius16" width=110px /></td>
 		<td align="left"><span class="topic">นางกวัก ร้านอาหาร</span> <br />
-		<span class="detail2">ส่วนลด 10 % สำหรับค่าอาหาร<br /></span>
-		<span class=detail>
-		เพียงนำคูปองไปแสดงที่ร้าน พิเศษสุดๆ เมื่อทานอาหารครบ 2,000 บาท
-		รับฟรีพิซซ่า 1 ถาด (ราคา 330 บาท) </span></td>
+		<span class="detail2">ส่วนลด 10 % สำหรับค่าอาหาร<br />
+		</span> <span class=detail> เพียงนำคูปองไปแสดงที่ร้าน พิเศษสุดๆ
+		เมื่อทานอาหารครบ 2,000 บาท รับฟรีพิซซ่า 1 ถาด (ราคา 330 บาท) </span></td>
 	</tr>
 	<tr>
 		<td colspan="3">
@@ -97,11 +146,11 @@ img {
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
 		<td width="115" align="center"><img
-			src="<%=request.getContextPath()%>/image/app3.jpg" width=110px /></td>
+			src="<%=request.getContextPath()%>/image/app3.jpg"
+			class="corner iradius16" width=110px /></td>
 		<td align="left"><span class="topic">De Facto View </span> <br />
-		<span class="detail2">ส่วนลด 5% <br /></span>
-		<span class=detail>
-		ซื้อสินค้าครบ 300 บาท แถมฟรี เค้ก 1 ชิ้น</span></td>
+		<span class="detail2">ส่วนลด 5% <br />
+		</span> <span class=detail> ซื้อสินค้าครบ 300 บาท แถมฟรี เค้ก 1 ชิ้น</span></td>
 		<%--  
 		<td width="75" height="75" align="center"><img  width="50" height="50" src="<%=request.getContextPath()%>/image/10_percent_discount3.jpg"></img></td>
 		 --%>
@@ -113,11 +162,12 @@ img {
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
 		<td width="115" align="center"><img
-			src="<%=request.getContextPath()%>/image/app4.jpg" width=110px /></td>
+			src="<%=request.getContextPath()%>/image/app4.jpg"
+			class="corner iradius16" width=110px /></td>
 		<td align="left"><span class="topic">เรือนสำราญรีสอร์ท</span> <br />
-		<span class="detail2">ส่วนลด 25 %<br /></span>
-		<span class=detail>
-		ใช้ได้เฉพาะ วันอาทิตย์-พฤหัสบดี (ตั้งแต่เดือน ก.พ. 54- ต.ค. 54)</span></td>
+		<span class="detail2">ส่วนลด 25 %<br />
+		</span> <span class=detail> ใช้ได้เฉพาะ วันอาทิตย์-พฤหัสบดี
+		(ตั้งแต่เดือน ก.พ. 54- ต.ค. 54)</span></td>
 		<%--  
 		<td width="75" height="75" align="center"><img  width="50" height="50" src="<%=request.getContextPath()%>/image/10_percent_discount4.png"></img></td>
 		 --%>
@@ -129,11 +179,12 @@ img {
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
 		<td width="115" align="center"><img
-			src="<%=request.getContextPath()%>/image/app5.jpg" width=110px /></td>
+			src="<%=request.getContextPath()%>/image/app5.jpg"
+			class="corner iradius16" width=110px /></td>
 		<td align="left"><span class="topic">กินเส้น ร้านอาหาร</span> <br />
-		<span class="detail2">ส่วนลด 10%<br /></span>
-		<span class=detail>
-		เฉพาะค่าอาหาร เมื่อแสดงคูปองแถมฟรีเปาะเปี๊ยะทอด 1 จาน</span></td>
+		<span class="detail2">ส่วนลด 10%<br />
+		</span> <span class=detail> เฉพาะค่าอาหาร
+		เมื่อแสดงคูปองแถมฟรีเปาะเปี๊ยะทอด 1 จาน</span></td>
 		<%--  
 		<td width="75" height="75" align="center"><img  width="50" height="50" src="<%=request.getContextPath()%>/image/10_percent_discount5.jpg"></img></td>
 		 --%>
@@ -145,12 +196,12 @@ img {
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
 		<td width="115" align="center"><img
-			src="<%=request.getContextPath()%>/image/app6.jpg" width=110px /></td>
+			src="<%=request.getContextPath()%>/image/app6.jpg"
+			class="corner iradius16" width=110px /></td>
 		<td align="left"><span class="topic">Lee Cafe @ Number 1</span> <br />
-		<span class="detail2">ส่วนลด 10 % สำหรับค่าอาหาร<br /></span>
-		<span class=detail>
-		โปรโมชั่นช่วงเทศกาลปีใหม่ Set 5 ท่าน ราคาเพียง 1,102 บาท และ Set 10
-		ท่าน ราคาเพียง 2,011 บาท</span></td>
+		<span class="detail2">ส่วนลด 10 % สำหรับค่าอาหาร<br />
+		</span> <span class=detail> โปรโมชั่นช่วงเทศกาลปีใหม่ Set 5 ท่าน
+		ราคาเพียง 1,102 บาท และ Set 10 ท่าน ราคาเพียง 2,011 บาท</span></td>
 		<%-- 
 		<td width="75" height="75" align="center"><img  width="50" height="50" src="<%=request.getContextPath()%>/image/20_percent_discount6.jpg"></img></td>
 		 --%>
