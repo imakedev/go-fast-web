@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<library>
+    <extension>
+        <entryClass>aoe.script.SampleExtension</entryClass>
+    </extension>
+    <features>
+        <feature id="sample" version="1.0.0" >Extension showing sample UI controls</feature>
+    </features>
+</library>
