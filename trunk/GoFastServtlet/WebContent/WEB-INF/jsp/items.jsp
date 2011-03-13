@@ -5,6 +5,7 @@
 <title>Promotion</title>
 <script type="text/javascript" src="js/corner/justcorners.js"></script>
 <script type="text/javascript" src="js/corner/corner.js"></script>
+<link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" />
 
 <style>
 body {
@@ -50,6 +51,14 @@ line-height:14px; text-decoration:none;font-weight:bold;}
 	font-weight: bold;
 }
 
+.detail3 {
+	padding: 5px 5px 0px 5px;
+	font-size: 13px;
+	font-family: Tahoma, sans-serif;
+	color: #999999;
+	font-weight: bold;
+}
+
 .more,.more a:link,.more a:visited,.more a:active {
 	font-family: Tahoma, sans-serif;
 	font-size: 12px;
@@ -86,12 +95,12 @@ line-height:14px; text-decoration:none;font-weight:bold;}
 	//alert(_path)
 	function goPage(_page) {
 		//alert("goPage")
-		window.location.href = _path + "/listitems?page=" + _page;
+		window.location.href = _path + "/promotion?page=" + _page;
 	}
 
 	function goBack() {
 		//	alert("goPage")
-		window.location.href = _path + "/listitems?page=listCategory2";
+		history.back();
 	}
 </script>
 <meta http-equiv="Page-Enter" content="blendTrans(Duration=1.0)" />
@@ -106,16 +115,19 @@ line-height:14px; text-decoration:none;font-weight:bold;}
 	// Init Value
 %>
 
-<table width=100%>
+<table border=0 width=100%
+	height=50
+	style="border: #003399 1px solid; background-color: #F3F8FF;">
 	<tr>
+	<!-- 
 		<td bgcolor=#C0C0C0 align="center" height=50 width=20% class=button onclick="goBack()"><a href="#" >กลับ</a></td>
-		<td align=center class=header-topic>Restraurant</td>
-		<td align="center" height=50 width=20% class=button onclick="goBack()"><img src=image/favoriteIcon.png></img></td>
+		 -->
+		<td align=left> <button class="rounded" style="width:80px"  onclick="goBack()"><span>Back</span></button> </td>
+		<td align=left width=60% class=header-topic>Restraurant</td>
 	</tr>
 </table>
 
-<table border="0" width="100%" cellspacing="2" cellpadding="0"
-	style="border: #003399 1px solid; background-color: #F3F8FF;">
+<table border="0" width="100%" cellspacing="2" cellpadding="0">
 	<tr valign="top" onclick="goPage('itemdetail')">
 		<td width="115" align="center"><img
 			src="<%=request.getContextPath()%>/image/app1.jpg"
@@ -216,6 +228,12 @@ line-height:14px; text-decoration:none;font-weight:bold;}
 		<td height="25" colspan="2" align="right"><span class="more">More...</span></td>
 	</tr>
 	--%>
+	
+	<tr>
+		<td valign=middle height="30" colspan="3" align="left" bgcolor=#FFFFFF><span
+			class="detail3" valign=center>Distance : 5-10 Km. , Area : Thong lor</span></td>
+	</tr>
+	
 	<tr>
 		<td valign=middle height="30" colspan="3" align="left" bgcolor=#C0C0C0><span
 			class="more" valign=center>More...</span></td>
