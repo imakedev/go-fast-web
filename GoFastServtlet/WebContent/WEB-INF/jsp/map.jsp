@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Map</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
 <style>
 body {
 	color: #000000;
@@ -20,12 +21,21 @@ span {
 	font-size: 12px;
 }
 
-.more,.more a:link ,.more a:visited ,.more a:active {
-font-family:Tahoma, sans-serif; font-size:12px; color:#151b54;
-line-height:14px; text-decoration:none;font-weight:bold;}
-.more a:hover{ font-family:Tahoma, sans-serif; font-size:12px;
-color:#06A800; line-height:14px;}
+.more,.more a:link,.more a:visited,.more a:active {
+	font-family: Tahoma, sans-serif;
+	font-size: 12px;
+	color: #151b54;
+	line-height: 14px;
+	text-decoration: none;
+	font-weight: bold;
+}
 
+.more a:hover {
+	font-family: Tahoma, sans-serif;
+	font-size: 12px;
+	color: #06A800;
+	line-height: 14px;
+}
 
 .topic {
 	padding: 5px 5px 0px 5px;
@@ -34,16 +44,24 @@ color:#06A800; line-height:14px;}
 	color: #005DB0;
 	font-weight: bold;
 }
-.copyright,.copyright a:link ,.copyright a:visited ,.copyright a:active {
-font-family:Tahoma, sans-serif; font-size:12px; color:#585858;
-line-height:14px; text-decoration:none;font-weight:bold;}
 
+.copyright,.copyright a:link,.copyright a:visited,.copyright a:active {
+	font-family: Tahoma, sans-serif;
+	font-size: 12px;
+	color: #585858;
+	line-height: 14px;
+	text-decoration: none;
+	font-weight: bold;
+}
 
-.button,.button a:link ,.button a:visited ,.button a:active {
-font-family:Tahoma, sans-serif; font-size:14px; color:#151b54;
-line-height:14px; text-decoration:none;font-weight:bold;}
-
-
+.button,.button a:link,.button a:visited,.button a:active {
+	font-family: Tahoma, sans-serif;
+	font-size: 14px;
+	color: #151b54;
+	line-height: 14px;
+	text-decoration: none;
+	font-weight: bold;
+}
 
 img {
 	padding: 5px;
@@ -83,11 +101,11 @@ a.button:hover span {
 	var _path='<%=request.getContextPath()%>';
 	function goBack() {
 		//	alert("goPage")
-		window.location.href = _path+"/listitems";
+		history.back();
 	}
 	function goPage(_page) {
 		//alert("goPage")
-		window.location.href = _path+"/listitems?page=" + _page;
+		window.location.href = _path + "/promotion?page=" + _page;
 	}
 </script>
 <meta http-equiv="Page-Enter" content="blendTrans(Duration=1.0)" />
@@ -96,35 +114,26 @@ a.button:hover span {
 <meta http-equiv="Site-Exit" content="blendTrans(Duration=1.0)" />
 </head>
 <body>
-<table border="0" width="100%">
-	<tr valign="top">
-		<td align="center"><img
-			src="http://maps.google.com/maps/api/staticmap?center=40.714728,-73.998672&zoom=12&size=400x400&sensor=false" width=90%></img>
-		</td>
-	</tr>
-</table>
-<table border="0" width="100%">
-	<tr valign="top">
-		<td align="center">
-		<table width="100%" border="1" cellspacing="0" cellpadding="0"
-			align=center
-			style="border: #ffffff 0px solid; background-color: #F3F8FF;">
-			<tbody>
-				<tr>
-					<td bgcolor=#C0C0C0 align="center" height=50 width=100% class=button
-						onclick="goBack()"><a href="#">กลับ</a></td>
-				</tr>
 
-			</tbody>
-		</table>
+<center><img
+	src="http://maps.google.com/maps/api/staticmap?size=400x400&markers=color:blue|label:Me|13.777901,100.606956&sensor=false&markers=color:red|label:Destination|13.778234,100.579319"
+	width=95%></img></center>
+
+
+<table border="0" width="100%">
+	<tr valign="top">
+		<td align=center>
+		<button class="rounded" style="width: 130px" onclick=
+	goBack();
+><span>Back</span></button>
 		</td>
 	</tr>
-			<tr bgcolor=#C0C0C0>
-			<td width=100% colspan=3 height=30>
-			<span class=more>Term of use</span> |<span class=more>
-Help</span> |<span class=more> Contact Us</span> <br/>
-        <span class=copyright>copyright 2011</span></td>
-		</tr>
+	<tr bgcolor=#C0C0C0>
+		<td width=100% colspan=3 height=30><span class=more>Term
+		of use</span> |<span class=more> Help</span> |<span class=more>
+		Contact Us</span> <br />
+		<span class=copyright>copyright 2011</span></td>
+	</tr>
 
 	</tbody>
 </table>

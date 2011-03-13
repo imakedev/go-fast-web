@@ -77,8 +77,8 @@ span {
 	//alert(_path)
 	function goPage(_page) {
 		//alert("goPage")
-		window.location.href = _path + "/listitems?page=" + _page;
-		//window.location.href = _path + "/listitems.htm";
+		window.location.href = _path + "/promotion?page=" + _page;
+		//window.location.href = _path + "/promotion.htm";
 	}
 </script>
 <meta http-equiv="Page-Enter" content="blendTrans(Duration=1.0)">
@@ -91,9 +91,15 @@ span {
 	style="border: 0px solid rgb(0, 51, 153); background-color: rgb(243, 248, 255);"
 	border="0" cellpadding="0" cellspacing="2" width="100%">
 	<tbody>
+	
+		<tr>
+			<td colspan="5">
+			<hr style="color: rgb(0, 0, 153); width: 98%;">
+			</td>
+		</tr>
 		<tr valign="top">
 			<td onclick="goPage('items')" align="center" width="100" style="padding: 1px 1px 1px 1px;"><img
-				src="image/category/restraurant.jpg"  class = "corner iradius16" width=60px></td>
+				src="image/category/restaurant-image.png"  class = "corner iradius16" width=60px></td>
 			<td align="left"><span class="topic">Restraurant</span> <br>
 			<span class="detail"> ร้านอาหาร</span></td>
 			<td align=right valign=middle><img src=image/next.png></td>
@@ -106,7 +112,7 @@ span {
 
 		<tr>
 			<td onclick="goPage('items')" align="center" width="80"  style="padding: 1px 1px 1px 1px;"><img
-				src="image/category/sport.jpg" class = "corner iradius16" width=60px></td>
+				src="image/category/sport-image.png" class = "corner iradius16" width=60px></td>
 			<td align="left"><span class="topic">Sport</span> <br> <span
 				class="detail"> ร้านอุปกรณ์กีฬา, คลับ, บัตรเข้าชมกีฬา </span>
 			</td>
@@ -121,7 +127,7 @@ span {
 		</tr>
 
 		<tr onclick="goPage('items')" valign="top">
-			<td align="center" width="80" style="padding: 1px 1px 1px 1px;"><img src="image/category/home.jpg"
+			<td align="center" width="80" style="padding: 1px 1px 1px 1px;"><img src="image/category/house-image.png"
 				width=60px class = "corner iradius16"></td>
 			<td align="left"><span class="topic">House</span> <br>
 			<span class="detail"> อุปกรณ์บ้าน, บ้าน ...</span></td>
@@ -136,7 +142,7 @@ span {
 
 		<tr>
 
-			<td align="center" width="80" style="padding: 1px 1px 1px 1px;"><img src="image/category/pet.jpg"
+			<td align="center" width="80" style="padding: 1px 1px 1px 1px;"><img src="image/category/dog-image.png"
 				width=60px class = "corner iradius16"></td>
 			<td align="left"><span class="topic">Pet</span> <br> <span
 				class="detail"> สัตว์เลี้ยง, บริการสัตว์เลี้ยง ...</span>
@@ -166,13 +172,19 @@ span {
 		</tr>
 		<tr>
 
-			<td align="center" width="80" style="padding: 1px 1px 1px 1px;"><img src="image/category/fasion.jpg"
+			<td align="center" width="80" style="padding: 1px 1px 1px 1px;"><img src="image/category/fashion-image.png"
 				width=60px class = "corner iradius16"></td>
 			<td align="left"><span class="topic">Fasion</span> <br> <span
 				class="detail"> เสื้อผ้า</span>
 			</td>
 			<td align=right valign=middle><img src=image/next.png></td>
 
+		</tr>
+		
+		<tr>
+			<td colspan="5">
+			<hr style="color: rgb(0, 0, 153); width: 98%;">
+			</td>
 		</tr>
 
 		<tr bgcolor="#c0c0c0">

@@ -83,11 +83,11 @@ a.button:hover span {
 	//alert(_path)
 	function goBack() {
 		//	alert("goPage")
-		window.location.href = _path + "/listitems";
+		window.location.href = _path + "/promotion";
 	}
 	function goPage(_page) {
 		//alert("goPage")
-		window.location.href = _path + "/listitems?page=" + _page;
+		window.location.href = _path + "/promotion?page=" + _page;
 	} 
 </script>
 

@@ -50,7 +50,7 @@ img {
 	//alert(_path)
 	function goPage(_page) {
 		//alert("goPage")
-		window.location.href = _path + "/listitems?page=" + _page;
+		window.location.href = _path + "/promotion?page=" + _page;
 	}
 </script>
 <meta http-equiv="Page-Enter" content="blendTrans(Duration=1.0)" />

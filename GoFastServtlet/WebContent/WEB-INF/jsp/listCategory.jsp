@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
+
 <script type="text/javascript" src="js/corner/justcorners.js"></script>
 <script type="text/javascript" src="js/corner/corner.js"></script>
 
@@ -76,8 +77,8 @@ span {
 	//alert(_path)
 	function goPage(_page) {
 		//alert("goPage")
-		//window.location.href = _path + "/listitems?page=" + _page;
-		window.location.href = _path + "/listitems?page=items";
+		window.location.href = _path + "/promotion?page=" + _page;
+		//window.location.href = _path + "/promotion.htm";
 	}
 </script>
 <meta http-equiv="Page-Enter" content="blendTrans(Duration=1.0)">
@@ -88,46 +89,109 @@ span {
 <body>
 <table
 	style="border: 0px solid rgb(0, 51, 153); background-color: rgb(243, 248, 255);"
-	border="1" cellpadding="0" cellspacing="2" width="100%">
+	border="0" cellpadding="0" cellspacing="2" width="100%">
 	<tbody>
+	
+		<tr>
+			<td colspan="5">
+			<hr style="color: rgb(0, 0, 153); width: 98%;">
+			</td>
+		</tr>
 		<tr valign="top">
-			<td onclick="goPage('itemdetail')" align="center" width="50%"><img
-				src="image/category/restraurant.jpg"  class = "corner iradius16" width=90> <br><span class="topic">Restraurant</span></td>
+			<td onclick="goPage('items')" align="center" width="100" style="padding: 1px 1px 1px 1px;"><img
+				src="image/category/restaurant-icon.png"  class = "corner iradius16" width=60px></td>
+			<td align="left"><span class="topic">Restraurant</span> <br>
+			<span class="detail"> ร้านอาหาร</span></td>
+			<td align=right valign=middle><img src=image/next.png></td>
+		</tr>
+		<tr>
+			<td colspan="5">
+			<hr style="color: rgb(0, 0, 153); width: 98%;">
+			</td>
+		</tr>
 
-			<td onclick="goPage('itemdetail')" align="center" width="50%"><img
-				src="image/category/sport.jpg"  class = "corner iradius16" width=90><br> <span class="topic">Sport</span></td>
+		<tr>
+			<td onclick="goPage('items')" align="center" width="80"  style="padding: 1px 1px 1px 1px;"><img
+				src="image/category/sport.jpg" class = "corner iradius16" width=60px></td>
+			<td align="left" valign=top><span class="topic">Sport</span> <br> <span
+				class="detail"> ร้านอุปกรณ์กีฬา, คลับ, บัตรเข้าชมกีฬา </span>
+			</td>
+
+			<td align=right valign=middle><img src=image/next.png></td>
+		</tr>
+
+		<tr>
+			<td colspan="5">
+			<hr style="color: rgb(0, 0, 153); width: 98%;">
+			</td>
+		</tr>
+
+		<tr onclick="goPage('items')" valign="top">
+			<td align="center" width="80" style="padding: 1px 1px 1px 1px;"><img src="image/category/house-icon.png"
+				width=60px class = "corner iradius16"></td>
+			<td align="left"><span class="topic">House</span> <br>
+			<span class="detail"> อุปกรณ์บ้าน, บ้าน ...</span></td>
+			
+			<td align=right valign=middle><img src=image/next.png></td>
+		</tr>
+		<tr>
+			<td colspan="5">
+			<hr style="color: rgb(0, 0, 153); width: 98%;">
+			</td>
+		</tr>
+
+		<tr>
+
+			<td align="center" width="80" style="padding: 1px 1px 1px 1px;"><img src="image/category/dog-icon.png"
+				width=60px class = "corner iradius16"></td>
+			<td align="left"><span class="topic">Pet</span> <br> <span
+				class="detail"> สัตว์เลี้ยง, บริการสัตว์เลี้ยง ...</span>
+			</td>
+			<td align=right valign=middle><img src=image/next.png></td>
 
 		</tr>
 
-		<tr onclick="goPage('itemdetail')" valign="top">
-			<td align="center" width="50%"><img src="image/category/home.jpg" class = "corner iradius16"
-				width=90> <span class="topic"><br>House
-			</span></td>
-
-			<td align="center" width="50%"><img src="image/category/pet.jpg" class = "corner iradius16"
-				width=90> <span class="topic"><br>Pet
-			</span></td>
-
+		<tr>
+			<td colspan="5">
+			<hr style="color: rgb(0, 0, 153); width: 98%;">
+			</td>
 		</tr>
 
+		<tr onclick="goPage('items')" valign="top">
+			<td align="center" width="80" style="padding: 1px 1px 1px 1px;"><img src="image/category/hospital.jpg"
+				width=60px class = "corner iradius16"></td>
+			<td align="left"><span class="topic">Medical</span> <br>
+			<span class="detail"> รักษาพยาบาล</span></td>
+			<td align=right valign=middle><img src=image/next.png></td>
+		</tr>
 
-		<tr onclick="goPage('itemdetail')" valign="top">
-			<td align="center" width="50%"><img src="image/category/hospital.jpg" class = "corner iradius16"
-				width=90> <span class="topic"><br>Medical
-			</span></td>
+		<tr>
+			<td colspan="5">
+			<hr style="color: rgb(0, 0, 153); width: 98%;">
+			</td>
+		</tr>
+		<tr>
 
-			<td align="center" width="50%"><img src="image/category/fasion.jpg" class = "corner iradius16"
-				width=90> <span class="topic"><br>Fasion
-			</span></td>
+			<td align="center" width="80" style="padding: 1px 1px 1px 1px;"><img src="image/category/fashion-icon.png"
+				width=60px class = "corner iradius16"></td>
+			<td align="left"><span class="topic">Fasion</span> <br> <span
+				class="detail"> เสื้อผ้า</span>
+			</td>
+			<td align=right valign=middle><img src=image/next.png></td>
 
+		</tr>
+		
+		<tr>
+			<td colspan="5">
+			<hr style="color: rgb(0, 0, 153); width: 98%;">
+			</td>
 		</tr>
 
 		<tr bgcolor="#c0c0c0">
 			<td colspan="8" valign="bottom" width="100%" height="40"><span
 				class="more">Term of user</span> |<span class="more"> Help</span> |<span
-				class="more"> Contact Us</span> <br> <span class="copyright">copyright
-			2011</span>
-			</td>
+				class="more"> Contact Us</span> <br>
+			<span class="copyright">copyright 2011</span></td>
 		</tr>
 	</tbody>
 </table>

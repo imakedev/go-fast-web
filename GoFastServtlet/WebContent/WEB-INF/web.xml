@@ -70,7 +70,7 @@
   <servlet>
     <description></description>
     <display-name>ListItems</display-name>
-    <servlet-name>ListItems</servlet-name>
+    <servlet-name>promotion</servlet-name>
     <servlet-class>com.moogle.gofast.servlet.ListItems</servlet-class>
   </servlet>
   <servlet>
@@ -117,7 +117,7 @@
 		<url-pattern>/dwr/*</url-pattern>
 	</servlet-mapping>
   <servlet-mapping>
-    <servlet-name>ListItems</servlet-name>
-    <url-pattern>/listitems</url-pattern>
+    <servlet-name>promotion</servlet-name>
+    <url-pattern>/promotion</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -74,11 +74,11 @@ a.button:hover span {
 	//alert(_path)
 	function goBack() {
 		//	alert("goPage")
-		window.location.href = _path + "/listitems";
+		window.location.href = _path + "/promotion";
 	}
 	function goPage(_page) {
 		//alert("goPage")
-		window.location.href = _path + "/listitems?page=" + _page;
+		window.location.href = _path + "/promotion?page=" + _page;
 	} 
 </script>
 <link rel="stylesheet" href="css/blackberry/style.css" type="text/css" media="screen" charset="utf-8"/>
