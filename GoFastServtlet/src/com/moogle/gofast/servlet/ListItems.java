@@ -9,13 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.moogle.gofast.hibernate.GoFastService;
-import com.moogle.gofast.hibernate.impl.HibernateGoFast;
 
  
 
@@ -39,15 +36,17 @@ public class ListItems extends HttpServlet {
      */
     public ListItems() {
     	/*ServletContext servletContext =this.getServletContext();
-
+	
     	WebApplicationContext wac = WebApplicationContextUtils.
     	getRequiredWebApplicationContext(servletContext);*/
-    	 ApplicationContext springContext = new ClassPathXmlApplicationContext(
+    	//System.out.println("aoee="+getServletContext());
+    	/* ApplicationContext springContext = new ClassPathXmlApplicationContext(
                  new String[] {
                 		 "hibernate-config.xml"
                          });
 
-    	goFastService = (GoFastService)springContext.getBean("goFastService");
+    	goFastService = (GoFastService)springContext.getBean("goFastService");*/
+    	//System.out.println(" in to ListItems Constructor");
     //	ApplicationContext springContext = new ClassPathXmlApplicationContext();
     //	goFastService = new HibernateGoFast();
     	// <property name="goFastService" ref="goFastService"></property>
@@ -55,10 +54,20 @@ public class ListItems extends HttpServlet {
     }
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	//System.out.println("doProcess");
+    	
+    	ServletContext servletContext = this.getServletContext();
+    	//System.out.println("test context"+servletContext);
+    	WebApplicationContext wac = WebApplicationContextUtils.
+    	getRequiredWebApplicationContext(servletContext);
+    	goFastService = (GoFastService)wac.getBean("goFastService");
+    	
     	String page=request.getParameter("page");
     	String brand=request.getParameter("brand"); //iphone or bb
+    	String _lat=request.getParameter("lat"); //iphone or bb
+    	String _long=request.getParameter("long"); //iphone or bb
     	String direction=request.getParameter("direction");
     	String jsp_path = IPHONE_PATH;
+    	String params = "";
     	if(brand!=null && brand.equals(BB)){ // bb
     		if(direction!=null && direction.length()>0)
     		switch(Integer.parseInt(direction)) 
@@ -72,14 +81,16 @@ public class ListItems extends HttpServlet {
     		   default:
     			   jsp_path=BB_ORIENTATION_LANDSCAPE_PATH; break;
     		}
+    		if(_lat!=null&&_lat.length()>0)
+    			params=params+"?lat="+_lat+"&long"+_long;
     	}else {
     		// iphone
     	}
-    	System.out.println("goFastService="+goFastService.findGoFastCatById(1));
+    	//System.out.println("goFastService="+goFastService);
     	if(!(page!=null && page.length()>0))
     		page = "items";
     	RequestDispatcher dispatcher = 
-    	  getServletContext().getRequestDispatcher(jsp_path+page+".jsp");
+    	  getServletContext().getRequestDispatcher(jsp_path+page+".jsp"+params);
     	dispatcher.forward(request, response);
     }
 	/**
