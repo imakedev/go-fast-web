@@ -120,70 +120,54 @@ span {
 </head>
 
 <body>
- 
-
-<table border=0 width=100% height=50 style="border: #003399 1px solid; background-color: #F3F8FF;">
-	<tr> 
-		<td align=left>
-			<a  onclick="goBack()" href="#" class="myButton">Back</a>
-		  </td>
-		<td align=left width=60% class=header-topic>Restraurant</td>
-	</tr>  
-</table>
-
 <table border="0" width="100%" cellspacing="2" cellpadding="0">
-	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="115" align="center"><img
-			src="<%=request.getContextPath()%>/image/app1.jpg"
-			 width=110px></img></td>
-		<td align="left"><span class="topic">นาทอง สวนอาหาร</span> <br />
-		<span class="detail2">ส่วนลด 10%<br />
-		</span> <span class=detail> - เฉพาะค่าอาหาร (ยกเว้นโต๊ะจีน
-		และบุฟเฟ่ต์)</span></td>
+	<tr valign="top" onclick="goPage('items')">
+		<td width="15%" align="center" height="50px"><img
+			src="<%=request.getContextPath()%>/image/category/restaurant-icon.png"
+			 width=50px height="50px"></img></td>
+		<td align="left"><span class="topic">Restraurant</span> <br />
+		  <span class=detail>ร้านอาหาร</span></td>
+		<td width="10%"  align="right" valign=middle><img src=image/next.png width="20" height="20"/></td>
 	</tr>
 	<tr>
 		<td colspan="3">
 		<hr style="color: #000099; width: 98%;" />
 		</td>
 	</tr>
-	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="115" align="center"><img
-			src="<%=request.getContextPath()%>/image/app2.jpg"
-			 width=110px /></td>
-		<td align="left"><span class="topic">นางกวัก ร้านอาหาร</span> <br />
-		<span class="detail2">ส่วนลด 10 % สำหรับค่าอาหาร<br />
-		</span> <span class=detail> เพียงนำคูปองไปแสดงที่ร้าน พิเศษสุดๆ
-		เมื่อทานอาหารครบ 2,000 บาท รับฟรีพิซซ่า 1 ถาด (ราคา 330 บาท) </span></td>
+	<tr valign="top" onclick="goPage('items')">
+		<td width="15%" align="center" height="50px"><img
+			src="<%=request.getContextPath()%>/image/category/sport.jpg"
+			 width=50px height="50px"/></td>
+		<td align="left"><span class="topic">Sport</span> <br /> 
+		<span class=detail>ร้านอุปกรณ์กีฬา, คลับ, บัตรเข้าชมกีฬา</span></td>
+		<td  width="10%"  align=right valign=middle><img src=image/next.png width="20" height="20"/></td>
 	</tr>
 	<tr>
 		<td colspan="3">
 		<hr style="color: #000099; width: 98%;" />
 		</td>
 	</tr>
-	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="115" align="center"><img
-			src="<%=request.getContextPath()%>/image/app3.jpg"
-			 width=110px /></td>
-		<td align="left"><span class="topic">De Facto View </span> <br />
-		<span class="detail2">ส่วนลด 5% <br />
-		</span> <span class=detail> ซื้อสินค้าครบ 300 บาท แถมฟรี เค้ก 1 ชิ้น</span></td>
-		<%--  
-		<td width="75" height="75" align="center"><img  width="50" height="50" src="<%=request.getContextPath()%>/image/10_percent_discount3.jpg"></img></td>
-		 --%>
+	<tr valign="top" onclick="goPage('items')">
+		<td width="15%" align="center" height="50px"><img
+			src="<%=request.getContextPath()%>/image/category/house-icon.png"
+			 width=50px height="50px"/></td>
+		<td align="left"><span class="topic">House</span> <br />
+		 <span class=detail>อุปกรณ์บ้าน, บ้าน ...</span></td>
+		<td width="10%"  align=right valign=middle><img src=image/next.png width="20" height="20"/></td>
+	 
 	</tr>
 	<tr>
 		<td colspan="3">
 		<hr style="color: #000099; width: 98%;" />
 		</td>
 	</tr>
-	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="115" align="center"><img
-			src="<%=request.getContextPath()%>/image/app4.jpg"
-			 width=110px /></td>
-		<td align="left"><span class="topic">เรือนสำราญรีสอร์ท</span> <br />
-		<span class="detail2">ส่วนลด 25 %<br />
-		</span> <span class=detail> ใช้ได้เฉพาะ วันอาทิตย์-พฤหัสบดี
-		(ตั้งแต่เดือน ก.พ. 54- ต.ค. 54)</span></td>
+	<tr valign="top" onclick="goPage('items')">
+		<td width="15%" align="center" height="50px"><img
+			src="<%=request.getContextPath()%>/image/category/dog-icon.png"
+			 width=50px height="50px"/></td>
+		<td align="left"><span class="topic">Pet</span> <br />
+		  <span class=detail>สัตว์เลี้ยง, บริการสัตว์เลี้ยง ...</span></td>
+		<td width="10%" align=right valign=middle><img src=image/next.png width="20" height="20"/></td>
 		<%--  
 		<td width="75" height="75" align="center"><img  width="50" height="50" src="<%=request.getContextPath()%>/image/10_percent_discount4.png"></img></td>
 		 --%>
@@ -193,14 +177,13 @@ span {
 		<hr style="color: #000099; width: 98%;" />
 		</td>
 	</tr>
-	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="115" align="center"><img
-			src="<%=request.getContextPath()%>/image/app5.jpg"
-			 width=110px /></td>
-		<td align="left"><span class="topic">กินเส้น ร้านอาหาร</span> <br />
-		<span class="detail2">ส่วนลด 10%<br />
-		</span> <span class=detail> เฉพาะค่าอาหาร
-		เมื่อแสดงคูปองแถมฟรีเปาะเปี๊ยะทอด 1 จาน</span></td>
+	<tr valign="top" onclick="goPage('items')">
+		<td width="15%" align="center" height="50px"><img
+			src="<%=request.getContextPath()%>/image/category/hospital.jpg"
+			 width=50px height="50px"/></td>
+		<td align="left"><span class="topic">Medical</span> <br />
+		  <span class=detail>รักษาพยาบาล</span></td>
+		<td width="10%" align=right valign=middle><img src=image/next.png width="20" height="20"/></td>
 		<%--  
 		<td width="75" height="75" align="center"><img  width="50" height="50" src="<%=request.getContextPath()%>/image/10_percent_discount5.jpg"></img></td>
 		 --%>
@@ -210,34 +193,20 @@ span {
 		<hr style="color: #000099; width: 98%;" />
 		</td>
 	</tr>
-	<tr valign="top" onclick="goPage('itemdetail')">
-		<td width="115" align="center"><img
-			src="<%=request.getContextPath()%>/image/app6.jpg"
-			 width=110px /></td>
-		<td align="left"><span class="topic">Lee Cafe @ Number 1</span> <br />
-		<span class="detail2">ส่วนลด 10 % สำหรับค่าอาหาร<br />
-		</span> <span class=detail> โปรโมชั่นช่วงเทศกาลปีใหม่ Set 5 ท่าน
-		ราคาเพียง 1,102 บาท และ Set 10 ท่าน ราคาเพียง 2,011 บาท</span></td>
-		<%-- 
-		<td width="75" height="75" align="center"><img  width="50" height="50" src="<%=request.getContextPath()%>/image/20_percent_discount6.jpg"></img></td>
-		 --%>
-	</tr>
+	<tr valign="top" onclick="goPage('items')">
+		<td width="15%" align="center" height="50px"><img
+			src="<%=request.getContextPath()%>/image/category/fashion-icon.png"
+			 width=50px height="50px"/></td>
+		<td align="left"><span class="topic">Fasion</span> <br />
+		  <span class=detail>เสื้อผ้า</span></td>
+		<td width="10%" align=right valign=middle><img src=image/next.png width="20" height="20"/></td>
+	 </tr>
 	<tr>
-		<td colspan="2">
+		<td colspan="3">
 		<hr style="color: #000099; width: 98%;" />
 		</td>
 	</tr>
-	<%-- 
-	<tr valign="top">
-		<td height="25" colspan="2" align="right"><span class="more">More...</span></td>
-	</tr>
-	--%>
-	
-	<tr>
-		<td valign=middle height="30" colspan="3" align="left" bgcolor=#FFFFFF><span
-			class="detail3" valign=center>Distance : 5-10 Km. , Area : Thong lor</span></td>
-	</tr>
-	
+	 
 	<tr>
 		<td valign=middle height="30" colspan="3" align="left" bgcolor=#C0C0C0><span
 			class="more" valign=center>More...</span></td>
@@ -245,7 +214,7 @@ span {
 	<tr bgcolor=#C0C0C0>
 		<td width=100% colspan=3 height=40 valign=bottom><span class=more>Term
 		of use</span> |<span class=more> Help</span> |<span class=more>
-		Contact Us</span> <br> <span class=copyright>copyright 2011</span>
+		Contact Us</span> <br/> <span class=copyright>copyright 2011</span>
 		</td>
 	</tr>
 </table>
