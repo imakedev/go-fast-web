@@ -39,61 +39,53 @@ font-family:Tahoma, sans-serif; font-size:12px; color:#585858;
 line-height:14px; text-decoration:none;font-weight:bold;}
 
 
-.button,.button a:link ,.button a:visited ,.button a:active {
-font-family:Tahoma, sans-serif; font-size:14px; color:#151b54;
-line-height:14px; text-decoration:none;font-weight:bold;}
-
-
+ 
 
 img {
 	padding: 5px;
 }
 
-a.button { /* Sliding right image */
-	background: transparent
-		url('<%=request.getContextPath()%>/image/button_right.png') no-repeat
-		scroll top right;
-	display: block;
-	float: left;
-	height: 35px; /* CHANGE THIS VALUE ACCORDING TO IMAGE HEIGHT */
-	margin-right: 6px;
-	padding-right: 20px;
-	/* CHENGE THIS VALUE ACCORDING TO RIGHT IMAGE WIDTH */
-	/* FONT PROPERTIES */
-	text-decoration: none;
-	color: #000000;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	font-weight: bold;
-}
-
-a.button span { /* Background left image */
-	background: transparent
-		url('<%=request.getContextPath()%>/image/button_left.png') no-repeat;
-	display: block;
-	line-height: 22px; /* CHANGE THIS VALUE ACCORDING TO BUTTONG HEIGHT */
-	padding: 7px 0 5px 18px;
-}
-
-a.button:hover span {
-	text-decoration: underline;
+.myButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#777777;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ffffff;
+}.myButton:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color:#dfdfdf;
+}.myButton:active {
+	position:relative;
+	top:1px;
 }
 </style>
 <script>
 	var _path='<%=request.getContextPath()%>';
 	function goBack() {
 		//	alert("goPage")
-		window.location.href = _path+"/listitems";
+		window.location.href = _path + "/promotion?brand=bb&direction=1&page=itemdetail";
 	}
 	function goPage(_page) {
 		//alert("goPage")
-		window.location.href = _path+"/listitems?page=" + _page;
+		window.location.href = _path+"/promotion?page=" + _page;
 	}
-</script>
-<meta http-equiv="Page-Enter" content="blendTrans(Duration=1.0)" />
-<meta http-equiv="Page-Exit" content="blendTrans(Duration=1.0)" />
-<meta http-equiv="Site-Enter" content="blendTrans(Duration=1.0)" />
-<meta http-equiv="Site-Exit" content="blendTrans(Duration=1.0)" />
+</script> 
 </head>
 <body>
 
@@ -102,13 +94,13 @@ a.button:hover span {
 <table width=100%>
 <tr>
 <td colspan=3 align=center>
-<a href="/GoFastServtlet/listitems?page=view_image_left&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/app1.jpg width=100 height=70/> </a>
-<a href="/GoFastServtlet/listitems?page=view_image&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/app2.jpg width=100 height=70/></a>
+<a href="/GoFastServtlet/promotion?page=view_image_left&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/app1.jpg width=100 height=70/> </a>
+<a href="/GoFastServtlet/promotion?page=view_image&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/app2.jpg width=100 height=70/></a>
 <img src=/GoFastServtlet/image/app3.jpg width=100 height=70/>
 </td>
 </tr>
 <tr>
-<td  align=left><a href="/GoFastServtlet/listitems?page=view_image&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/leftarrow.png /></a> </td>
+<td  align=left><a href="/GoFastServtlet/promotion?page=view_image&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/leftarrow.png /></a> </td>
 <td align=center><img src=/GoFastServtlet/image/app3.jpg  width=250 height=130/></td>
 <td  align=right></td>
 </tr>
@@ -123,8 +115,11 @@ a.button:hover span {
 			style="border: #ffffff 0px solid; background-color: #F3F8FF;">
 			<tbody>
 				<tr>
+				<!-- 
 					<td bgcolor=#C0C0C0 align="center" height=50 width=100% class=button
 						onclick="goPage('itemdetail&brand=bb&direction=1')"><a href="#">กลับ</a></td>
+						-->
+						<td  align="center" ><a  onclick="goBack()" href="#" class="myButton">Back</a></td>
 				</tr>
 
 			</tbody>
