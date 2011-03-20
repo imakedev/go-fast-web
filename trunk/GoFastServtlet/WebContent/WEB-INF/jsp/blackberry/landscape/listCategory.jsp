@@ -104,7 +104,200 @@ span {
 </style>
 <script>
 	var _path='<%=request.getContextPath()%>';
-
+	var oldContent =//"<table border=\"0\" width=\"100%\" cellspacing=\"2\" cellpadding=\"0\">"+
+					"	<tr valign=\"top\" onclick=\"goPage('items')\">"+
+					"		<td width=\"15%\" align=\"center\" height=\"50px\"><img"+
+					"				src=\""+_path+"/image/category/restaurant-icon.png\""+
+		 			"			width=50px height=\"50px\"></img></td>"+
+					"		<td align=\"left\"><span class=\"topic\">Restraurant</span> <br />"+
+	  				"				<span class=detail>ร้านอาหาร</span></td>"+
+					"		<td width=\"10%\"  align=\"right\" valign=middle><img src=image/next.png width=\"20\" height=\"20\"/></td>"+
+					"	</tr>"+
+					"	<tr>"+
+					"		<td colspan=\"3\">"+
+					"			<hr style=\"color: #000099; width: 98%;\" />"+
+					"		</td>"+
+					"	</tr>"+
+					"	<tr valign=\"top\" onclick=\"goPage('items')\">"+
+					"		<td width=\"15%\" align=\"center\" height=\"50px\"><img"+
+					"				src=\""+_path+"/image/category/sport.jpg\""+
+		 			"			width=50px height=\"50px\"></img></td>"+
+					"		<td align=\"left\"><span class=\"topic\">Sport</span> <br />"+
+	  				"				<span class=detail>ร้านอุปกรณ์กีฬา, คลับ, บัตรเข้าชมกีฬา</span></td>"+
+					"		<td width=\"10%\"  align=\"right\" valign=middle><img src=image/next.png width=\"20\" height=\"20\"/></td>"+
+					"	</tr>"+
+					"	<tr>"+
+					"		<td colspan=\"3\">"+
+					"			<hr style=\"color: #000099; width: 98%;\" />"+
+					"		</td>"+
+					"	</tr>"+
+					"	<tr valign=\"top\" onclick=\"goPage('items')\">"+
+					"		<td width=\"15%\" align=\"center\" height=\"50px\"><img"+
+					"				src=\""+_path+"/image/category/house-icon.png\""+
+		 			"			width=50px height=\"50px\"></img></td>"+
+					"		<td align=\"left\"><span class=\"topic\">House</span> <br />"+
+	  				"				<span class=detail>อุปกรณ์บ้าน, บ้าน ...</span></td>"+
+					"		<td width=\"10%\"  align=\"right\" valign=middle><img src=image/next.png width=\"20\" height=\"20\"/></td>"+
+					"	</tr>"+
+					"	<tr>"+
+					"		<td colspan=\"3\">"+
+					"			<hr style=\"color: #000099; width: 98%;\" />"+
+					"		</td>"+
+					"	</tr>"+
+					"	<tr valign=\"top\" onclick=\"goPage('items')\">"+
+					"		<td width=\"15%\" align=\"center\" height=\"50px\"><img"+
+					"				src=\""+_path+"/image/category/dog-icon.png\""+
+		 			"			width=50px height=\"50px\"></img></td>"+
+					"		<td align=\"left\"><span class=\"topic\">Pet</span> <br />"+
+	  				"				<span class=detail>สัตว์เลี้ยง, บริการสัตว์เลี้ยง ...</span></td>"+
+					"		<td width=\"10%\"  align=\"right\" valign=middle><img src=image/next.png width=\"20\" height=\"20\"/></td>"+
+					"	</tr>"+
+					"	<tr>"+
+					"		<td colspan=\"3\">"+
+					"			<hr style=\"color: #000099; width: 98%;\" />"+
+					"		</td>"+
+					"	</tr>"+
+					"	<tr valign=\"top\" onclick=\"goPage('items')\">"+
+					"		<td width=\"15%\" align=\"center\" height=\"50px\"><img"+
+					"				src=\""+_path+"/image/category/hospital.jpg\""+
+		 			"			width=50px height=\"50px\"></img></td>"+
+					"		<td align=\"left\"><span class=\"topic\">Medical</span> <br />"+
+	  				"				<span class=detail>รักษาพยาบาล</span></td>"+
+					"		<td width=\"10%\"  align=\"right\" valign=middle><img src=image/next.png width=\"20\" height=\"20\"/></td>"+
+					"	</tr>"+
+					"	<tr>"+
+					"		<td colspan=\"3\">"+
+					"			<hr style=\"color: #000099; width: 98%;\" />"+
+					"		</td>"+
+					"	</tr>"+
+					"	<tr valign=\"top\" onclick=\"goPage('items')\">"+
+					"		<td width=\"15%\" align=\"center\" height=\"50px\"><img"+
+					"				src=\""+_path+"/image/category/fashion-icon.png\""+
+		 			"			width=50px height=\"50px\"></img></td>"+
+					"		<td align=\"left\"><span class=\"topic\">Fasion</span> <br />"+
+	  				"				<span class=detail>เสื้อผ้า</span></td>"+
+					"		<td width=\"10%\"  align=\"right\" valign=middle><img src=image/next.png width=\"20\" height=\"20\"/></td>"+
+					"	</tr>"+
+					"	<tr>"+
+					"		<td colspan=\"3\">"+
+					"			<hr style=\"color: #000099; width: 98%;\" />"+
+					"		</td>"+
+					"	</tr>";					 
+		//"</table>";
+	var indexMore=0;
+	function loadingMore(){
+		var moreImgDiv = document.getElementById("moreImgDiv"); 
+		var moreDiv = document.getElementById("moreDiv");
+		var moreTd = document.getElementById("moreTd"); 
+		moreTd.style.backgroundColor="#ffffff";
+		moreImgDiv.innerHTML="<img src=\""+_path+"/image/icon_loading.gif\"></img>";
+		moreDiv.innerHTML="";
+		setTimeout("feedMore()",3000);
+		//setMoreTd("setMoreTd()",3000);
+	}
+	function setMoreTd(){
+		alert("into set more td")
+		var moreTd = document.getElementById("moreTd"); 
+		alert(moreTd.style.backgroundColor);
+		moreTd.style.backgroundColor="#ffffff";
+	}
+	function feedMore() {
+		var moreDiv = document.getElementById("moreDiv"); 
+		var contentDiv = document.getElementById("contentDiv");
+		var moreImgDiv = document.getElementById("moreImgDiv");  
+		//var oldStr =;
+		//alert("content old=" + oldStr);
+		var content= "";
+		var index = indexMore;
+		for ( var i = index; i < index+7; i++) {
+			content = content + "	<tr valign=\"top\" onclick=\"goPage('items')\">"+
+			"		<td width=\"15%\" align=\"center\" height=\"50px\"><img"+
+			"				src=\""+_path+"/image/category/restaurant-icon.png\""+
+ 			"			width=50px height=\"50px\"></img></td>"+
+			"		<td align=\"left\"><span class=\"topic\">Restraurant "+i+"</span> <br />"+
+				"				<span class=detail>ร้านอาหาร</span></td>"+
+			"		<td width=\"10%\"  align=\"right\" valign=middle><img src=image/next.png width=\"20\" height=\"20\"/></td>"+
+			"	</tr>"+
+			"	<tr>"+
+			"		<td colspan=\"3\">"+
+			"			<hr style=\"color: #000099; width: 98%;\" />"+
+			"		</td>"+
+			"	</tr>"+
+			"	<tr valign=\"top\" onclick=\"goPage('items')\">"+
+			"		<td width=\"15%\" align=\"center\" height=\"50px\"><img"+
+			"				src=\""+_path+"/image/category/sport.jpg\""+
+ 			"			width=50px height=\"50px\"></img></td>"+
+			"		<td align=\"left\"><span class=\"topic\">Sport "+i+"</span> <br />"+
+				"				<span class=detail>ร้านอุปกรณ์กีฬา, คลับ, บัตรเข้าชมกีฬา</span></td>"+
+			"		<td width=\"10%\"  align=\"right\" valign=middle><img src=image/next.png width=\"20\" height=\"20\"/></td>"+
+			"	</tr>"+
+			"	<tr>"+
+			"		<td colspan=\"3\">"+
+			"			<hr style=\"color: #000099; width: 98%;\" />"+
+			"		</td>"+
+			"	</tr>"+
+			"	<tr valign=\"top\" onclick=\"goPage('items')\">"+
+			"		<td width=\"15%\" align=\"center\" height=\"50px\"><img"+
+			"				src=\""+_path+"/image/category/house-icon.png\""+
+ 			"			width=50px height=\"50px\"></img></td>"+
+			"		<td align=\"left\"><span class=\"topic\">House "+i+"</span> <br />"+
+				"				<span class=detail>อุปกรณ์บ้าน, บ้าน ...</span></td>"+
+			"		<td width=\"10%\"  align=\"right\" valign=middle><img src=image/next.png width=\"20\" height=\"20\"/></td>"+
+			"	</tr>"+
+			"	<tr>"+
+			"		<td colspan=\"3\">"+
+			"			<hr style=\"color: #000099; width: 98%;\" />"+
+			"		</td>"+
+			"	</tr>"+
+			"	<tr valign=\"top\" onclick=\"goPage('items')\">"+
+			"		<td width=\"15%\" align=\"center\" height=\"50px\"><img"+
+			"				src=\""+_path+"/image/category/dog-icon.png\""+
+ 			"			width=50px height=\"50px\"></img></td>"+
+			"		<td align=\"left\"><span class=\"topic\">Pet "+i+"</span> <br />"+
+				"				<span class=detail>สัตว์เลี้ยง, บริการสัตว์เลี้ยง ...</span></td>"+
+			"		<td width=\"10%\"  align=\"right\" valign=middle><img src=image/next.png width=\"20\" height=\"20\"/></td>"+
+			"	</tr>"+
+			"	<tr>"+
+			"		<td colspan=\"3\">"+
+			"			<hr style=\"color: #000099; width: 98%;\" />"+
+			"		</td>"+
+			"	</tr>"+
+			"	<tr valign=\"top\" onclick=\"goPage('items')\">"+
+			"		<td width=\"15%\" align=\"center\" height=\"50px\"><img"+
+			"				src=\""+_path+"/image/category/hospital.jpg\""+
+ 			"			width=50px height=\"50px\"></img></td>"+
+			"		<td align=\"left\"><span class=\"topic\">Medical "+i+"</span> <br />"+
+				"				<span class=detail>รักษาพยาบาล</span></td>"+
+			"		<td width=\"10%\"  align=\"right\" valign=middle><img src=image/next.png width=\"20\" height=\"20\"/></td>"+
+			"	</tr>"+
+			"	<tr>"+
+			"		<td colspan=\"3\">"+
+			"			<hr style=\"color: #000099; width: 98%;\" />"+
+			"		</td>"+
+			"	</tr>"+
+			"	<tr valign=\"top\" onclick=\"goPage('items')\">"+
+			"		<td width=\"15%\" align=\"center\" height=\"50px\"><img"+
+			"				src=\""+_path+"/image/category/fashion-icon.png\""+
+ 			"			width=50px height=\"50px\"></img></td>"+
+			"		<td align=\"left\"><span class=\"topic\">Fasion "+i+"</span> <br />"+
+				"				<span class=detail>เสื้อผ้า</span></td>"+
+			"		<td width=\"10%\"  align=\"right\" valign=middle><img src=image/next.png width=\"20\" height=\"20\"/></td>"+
+			"	</tr>"+
+			"	<tr>"+
+			"		<td colspan=\"3\">"+
+			"			<hr style=\"color: #000099; width: 98%;\" />"+
+			"		</td>"+
+			"	</tr>";					 
+			indexMore++;
+		}
+		oldContent = oldContent+content;
+		//alert(oldStr);
+		contentDiv.innerHTML =  "<table border=\"0\" width=\"100%\" cellspacing=\"2\" cellpadding=\"0\">"+oldContent+"</table>";
+		moreDiv.innerHTML='More...';
+		moreImgDiv.innerHTML="";
+		var moreTd = document.getElementById("moreTd"); 
+		moreTd.style.backgroundColor="#C0C0C0";
+	}
 	//alert(_path)
 	function goPage(_page) {
 		//alert("goPage")
@@ -116,12 +309,17 @@ span {
 		window.location.href = _path + "/promotion?brand=bb&direction=1&page=listCategory";
 //		history.back();
 	}
+	
 </script> 
 </head>
 
 <body>
 <table border="0" width="100%" cellspacing="2" cellpadding="0">
-	<tr valign="top" onclick="goPage('items')">
+  <tr>
+  	<td>
+  	<div id="contentDiv">
+  		<table border="0" width="100%" cellspacing="2" cellpadding="0">
+  			<tr valign="top" onclick="goPage('items')">
 		<td width="15%" align="center" height="50px"><img
 			src="<%=request.getContextPath()%>/image/category/restaurant-icon.png"
 			 width=50px height="50px"></img></td>
@@ -167,10 +365,7 @@ span {
 			 width=50px height="50px"/></td>
 		<td align="left"><span class="topic">Pet</span> <br />
 		  <span class=detail>สัตว์เลี้ยง, บริการสัตว์เลี้ยง ...</span></td>
-		<td width="10%" align=right valign=middle><img src=image/next.png width="20" height="20"/></td>
-		<%--  
-		<td width="75" height="75" align="center"><img  width="50" height="50" src="<%=request.getContextPath()%>/image/10_percent_discount4.png"></img></td>
-		 --%>
+		<td width="10%" align=right valign=middle><img src=image/next.png width="20" height="20"/></td> 
 	</tr>
 	<tr>
 		<td colspan="3">
@@ -183,10 +378,7 @@ span {
 			 width=50px height="50px"/></td>
 		<td align="left"><span class="topic">Medical</span> <br />
 		  <span class=detail>รักษาพยาบาล</span></td>
-		<td width="10%" align=right valign=middle><img src=image/next.png width="20" height="20"/></td>
-		<%--  
-		<td width="75" height="75" align="center"><img  width="50" height="50" src="<%=request.getContextPath()%>/image/10_percent_discount5.jpg"></img></td>
-		 --%>
+		<td width="10%" align=right valign=middle><img src=image/next.png width="20" height="20"/></td> 
 	</tr>
 	<tr>
 		<td colspan="3">
@@ -206,10 +398,15 @@ span {
 		<hr style="color: #000099; width: 98%;" />
 		</td>
 	</tr>
+  		</table>
+  </div>
+  	</td>
+  </tr>
+	
 	 
 	<tr>
-		<td valign=middle height="30" colspan="3" align="left" bgcolor=#C0C0C0><span
-			class="more" valign=center>More...</span></td>
+		<td id="moreTd" valign=middle height="30" colspan="3" align="left" bgcolor=#C0C0C0><span id="moreDiv"
+			class="more" valign=center  onclick="loadingMore();">More...</span><div id="moreImgDiv" align="center"></div></td>
 	</tr>
 	<tr bgcolor=#C0C0C0>
 		<td width=100% colspan=3 height=40 valign=bottom><span class=more>Term
