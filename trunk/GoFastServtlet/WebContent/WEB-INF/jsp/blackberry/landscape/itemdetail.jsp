@@ -3,6 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Item Detail</title>
+<link href="<%=request.getContextPath()%>/css/style.css"
+	rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/corner/justcorners.js"></script>
+<script type="text/javascript" src="js/corner/corner.js"></script>
 <style>
 body {
 	color: #000000;
@@ -35,6 +39,14 @@ line-height:14px; text-decoration:none;font-weight:bold;}
 .more a:hover{ font-family:Tahoma, sans-serif; font-size:12px;
 color:#06A800; line-height:14px;}
 
+.button,.button a:link,.button a:visited,.button a:active {
+	font-family: Tahoma, sans-serif;
+	font-size: 14px;
+	color: #151b54;
+	line-height: 14px;
+	text-decoration: none;
+	font-weight: bold;
+}
 
  
 .copyright,.copyright a:link ,.copyright a:visited ,.copyright a:active {
@@ -43,6 +55,35 @@ line-height:14px; text-decoration:none;font-weight:bold;}
 
 img {
 	padding: 5px;
+}
+a.button { /* Sliding right image */
+	background: transparent
+		url('<%=request.getContextPath()%>/image/button_right.png') no-repeat
+		scroll top right;
+	display: block;
+	float: left;
+	height: 35px; /* CHANGE THIS VALUE ACCORDING TO IMAGE HEIGHT */
+	margin-right: 6px;
+	padding-right: 20px;
+	/* CHENGE THIS VALUE ACCORDING TO RIGHT IMAGE WIDTH */
+	/* FONT PROPERTIES */
+	text-decoration: none;
+	color: #000000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+a.button span { /* Background left image */
+	background: transparent
+		url('<%=request.getContextPath()%>/image/button_left.png') no-repeat;
+	display: block;
+	line-height: 22px; /* CHANGE THIS VALUE ACCORDING TO BUTTONG HEIGHT */
+	padding: 7px 0 5px 18px;
+}
+
+a.button:hover span {
+	text-decoration: underline;
 }
 .myButton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -90,12 +131,9 @@ img {
 
 	<link rel="stylesheet" href="css/iphone_img_style.css" type="text/css" media="screen" charset="utf-8"/>
 	<script src="js/jquery-1.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<!-- 
 	<script src="js/iphone_slider.js" type="text/javascript" charset="utf-8"></script>
-	
-<meta http-equiv="Page-Enter" content="blendTrans(Duration=1.0)" />
-<meta http-equiv="Page-Exit" content="blendTrans(Duration=1.0)" />
-<meta http-equiv="Site-Enter" content="blendTrans(Duration=1.0)" />
-<meta http-equiv="Site-Exit" content="blendTrans(Duration=1.0)" />
+	 --> 
 </head>
 
 <body >
@@ -104,11 +142,17 @@ img {
 	<tr valign="top">
 		<td width="100%">
 		<table>
+		
+		<tr>
+			<td align="left">  <button class="rounded"  onclick="goPage('items&brand=bb&direction=1')" ><span>Back</span></button> </td>
+				<td colspan=3 align=center><span class="topic">นางกวัก ร้านอาหาร</span></td>
+			<td align="right"> <button class="rounded"  onclick="goPage('map&brand=bb&direction=1')" ><span>Map</span></button></td>
+			</tr>
 			<tr>
 				<td rowspan=2><img
 			src="<%=request.getContextPath()%>/image/app1.jpg" width="200" height="140"></img>
 				</td>
-				<td colspan=3 align=center><span class="topic">นางกวัก ร้านอาหาร</span></td>
+				<td colspan=3 align=center><span class="topic"></span></td>
 			</tr>
 			<tr>
 				<td width=80%  colspan=3 valign=top><span class="detail3"> คลองตันเหนือ วัฒนา กรุงเทพฯ <br/>027147938,<br/></span>
@@ -145,18 +189,18 @@ img {
 			<table width="100%" border="1" cellspacing="0" cellpadding="0" align=center
 		style="border: #ffffff 0px solid; background-color: #F3F8FF;">
 				<tbody align="center">
-					<tr align="center">
-					<!-- 
-						<td bgcolor=#C0C0C0 align="center" height=50 width="33%" class=button onclick="goPage('items&brand=bb&direction=1')"><a href="#" >กลับ</a></td>
-						<td bgcolor=#C0C0C0 align="center" height=50  width="33%" class=button onclick="goPage('view_image&brand=bb&direction=1')"><a href="#" >ดูรูป</a></td>
-					  -->
-						<td align=center> <a onclick="goPage('items&brand=bb&direction=1')" href="#" class="myButton">กลับ</a></td>
-						<td align=center> <a onclick="goPage('view_image&brand=bb&direction=1')" href="#" class="myButton">ดูรูป</a></td>
-						<!-- 
-						<td  bgcolor=#C0C0C0 align=center height=50  width="33%"  class=button onclick="goPage('map&brand=bb&direction=1')"><a href="#" >แผนที่</a></td>
-						 -->
-						<td align=center> <a onclick="goPage('map&brand=bb&direction=1')" href="#" class="myButton">แผนที่</a></td>
-					</tr>
+					<tr align="center"> 
+<td colspan=3 align=center>
+<a href="/GoFastServtlet/promotion?page=view_image_left&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/app1.jpg width=100 height="35"/> </a>
+<a href="/GoFastServtlet/promotion?page=view_image&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/app2.jpg width=100 height="35"/></a>
+<img src=/GoFastServtlet/image/app3.jpg width=100 height="35"/>
+</td>
+</tr>
+<tr>
+<td  align=left><a href="/GoFastServtlet/promotion?page=view_image&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/leftarrow.png /></a> </td>
+<td align=center><img src=/GoFastServtlet/image/app3.jpg  width=250 height=110/></td>
+<td  align=right></td>
+</tr> 
 
 				</tbody>
 			</table>

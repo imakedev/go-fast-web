@@ -190,7 +190,9 @@ span {
 		var moreDiv = document.getElementById("moreDiv");
 		var moreTd = document.getElementById("moreTd"); 
 		moreTd.style.backgroundColor="#ffffff";
-		moreImgDiv.innerHTML="<img src=\""+_path+"/image/icon_loading.gif\"></img>";
+		moreImgDiv.innerHTML="<img src=\""+_path+"/image/loading_icon2.gif\"></img>";
+		//moreImgDiv.innerHTML="<img src=\""+_path+"/image/icon_loading.gif\"></img>";
+		
 		moreDiv.innerHTML="";
 		setTimeout("feedMore()",3000);
 		//setMoreTd("setMoreTd()",3000);
@@ -401,9 +403,7 @@ span {
   		</table>
   </div>
   	</td>
-  </tr>
-	
-	 
+  </tr> 	 
 	<tr>
 		<td id="moreTd" valign=middle height="30" colspan="3" align="left" bgcolor=#C0C0C0><span id="moreDiv"
 			class="more" valign=center  onclick="loadingMore();">More...</span><div id="moreImgDiv" align="center"></div></td>

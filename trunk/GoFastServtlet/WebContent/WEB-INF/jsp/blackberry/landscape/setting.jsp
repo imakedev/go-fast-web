@@ -172,16 +172,16 @@ a.button:hover span {
 </head>
 
 <body>
-
+<%--
 <table border="0" width="100%"  
 	style="border: #003399 1px solid; background-color: #F3F8FF;">
+	
+</table>
+ --%>
+<table border="0" width="100%">
 	<tr>
 		<td align="center"  width="100%" class="header-topic">Setting</td>
 	</tr>
-</table>
-
-
-<table border="0" width="100%">
 	<tr>
 		<td align="center" colspan="2"> 
 		<table border="0" align="center">
@@ -197,13 +197,13 @@ a.button:hover span {
 				<td align="center" id="menu1distance" style="display:none">
 				<table>	
 				<tr><td>
-				<button class="rounded" style="width: 130px" onclick=goBack();><span>&lt; 5 Km.</span></button>
+				<button class="rounded" style="width: 130px" ><span>&lt; 5 Km.</span></button>
 				</td> </tr> <tr><td>
-				<button class="rounded" style="width: 130px" onclick=goBack();><span>5-10 Km.</span></button>
+				<button class="rounded" style="width: 130px" ><span>5-10 Km.</span></button>
 				</td> </tr> <tr><td>
-				<button class="rounded" style="width: 130px" onclick=goBack();><span>10-20 Km.</span></button>
+				<button class="rounded" style="width: 130px" ><span>10-20 Km.</span></button>
 				</td> </tr> <tr><td>
-				<button class="rounded" style="width: 130px" onclick=goBack();><span>20 &gt; Km.</span></button>
+				<button class="rounded" style="width: 130px" ><span>20 &gt; Km.</span></button>
 				</td> </tr> 
 				</table>
 				</td>
@@ -222,13 +222,13 @@ a.button:hover span {
 				<td align="center" id="menu2area" style="display:none">
 				<table>	
 				<tr><td>
-				<button class="rounded" style="width: 130px" onclick=goBack();><span>Sukumvit</span></button>
+				<button class="rounded" style="width: 130px" ><span>Sukumvit</span></button>
 				</td> </tr> <tr><td>
-				<button class="rounded" style="width: 130px" onclick=goBack();><span>Thonglor</span></button>
+				<button class="rounded" style="width: 130px" ><span>Thonglor</span></button>
 				</td> </tr> <tr><td>
-				<button class="rounded" style="width: 130px" onclick=goBack();><span>Latprao</span></button>
+				<button class="rounded" style="width: 130px" ><span>Latprao</span></button>
 				</td> </tr> <tr><td>
-				<button class="rounded" style="width: 130px" onclick=goBack();><span>Jatujak</span></button>
+				<button class="rounded" style="width: 130px" ><span>Jatujak</span></button>
 				</td> </tr> 
 				</table>
 				</td>
@@ -245,13 +245,36 @@ a.button:hover span {
 				<td align="center" id="menu3discount" style="display:none">
 				<table>	
 				<tr><td>
-				<button class="rounded" style="width: 130px" onclick=goBack();><span>&gt; 30%</span></button>
+				<button class="rounded" style="width: 130px" ><span>&gt; 30%</span></button>
 				</td> </tr> <tr><td>
-				<button class="rounded" style="width: 130px" onclick=goBack();><span>20-30%</span></button>
+				<button class="rounded" style="width: 130px" ><span>20-30%</span></button>
 				</td> </tr> <tr><td>
-				<button class="rounded" style="width: 130px" onclick=goBack();><span>10-20%</span></button>
+				<button class="rounded" style="width: 130px" ><span>10-20%</span></button>
 				</td> </tr> <tr><td>
-				<button class="rounded" style="width: 130px" onclick=goBack();><span>&lt; 10%</span></button>
+				<button class="rounded" style="width: 130px" ><span>&lt; 10%</span></button>
+				</td> </tr> 
+				</table>
+				</td>
+			</tr> 
+			
+			<!-- Menu 4 -->
+			<tr>
+				<td align="center" colspan="2"><span id="menu4" onclick="showhide(menu4discount)" >
+				<button class="rounded" style="width: 180px" ><span>Price/Unit</span></button>
+				</span></td>
+			</tr>
+			<tr>
+				<td width=50px></td>
+				<td align="center" id="menu4discount" style="display:none">
+				<table>	
+				<tr><td>
+				<button class="rounded" style="width: 130px" ><span>&lt; 100 Baht.</span></button>
+				</td> </tr> <tr><td>
+				<button class="rounded" style="width: 130px" ><span>200 - 500 Baht.</span></button>
+				</td> </tr> <tr><td>
+				<button class="rounded" style="width: 130px" ><span>500 - 1000 Baht.</span></button>
+				</td> </tr> <tr><td>
+				<button class="rounded" style="width: 130px" ><span>&lt; 1000 Baht.</span></button>
 				</td> </tr> 
 				</table>
 				</td>
@@ -259,23 +282,6 @@ a.button:hover span {
 		</table> 
 		</td>
 	</tr>
-</table>
-
-
-
-
-<table border="0" width="100%">
-	<tbody>
-		<tr bgcolor="#C0C0C0">
-			<td width="100%" colspan="3" height="30"><span class="more">Term
-			of use</span> |<span class="more"> Help</span> |<span class="more">
-			Contact Us</span> <br />
-			<span class=copyright>copyright 2011</span></td>
-		</tr>
-
-	</tbody>
-</table>
-
-
+</table> 
 </body>
 </html>

@@ -4,7 +4,10 @@
 <head>
 <title>Promotion</title> 
 
-
+<link href="<%=request.getContextPath()%>/css/style.css"
+	rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/corner/justcorners.js"></script>
+<script type="text/javascript" src="js/corner/corner.js"></script>
 <style>
 body {
 	color: #000000;
@@ -52,6 +55,56 @@ span {
 	font-family: Tahoma, sans-serif;
 	color: #999999;
 	font-weight: bold;
+}
+.button,.button a:link,.button a:visited,.button a:active {
+	font-family: Tahoma, sans-serif;
+	font-size: 14px;
+	color: #151b54;
+	line-height: 14px;
+	text-decoration: none;
+	font-weight: bold;
+}
+.copyright,.copyright a:link,.copyright a:visited,.copyright a:active {
+	font-family: Tahoma, sans-serif;
+	font-size: 12px;
+	color: #585858;
+	line-height: 14px;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+img {
+	padding: 5px;
+}
+
+a.button { /* Sliding right image */
+	background: transparent
+		url('<%=request.getContextPath()%>/image/button_right.png') no-repeat
+		scroll top right;
+	display: block;
+	float: left;
+	height: 35px; /* CHANGE THIS VALUE ACCORDING TO IMAGE HEIGHT */
+	margin-right: 6px;
+	padding-right: 20px;
+	/* CHENGE THIS VALUE ACCORDING TO RIGHT IMAGE WIDTH */
+	/* FONT PROPERTIES */
+	text-decoration: none;
+	color: #000000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+a.button span { /* Background left image */
+	background: transparent
+		url('<%=request.getContextPath()%>/image/button_left.png') no-repeat;
+	display: block;
+	line-height: 22px; /* CHANGE THIS VALUE ACCORDING TO BUTTONG HEIGHT */
+	padding: 7px 0 5px 18px;
+}
+
+a.button:hover span {
+	text-decoration: underline;
 }
 
 .more,.more a:link,.more a:visited,.more a:active {
@@ -125,7 +178,10 @@ span {
 <table border=0 width=100% height=50 style="border: #003399 1px solid; background-color: #F3F8FF;">
 	<tr> 
 		<td align=left>
+		<!-- 
 			<a  onclick="goBack()" href="#" class="myButton">Back</a>
+	     -->
+			<button class="rounded" onclick=goBack();><span>Back</span></button>
 		  </td>
 		<td align=left width=60% class=header-topic>Restraurant</td>
 	</tr>  

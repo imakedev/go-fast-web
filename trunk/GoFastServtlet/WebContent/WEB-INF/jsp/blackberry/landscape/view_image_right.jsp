@@ -3,6 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Map</title>
+<link href="<%=request.getContextPath()%>/css/style.css"
+	rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/corner/justcorners.js"></script>
+<script type="text/javascript" src="js/corner/corner.js"></script>
 <style>
 body {
 	color: #000000;
@@ -38,13 +42,49 @@ color:#06A800; line-height:14px;}
 font-family:Tahoma, sans-serif; font-size:12px; color:#585858;
 line-height:14px; text-decoration:none;font-weight:bold;}
 
+.button,.button a:link,.button a:visited,.button a:active {
+	font-family: Tahoma, sans-serif;
+	font-size: 14px;
+	color: #151b54;
+	line-height: 14px;
+	text-decoration: none;
+	font-weight: bold;
+}
 
  
 
 img {
 	padding: 5px;
 }
+a.button { /* Sliding right image */
+	background: transparent
+		url('<%=request.getContextPath()%>/image/button_right.png') no-repeat
+		scroll top right;
+	display: block;
+	float: left;
+	height: 35px; /* CHANGE THIS VALUE ACCORDING TO IMAGE HEIGHT */
+	margin-right: 6px;
+	padding-right: 20px;
+	/* CHENGE THIS VALUE ACCORDING TO RIGHT IMAGE WIDTH */
+	/* FONT PROPERTIES */
+	text-decoration: none;
+	color: #000000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+}
 
+a.button span { /* Background left image */
+	background: transparent
+		url('<%=request.getContextPath()%>/image/button_left.png') no-repeat;
+	display: block;
+	line-height: 22px; /* CHANGE THIS VALUE ACCORDING TO BUTTONG HEIGHT */
+	padding: 7px 0 5px 18px;
+}
+
+a.button:hover span {
+	text-decoration: underline;
+}
 .myButton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -94,14 +134,14 @@ img {
 <table width=100%>
 <tr>
 <td colspan=3 align=center>
-<a href="/GoFastServtlet/promotion?page=view_image_left&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/app1.jpg width=100 height=70/> </a>
-<a href="/GoFastServtlet/promotion?page=view_image&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/app2.jpg width=100 height=70/></a>
-<img src=/GoFastServtlet/image/app3.jpg width=100 height=70/>
+<a href="/GoFastServtlet/promotion?page=view_image_left&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/app1.jpg width=100 height="35"/> </a>
+<a href="/GoFastServtlet/promotion?page=view_image&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/app2.jpg width=100 height="35"/></a>
+<img src=/GoFastServtlet/image/app3.jpg width=100 height="35"/>
 </td>
 </tr>
 <tr>
 <td  align=left><a href="/GoFastServtlet/promotion?page=view_image&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/leftarrow.png /></a> </td>
-<td align=center><img src=/GoFastServtlet/image/app3.jpg  width=250 height=130/></td>
+<td align=center><img src=/GoFastServtlet/image/app3.jpg  width=250 height=110/></td>
 <td  align=right></td>
 </tr>
 </table>
@@ -110,7 +150,7 @@ img {
 <table border="0" width="100%">
 	<tr valign="top">
 		<td align="center">
-		<table width="100%" border="1" cellspacing="0" cellpadding="0"
+		<table width="100%" border="0" cellspacing="0" cellpadding="0"
 			align=center
 			style="border: #ffffff 0px solid; background-color: #F3F8FF;">
 			<tbody>
@@ -119,21 +159,27 @@ img {
 					<td bgcolor=#C0C0C0 align="center" height=50 width=100% class=button
 						onclick="goPage('itemdetail&brand=bb&direction=1')"><a href="#">กลับ</a></td>
 						-->
-						<td  align="center" ><a  onclick="goBack()" href="#" class="myButton">Back</a></td>
+						<td  align="center" >
+						<!-- 
+						<a  onclick="goBack()" href="#" class="myButton">Back</a>
+						 --> 
+			 			<button class="rounded"  onclick="goBack()" ><span>Back</span></button>
+						</td>
 				</tr>
 
 			</tbody>
 		</table>
 		</td>
 	</tr>
+	<!-- 
 			<tr bgcolor=#C0C0C0>
 			<td width=100% colspan=3 height=30>
 			<span class=more>Term of use</span> |<span class=more>
 Help</span> |<span class=more> Contact Us</span> <br/>
         <span class=copyright>copyright 2011</span></td>
 		</tr>
-
-	</tbody>
+ -->
+	
 </table>
 </body>
 </html>

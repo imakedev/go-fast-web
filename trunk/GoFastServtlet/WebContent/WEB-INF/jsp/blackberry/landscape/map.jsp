@@ -3,6 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Map</title>
+<link href="<%=request.getContextPath()%>/css/style.css"
+	rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/corner/justcorners.js"></script>
+<script type="text/javascript" src="js/corner/corner.js"></script>
 <style>
 body {	color:#000000;	text-align:left;margin:0;font-family:Tahoma, sans-serif; font-size:12px;	}
 /* Paragraph and headings */
@@ -11,9 +15,45 @@ span {  padding:0px 5px 5px 5px;font-family:Tahoma, sans-serif; color:#000000;fo
 .more,.more a:link ,.more a:visited ,.more a:active { 
 font-family:Tahoma, sans-serif; font-size:12px; color:#06A800; line-height:14px; text-decoration:none;font-weight:bold;}
 .more a:hover{ font-family:Tahoma, sans-serif; font-size:12px; color:#06A800; line-height:14px; text-decoration:underline;font-weight:bold;}
+.button,.button a:link,.button a:visited,.button a:active {
+	font-family: Tahoma, sans-serif;
+	font-size: 14px;
+	color: #151b54;
+	line-height: 14px;
+	text-decoration: none;
+	font-weight: bold;
+}
 
 img{padding:5px;}
+a.button { /* Sliding right image */
+	background: transparent
+		url('<%=request.getContextPath()%>/image/button_right.png') no-repeat
+		scroll top right;
+	display: block;
+	float: left;
+	height: 35px; /* CHANGE THIS VALUE ACCORDING TO IMAGE HEIGHT */
+	margin-right: 6px;
+	padding-right: 20px;
+	/* CHENGE THIS VALUE ACCORDING TO RIGHT IMAGE WIDTH */
+	/* FONT PROPERTIES */
+	text-decoration: none;
+	color: #000000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+}
 
+a.button span { /* Background left image */
+	background: transparent
+		url('<%=request.getContextPath()%>/image/button_left.png') no-repeat;
+	display: block;
+	line-height: 22px; /* CHANGE THIS VALUE ACCORDING TO BUTTONG HEIGHT */
+	padding: 7px 0 5px 18px;
+}
+
+a.button:hover span {
+	text-decoration: underline;
+}
 .myButton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -57,36 +97,38 @@ img{padding:5px;}
 	}
 </script> 
 </head> 
-<body>
-<table border="0" width="100%">
+<body bgcolor="#ffffff">
+<table border="0" width="100%" bgcolor="#ffffff" align="center">
 <tr valign="top">
-<td align="center"> <img 
-	src="http://maps.google.com/maps/api/staticmap?center=40.714728,-73.998672&zoom=12&size=480x200&sensor=false"></img>
+	<td align="left">&nbsp;&nbsp;<button class="rounded"  onclick="goBack()" ><span>Back</span></button></td>
+</tr>
+<tr valign="top">
+<td align="center"> <img  
+	src="http://maps.google.com/maps/api/staticmap?markers=color:blue|label:O|13.777901,100.606956&sensor=false&markers=color:red|label:D|13.778234,100.579319&zoom=12&size=460x200&sensor=false"></img>
 </td>
 </tr>
 </table>
-<table border="0" width="100%">
+<table border="0" width="100%" bgcolor="#C0C0C0" align="center">
+<%-- 
 	<tr valign="top">
 		<td align="center">
 		<table width="100%" border="1" cellspacing="0" cellpadding="0"
 			align=center
 			style="border: #ffffff 0px solid; background-color: #F3F8FF;">
 			<tbody>
-				<tr>
-				<!-- 
-				<a  onclick="goBack()" href="#" class="myButton">Back</a>
-					<td bgcolor=#C0C0C0 align="center" height=50 width=100% class=button
-						><a onclick="goBack()">กลับ</a></td>
-						 -->
-						 <td  align="center"><a  onclick="goBack()" href="#" class="myButton">Back</a></td>
+				<tr> 
+						 <td  align="center">
+						  <button class="rounded"  onclick="goBack()" ><span>Back</span></button> 
+						  </td>
 				</tr>
 
 			</tbody>
 		</table>
 		</td>
 	</tr>
+--%>
 			<tr bgcolor=#C0C0C0>
-			<td width=100% colspan=3 height=30>
+			<td width=100%  height="30"  bgcolor="#C0C0C0">
 			<span class=more>Term of use</span> |<span class=more>
 Help</span> |<span class=more> Contact Us</span> <br/>
         <span class=copyright>copyright 2011</span></td>
