@@ -3,6 +3,55 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Item Detail</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<script type="text/javascript" src="js/fadeslideshow.js">
+
+/***********************************************
+* Ultimate Fade In Slideshow v2.0- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for this script and 100s more
+***********************************************/
+
+</script>
+
+<script type="text/javascript">
+/*
+var mygallery=new fadeSlideShow({
+	wrapperid: "fadeshow1", //ID of blank DIV on page to house Slideshow
+	dimensions: [250, 180], //width/height of gallery in pixels. Should reflect dimensions of largest image
+	imagearray: [
+		["http://i26.tinypic.com/11l7ls0.jpg", "", "", "Nothing beats relaxing next to the pool when the weather is hot."],
+		["http://i29.tinypic.com/xp3hns.jpg", "http://en.wikipedia.org/wiki/Cave", "_new", "Some day I'd like to explore these caves!"],
+		["http://i30.tinypic.com/531q3n.jpg"],
+		["http://i31.tinypic.com/119w28m.jpg", "", "", "What a beautiful scene with everything changing colors."] //<--no trailing comma after very last image element!
+	],
+	displaymode: {type:'auto', pause:2500, cycles:0, wraparound:false},
+	persist: false, //remember last viewed slide and recall within same session?
+	fadeduration: 500, //transition duration (milliseconds)
+	descreveal: "ondemand",
+	togglerid: ""
+})
+*/ 
+
+var mygallery2=new fadeSlideShow({
+	wrapperid: "fadeshow2", //ID of blank DIV on page to house Slideshow
+	//dimensions: [250, 180], //width/height of gallery in pixels. Should reflect dimensions of largest image
+	dimensions: [240, 150], //width/height of gallery in pixels. Should reflect dimensions of largest image
+	imagearray: [
+		["http://localhost:8080/GoFastServtlet/image/app2.jpg", "", "", "Nothing beats relaxing next to the pool when the weather is hot."],
+		["http://i29.tinypic.com/xp3hns.jpg", "http://en.wikipedia.org/wiki/Cave", "_new", "Some day I'd like to explore these caves!"],
+		["http://i30.tinypic.com/531q3n.jpg"],
+		["http://i31.tinypic.com/119w28m.jpg", "", "", "What a beautiful scene with everything changing colors."] //<--no trailing comma after very last image element!
+	],
+	displaymode: {type:'manual', pause:2500, cycles:0, wraparound:false},
+	persist: false, //remember last viewed slide and recall within same session?
+	fadeduration: 500, //transition duration (milliseconds)
+	descreveal: "always",
+	togglerid: "fadeshow2toggler"
+})
+
+</script>
 <link href="<%=request.getContextPath()%>/css/style.css"
 	rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/corner/justcorners.js"></script>
@@ -140,72 +189,43 @@ a.button:hover span {
 <table border="0" width="100%" cellspacing="2" cellpadding="0"
 	style="border: #003399 1px solid; background-color: #F3F8FF;">
 	<tr valign="top">
-		<td width="100%">
-		<table>
-		
+		<td>
+		<table border="0"> 
 		<tr>
-			<td align="left">  <button class="rounded"  onclick="goPage('items&brand=bb&direction=1')" ><span>Back</span></button> </td>
-				<td colspan=3 align=center><span class="topic">นางกวัก ร้านอาหาร</span></td>
-			<td align="right"> <button class="rounded"  onclick="goPage('map&brand=bb&direction=1')" ><span>Map</span></button></td>
-			</tr>
-			<tr>
-				<td rowspan=2><img
-			src="<%=request.getContextPath()%>/image/app1.jpg" width="200" height="140"></img>
+			<td align="left" width="100%" colspan="3">
+			<table width="100%">
+				<tr>
+					<td><button class="rounded"  onclick="goPage('items&brand=bb&direction=1')" ><span>Back</span></button>
+			</td>
+			<td align="center"><span class="topic">Nronguwanu Restaurant</span></td>
+			<td align="right"><button class="rounded"  onclick="goPage('map&brand=bb&direction=1')" ><span>Map</span></button></td>
+				</tr>
+			</table> 
+			</td>
+		</tr>
+		<tr>
+			<td valign="top" width="50%"> 
+<div id="fadeshow2"></div> 
+<div id="fadeshow2toggler" style="width:240px; text-align:center;">
+<a href="#" class="prev"><img src="http://i31.tinypic.com/302rn5v.png" style="border-width:0" /></a>
+<span class="status" style="margin:0 50px; font-weight:bold"></span>
+<a href="#" class="next"><img src="http://i30.tinypic.com/lzkux.png" style="border-width:0" /></a>
+</div>
 				</td>
-				<td colspan=3 align=center><span class="topic"></span></td>
-			</tr>
-			<tr>
-				<td width=80%  colspan=3 valign=top><span class="detail3"> คลองตันเหนือ วัฒนา กรุงเทพฯ <br/>027147938,<br/></span>
-				<span class="detail2"> ส่วนลด 10 %</span>
-				<span class="">เพียงนำคูปองไปแสดงที่ร้าน พิเศษสุดๆ เมื่อทานอาหารครบ 2,000 บาท รับฟรีพิซซ่า 1 ถาด (ราคา 330 บาท)</span>
+				<td  colspan="2" valign="top"  width="50%">
+				<span class="detail2"> Discount 10 %</span><br/>
+				<span class="detail3">Expires Mar 22, 2011
+Limit 2 per person. Limit 1 per visit. Not valid towards delivery. Tax and gratuity not included. Not valid with other offers</span><br/><br/><br/>
+				<span class="detail3">Klong Ton Nua, Wattana, Bangkok <br/>027147938,<br/></span>
 				</td>
-			</tr>
-			<%-- 	
-			<tr>
-				<td colspan=2 align=left><span class="detail2"> ส่วนลด 10 %</span></td>
-			</tr>
-			
-			<tr>
-				<td colspan=2><span class="">เพียงนำคูปองไปแสดงที่ร้าน พิเศษสุดๆ เมื่อทานอาหารครบ 2,000 บาท รับฟรีพิซซ่า 1 ถาด (ราคา 330 บาท)</span></td>
-			</tr>
- --%>
+			</tr>  
 		</table>
 		</td>
 		<td></td>
 	</tr>
-</table>
- 
-
-
-
-
-
-
+</table> 
 <table border="0" width="100%">
-	<tbody>
-		<tr valign="top">
-			<td align="center" colspan="3">
-
-			<table width="100%" border="1" cellspacing="0" cellpadding="0" align=center
-		style="border: #ffffff 0px solid; background-color: #F3F8FF;">
-				<tbody align="center">
-					<tr align="center"> 
-<td colspan=3 align=center>
-<a href="/GoFastServtlet/promotion?page=view_image_left&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/app1.jpg width=100 height="35"/> </a>
-<a href="/GoFastServtlet/promotion?page=view_image&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/app2.jpg width=100 height="35"/></a>
-<img src=/GoFastServtlet/image/app3.jpg width=100 height="35"/>
-</td>
-</tr>
-<tr>
-<td  align=left><a href="/GoFastServtlet/promotion?page=view_image&brand=bb&direction=1"><img border=0 src=/GoFastServtlet/image/leftarrow.png /></a> </td>
-<td align=center><img src=/GoFastServtlet/image/app3.jpg  width=250 height=110/></td>
-<td  align=right></td>
-</tr> 
-
-				</tbody>
-			</table>
-			</td>
-		</tr>
+	<tbody> 
 		<tr bgcolor=#C0C0C0>
 			<td width=100% colspan=3 height=30>
 			<span class=more>Term of use</span> |<span class=more>
