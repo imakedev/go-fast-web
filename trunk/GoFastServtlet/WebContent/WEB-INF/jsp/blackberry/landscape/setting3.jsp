@@ -26,11 +26,20 @@ width: 480px;
 padding:2px;
 text-align:left;
 font-weight:bold;
+background-image: url(image/glossyback2.gif);
+font: bold 14px Tahoma, sans-serif;
 /*/*/border:1px solid #000000;/* */
 }
 
 .submenu{
 margin-bottom: 0.5em;
+display: block;
+font: normal 13px Tahoma, sans-serif;
+color: black;
+text-decoration: none;
+padding: 2px 0;
+padding-left: 10px;
+text-align: left;
 }
 </style>
 

@@ -98,7 +98,7 @@ a.button:hover span {
 </script> 
 </head> 
 <body bgcolor="#ffffff">
-<table border="0" width="100%" bgcolor="#ffffff" align="center">
+<table border="0" width="100%" cellspacing="0" cellpadding="0" align="center" style="border: #003399 1px solid; background-color: #ffffff;">	
 <tr valign="top">
 	<td align="left">&nbsp;&nbsp;<button class="rounded"  onclick="goBack()" ><span>Back</span></button></td>
 </tr>
@@ -108,25 +108,7 @@ a.button:hover span {
 </td>
 </tr>
 </table>
-<table border="0" width="100%" bgcolor="#C0C0C0" align="center">
-<%-- 
-	<tr valign="top">
-		<td align="center">
-		<table width="100%" border="1" cellspacing="0" cellpadding="0"
-			align=center
-			style="border: #ffffff 0px solid; background-color: #F3F8FF;">
-			<tbody>
-				<tr> 
-						 <td  align="center">
-						  <button class="rounded"  onclick="goBack()" ><span>Back</span></button> 
-						  </td>
-				</tr>
-
-			</tbody>
-		</table>
-		</td>
-	</tr>
---%>
+<table border="0" width="100%" bgcolor="#C0C0C0" cellspacing="0" cellpadding="0" style="border: #003399 1px solid;" align="center"> 
 			<tr bgcolor=#C0C0C0>
 			<td width=100%  height="30"  bgcolor="#C0C0C0">
 			<span class=more>Term of use</span> |<span class=more>
