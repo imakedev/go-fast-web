@@ -2,14 +2,31 @@ package com.moogle.gofast.hibernate;
 
 import java.util.List;
 
+import com.moogle.gofast.dto.GoFastFilterDTO;
+import com.moogle.gofast.dto.SearchCriteria;
 import com.moogle.gofast.hibernate.domain.GoFastArea;
-import com.moogle.gofast.hibernate.domain.GoFastCat;
+import com.moogle.gofast.hibernate.domain.GoFastCate;
 import com.moogle.gofast.hibernate.domain.GoFastCustomer;
 import com.moogle.gofast.hibernate.domain.GoFastItem;
 import com.moogle.gofast.hibernate.domain.GoFastLocation;
 import com.moogle.gofast.utils.Paging;
 
 public interface GoFastService {
+	//List Catalogues
+	public List listCatalogues(Paging paging);
+
+	//List Items
+	public List listItems(Integer cateId, SearchCriteria criteria,Paging paging);
+	
+	//Get Items
+	public List getItems(Integer itemId);
+	
+	// List Filter
+	public GoFastFilterDTO getFilter(String key);
+	
+	//Set Filter
+	public void setFilter(String key,Integer settingId,String settingValue);
+	
 	// GO_FAST_LOCATION
 	public GoFastLocation findGoFastLocationById(Integer gflId);
 	public int updateGoFastLocation(GoFastLocation goFastLocation);
@@ -17,12 +34,12 @@ public interface GoFastService {
 	public void deleteGoFastLocation(GoFastLocation persistentInstance);
 	public List searchGoFastLocation(GoFastLocation persistentInstance,Paging paging);
 	
-	// GO_FAST_CAT
-	public GoFastCat findGoFastCatById(Integer gfcaId);
-	public int updateGoFastCat(GoFastCat goFastCat);
-	public Integer saveGoFastCat(GoFastCat transientInstance);
-	public void deleteGoFastCat(GoFastCat persistentInstance);
-	public List searchGoFastCat(GoFastCat persistentInstance,Paging paging);
+	// GO_FAST_CATE
+	public GoFastCate findGoFastCatById(Integer gfcaId);
+	public int updateGoFastCat(GoFastCate goFastCate);
+	public Integer saveGoFastCat(GoFastCate transientInstance);
+	public void deleteGoFastCat(GoFastCate persistentInstance);
+	public List searchGoFastCat(GoFastCate persistentInstance,Paging paging);
 	
 	// GO_FAST_AREA
 	public GoFastArea findGoFastAreaById(Integer gfaId);
