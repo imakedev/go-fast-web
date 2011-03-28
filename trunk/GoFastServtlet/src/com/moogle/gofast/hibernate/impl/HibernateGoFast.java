@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.hibernate.criterion.Expression;
@@ -15,9 +16,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.moogle.gofast.dto.GoFastFilterDTO;
+import com.moogle.gofast.dto.SearchCriteria;
 import com.moogle.gofast.hibernate.GoFastService;
 import com.moogle.gofast.hibernate.domain.GoFastArea;
-import com.moogle.gofast.hibernate.domain.GoFastCat;
+import com.moogle.gofast.hibernate.domain.GoFastCate;
 import com.moogle.gofast.hibernate.domain.GoFastCustomer;
 import com.moogle.gofast.hibernate.domain.GoFastItem;
 import com.moogle.gofast.hibernate.domain.GoFastLocation;
@@ -481,15 +484,15 @@ FoodOrder.java
 	}
 	
 	@Transactional(readOnly = true)
-	public GoFastCat findGoFastCatById(Integer gfcaId) {
+	public GoFastCate findGoFastCateById(Integer gfcaId) {
 		// TODO Auto-generated method stub
-		GoFastCat goFastCat = null;
+		GoFastCate goFastCate = null;
 		Object obj = null;
 		Session  session = sessionAnnotationFactory.getCurrentSession();
 		try {
-			obj = session.get("com.moogle.gofast.hibernate.domain.GoFastCat", gfcaId);
+			obj = session.get("com.moogle.gofast.hibernate.domain.GoFastCate", gfcaId);
 			if(obj!=null)
-				goFastCat = (GoFastCat)obj;
+				goFastCate = (GoFastCate)obj;
 		} catch (RuntimeException re) {
 			throw re;
 		} finally {
@@ -497,16 +500,16 @@ FoodOrder.java
 				session = null;
 			}
 		}
-		 return goFastCat;	
+		 return goFastCate;	
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
-	public int updateGoFastCat(GoFastCat goFastCat) {
+	public int updateGoFastCate(GoFastCate goFastCate) {
 		// TODO Auto-generated method stub
 		 Session  session = sessionAnnotationFactory.getCurrentSession();
 		 int canUpdate = 0;
 			try{
-				session.update(goFastCat);
+				session.update(goFastCate);
 				canUpdate =1;
 				}catch (Exception e) {
 					// TODO: handle exception
@@ -519,7 +522,7 @@ FoodOrder.java
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
-	public Integer saveGoFastCat(GoFastCat transientInstance) {
+	public Integer saveGoFastCate(GoFastCate transientInstance) {
 		// TODO Auto-generated method stub
 		Session  session = sessionAnnotationFactory.getCurrentSession();
 		Integer returnId  = null;
@@ -538,7 +541,7 @@ FoodOrder.java
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
-	public void deleteGoFastCat(GoFastCat persistentInstance) {
+	public void deleteGoFastCate(GoFastCate persistentInstance) {
 		// TODO Auto-generated method stub
 		Session  session = sessionAnnotationFactory.getCurrentSession();
 		try{
@@ -551,7 +554,7 @@ FoodOrder.java
 	}
 	
 	@Transactional(readOnly = true)
-	public List searchGoFastCat(GoFastCat persistentInstance,Paging paging){
+	public List searchGoFastCate(GoFastCate persistentInstance,Paging paging){
 		// TODO Auto-generated method stub
 		ArrayList transList = new ArrayList(); 
 		Session  session = sessionAnnotationFactory.getCurrentSession();
@@ -589,7 +592,7 @@ FoodOrder.java
 			}else
 				criteria.addOrder(Order.asc("gfcaId"));
 			// set pagging.
-			String size = String.valueOf(getGoFastCatSize(session, persistentInstance));
+			String size = String.valueOf(getGoFastCateSize(session, persistentInstance));
 		 
 			 criteria.setFirstResult(paging.getPageSize() * (paging.getPageNo() - 1));
 			 criteria.setMaxResults(paging.getPageSize()); 
@@ -962,7 +965,7 @@ FoodOrder.java
 			String gfiName = persistentInstance.getGfiName();
 			String gfiStatus = persistentInstance.getGfiStatus();
 			GoFastCustomer goFastCustomer = persistentInstance.getGoFastCustomer();
-			GoFastCat goFastCat = persistentInstance.getGoFastCat();
+			GoFastCate goFastCate = persistentInstance.getGoFastCate();
 		//	GoFastLocation goFastLocation = persistentInstance.getGoFastLocation();
 			GoFastArea goFastArea = persistentInstance.getGoFastArea();
 			
@@ -985,9 +988,9 @@ FoodOrder.java
 					&& goFastCustomer.getGfcId().intValue()!=0) {
 				criteria.add(Expression.eq("goFastCustomer", goFastCustomer));				
 			} 
-			if (goFastCat!=null&& goFastCat.getGfcaId()!=null
-					&& goFastCat.getGfcaId().intValue()!=0) {
-				criteria.add(Expression.eq("goFastCat", goFastCat));				
+			if (goFastCate!=null&& goFastCate.getGfcaId()!=null
+					&& goFastCate.getGfcaId().intValue()!=0) {
+				criteria.add(Expression.eq("goFastCate", goFastCate));				
 			}
 			/*if (goFastLocation!=null && goFastLocation.getGflId()!=null
 					&& goFastLocation.getGflId().intValue()!=0) {
@@ -1083,7 +1086,7 @@ FoodOrder.java
 		}
 	
 	}
-	private int getGoFastCatSize(Session session,GoFastCat persistentInstance) throws Exception {
+	private int getGoFastCateSize(Session session,GoFastCate persistentInstance) throws Exception {
 		 
 		try { 
 				Criteria criteria = (Criteria) session
@@ -1183,7 +1186,7 @@ FoodOrder.java
 				String gfiName = persistentInstance.getGfiName();
 				String gfiStatus = persistentInstance.getGfiStatus();
 				GoFastCustomer goFastCustomer = persistentInstance.getGoFastCustomer();
-				GoFastCat goFastCat = persistentInstance.getGoFastCat();
+				GoFastCate goFastCate = persistentInstance.getGoFastCate();
 				//GoFastLocation goFastLocation = persistentInstance.getGoFastLocation();
 				GoFastArea goFastArea = persistentInstance.getGoFastArea();
 				
@@ -1206,9 +1209,9 @@ FoodOrder.java
 						&& goFastCustomer.getGfcId().intValue()!=0) {
 					criteria.add(Expression.eq("goFastCustomer", goFastCustomer));				
 				} 
-				if (goFastCat!=null&& goFastCat.getGfcaId()!=null
-						&& goFastCat.getGfcaId().intValue()!=0) {
-					criteria.add(Expression.eq("goFastCat", goFastCat));				
+				if (goFastCate!=null&& goFastCate.getGfcaId()!=null
+						&& goFastCate.getGfcaId().intValue()!=0) {
+					criteria.add(Expression.eq("goFastCate", goFastCate));				
 				}
 				/*if (goFastLocation!=null && goFastLocation.getGflId()!=null
 						&& goFastLocation.getGflId().intValue()!=0) {
@@ -1228,5 +1231,61 @@ FoodOrder.java
 			throw e;
 		}
 	
+	}
+	@Transactional(readOnly = true)
+	public List listCatalogues(Paging paging) {
+		// TODO Auto-generated method stub
+		ArrayList transList = new ArrayList(); 
+		Session  session = sessionAnnotationFactory.getCurrentSession();
+		try { 
+			Query query = session.createQuery("from GoFastCate cate ");			
+			query.setFirstResult(paging.getPageSize() * (paging.getPageNo() - 1));
+			query.setMaxResults(paging.getPageSize());  
+			transList.add(query.list());
+			query = session.createQuery("select count(cate) from GoFastCate cate ");
+			transList.add(query.uniqueResult());  
+			return transList;
+		} catch (Exception re) {
+			re.printStackTrace();
+		}finally{
+			paging=null;
+		}
+		return null;
+	}
+	public List listItems(Integer cateId, SearchCriteria criteria, Paging paging) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public List getItems(Integer itemId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public GoFastFilterDTO getFilter(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void setFilter(String key, Integer settingId, String settingValue) {
+		// TODO Auto-generated method stub
+		
+	}
+	public GoFastCate findGoFastCatById(Integer gfcaId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public int updateGoFastCat(GoFastCate goFastCate) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	public Integer saveGoFastCat(GoFastCate transientInstance) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void deleteGoFastCat(GoFastCate persistentInstance) {
+		// TODO Auto-generated method stub
+		
+	}
+	public List searchGoFastCat(GoFastCate persistentInstance, Paging paging) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
