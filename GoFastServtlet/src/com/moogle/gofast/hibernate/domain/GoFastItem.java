@@ -38,6 +38,8 @@ public class GoFastItem implements Serializable {
 	@Column(name="GFI_STATUS")
 	private String gfiStatus;
 
+	@Column(name="GFI_PRIORITY")
+	private Integer gfiPriority;
 	//bi-directional many-to-one association to GoFastCustomer
     @ManyToOne
 	@JoinColumn(name="GFC_ID")
@@ -46,7 +48,7 @@ public class GoFastItem implements Serializable {
 	//bi-directional many-to-one association to GoFastCat
     @ManyToOne
 	@JoinColumn(name="GFCA_ID")
-	private GoFastCat goFastCat;
+	private GoFastCate goFastCate;
 
 	/*//bi-directional many-to-one association to GoFastLocation
     @ManyToOne
@@ -115,12 +117,12 @@ public class GoFastItem implements Serializable {
 		this.goFastCustomer = goFastCustomer;
 	}
 	
-	public GoFastCat getGoFastCat() {
-		return this.goFastCat;
+	public GoFastCate getGoFastCate() {
+		return this.goFastCate;
 	}
 
-	public void setGoFastCat(GoFastCat goFastCat) {
-		this.goFastCat = goFastCat;
+	public void setGoFastCate(GoFastCate goFastCate) {
+		this.goFastCate = goFastCate;
 	}
 	
 	/*public GoFastLocation getGoFastLocation() {
@@ -137,6 +139,18 @@ public class GoFastItem implements Serializable {
 
 	public void setGoFastArea(GoFastArea goFastArea) {
 		this.goFastArea = goFastArea;
+	}
+
+
+
+	public Integer getGfiPriority() {
+		return gfiPriority;
+	}
+
+
+
+	public void setGfiPriority(Integer gfiPriority) {
+		this.gfiPriority = gfiPriority;
 	}
 	
 }

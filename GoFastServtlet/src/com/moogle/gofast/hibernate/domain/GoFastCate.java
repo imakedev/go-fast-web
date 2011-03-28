@@ -11,12 +11,12 @@ import javax.persistence.Table;
 
 
 /**
- * The persistent class for the GO_FAST_CAT database table.
+ * The persistent class for the GO_FAST_CATE database table.
  * 
  */
 @Entity
-@Table(name="GO_FAST_CAT")
-public class GoFastCat implements Serializable {
+@Table(name="GO_FAST_CATE")
+public class GoFastCate implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -33,32 +33,26 @@ public class GoFastCat implements Serializable {
 	@Column(name="GFCA_ICON_PATH")
 	private String gfcaIconPath;
 
-	@Column(name="GFCA_NAME")
-	private String gfcaName;
-	
 	@Column(name="GFCA_LEVEL")
 	private Integer gfcaLevel;
-	
+
+	@Column(name="GFCA_NAME")
+	private String gfcaName;
+
 	@Column(name="GFCA_PARENT")
 	private Integer gfcaParent;
+ 
 
-	/*//bi-directional many-to-one association to GoFastItem
-	@OneToMany(mappedBy="goFastCat")
-	private Set<GoFastItem> goFastItems;*/
-
-    public GoFastCat() {
+    public GoFastCate() {
     }
 
-	 
 	public Integer getGfcaId() {
-		return gfcaId;
+		return this.gfcaId;
 	}
-
 
 	public void setGfcaId(Integer gfcaId) {
 		this.gfcaId = gfcaId;
 	}
-
 
 	public String getGfcaDetail() {
 		return this.gfcaDetail;
@@ -84,6 +78,14 @@ public class GoFastCat implements Serializable {
 		this.gfcaIconPath = gfcaIconPath;
 	}
 
+	public Integer getGfcaLevel() {
+		return this.gfcaLevel;
+	}
+
+	public void setGfcaLevel(Integer gfcaLevel) {
+		this.gfcaLevel = gfcaLevel;
+	}
+
 	public String getGfcaName() {
 		return this.gfcaName;
 	}
@@ -92,26 +94,13 @@ public class GoFastCat implements Serializable {
 		this.gfcaName = gfcaName;
 	}
 
-
-	public Integer getGfcaLevel() {
-		return gfcaLevel;
-	}
-
-
-	public void setGfcaLevel(Integer gfcaLevel) {
-		this.gfcaLevel = gfcaLevel;
-	}
-
-
 	public Integer getGfcaParent() {
-		return gfcaParent;
+		return this.gfcaParent;
 	}
-
 
 	public void setGfcaParent(Integer gfcaParent) {
 		this.gfcaParent = gfcaParent;
 	}
-
-	 
+ 
 	
 }
