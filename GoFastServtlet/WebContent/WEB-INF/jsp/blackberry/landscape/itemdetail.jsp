@@ -14,8 +14,87 @@
 ***********************************************/
 
 </script>
-
+<script type="text/javascript"
+        src='<%= request.getContextPath()%>/dwr/interface/GoFastAjax.js'> 
+</script>
+<script type="text/javascript"
+        src='<%= request.getContextPath() %>/dwr/engine.js'> 
+</script>
+<script type="text/javascript"
+        src='<%= request.getContextPath() %>/dwr/util.js'>
+</script>
 <script type="text/javascript">
+var cateId;	
+var gfiId = '<%=request.getParameter("gfiId")%>';
+var _path='<%=request.getContextPath()%>';
+//alert(_path)
+function getItems(gfiId){
+	  GoFastAjax.getItems(gfiId,{
+	                        callback:function(dataFromServer){
+	                                if(dataFromServer!=null ){ 
+	                                	var nameDiv = document.getElementById("nameDiv");
+	                                	var discountDiv = document.getElementById("discountDiv");
+	                                	var detailDiv = document.getElementById("detailDiv");
+	    								cateId = dataFromServer.goFastCate.gfcaId;                         	 
+	                                	nameDiv.innerHTML=dataFromServer.gfiName;
+	                                	discountDiv.innerHTML=dataFromServer.gfiDiscount;
+	                                	detailDiv.innerHTML=dataFromServer.gfiDetail;
+	                                	var goFastItemImages=dataFromServer.goFastItemImages;
+	                                	if(goFastItemImages!=null && goFastItemImages.length>0){
+	                                		var size=goFastItemImages.length;
+	                                		var images =new Array(size);
+	                                		/*
+	                                		alert(size)
+	                                		
+	                                		var imagesTest=new Array(4);
+	                                		var imagesElement1=new Array(1);
+	                                		var imagesElement2=new Array(1);
+	                                		var imagesElement3=new Array(1);
+	                                		var imagesElement4=new Array(1);
+	                                		var elementTest=new Array(1);
+	                                		elementTest[0]="http://i29.tinypic.com/xp3hns.jpg";
+	                                		var elementTest2=new Array(1);
+	                                		elementTest2[0]="http://i30.tinypic.com/531q3n.jpg";
+	                                		var elementTest3=new Array(1);
+	                                		elementTest3[0]="http://i31.tinypic.com/119w28m.jpg";
+	                                		var elementTest4=new Array(1);
+	                                		elementTest4[0]="http://i30.tinypic.com/531q3n.jpg";
+	                                		imagesElement1[0]=elementTest;
+	                                		imagesElement2[0]=elementTest2;
+	                                		imagesElement3[0]=elementTest3;
+	                                		imagesElement4[0]=elementTest4;
+	                                		imagesTest[0]=imagesElement1;
+	                                		imagesTest[1]=imagesElement2;
+	                                		imagesTest[2]=imagesElement3;
+	                                		imagesTest[3]=imagesElement4;
+	                                		*/
+	                                		for(var i=0;i < size;i++){
+	                                			//alert(i);
+	                                			var elementItem = new Array(1);
+	                                			var element = new Array(1);
+	                                			//elementItem[0]="http://localhost:8081"+goFastItemImages[i].gfiiPath;//"http://i29.tinypic.com/xp3hns.jpg";
+	                                			elementItem[0]=_path+goFastItemImages[i].gfiiPath;
+	                                			element[0]=elementItem;
+	                                			images[i]=element;
+	                                			//alert(images[i]);
+	                                		}
+	                                		var mygallery2=new fadeSlideShow({
+	                                			wrapperid: "fadeshow2", //ID of blank DIV on page to house Slideshow
+	                                			//dimensions: [250, 180], //width/height of gallery in pixels. Should reflect dimensions of largest image
+	                                			dimensions: [240, 150], //width/height of gallery in pixels. Should reflect dimensions of largest image
+	                                			imagearray: images, 
+	                                			displaymode: {type:'manual', pause:2500, cycles:0, wraparound:false},
+	                                			persist: false, //remember last viewed slide and recall within same session?
+	                                			fadeduration: 500, //transition duration (milliseconds)
+	                                			descreveal: "always",
+	                                			togglerid: "fadeshow2toggler"
+	                                		});
+	                                	} 
+	                                }
+	                        }
+	 });
+	 
+	}
 /*
 var mygallery=new fadeSlideShow({
 	wrapperid: "fadeshow1", //ID of blank DIV on page to house Slideshow
@@ -34,22 +113,7 @@ var mygallery=new fadeSlideShow({
 })
 */ 
 
-var mygallery2=new fadeSlideShow({
-	wrapperid: "fadeshow2", //ID of blank DIV on page to house Slideshow
-	//dimensions: [250, 180], //width/height of gallery in pixels. Should reflect dimensions of largest image
-	dimensions: [240, 150], //width/height of gallery in pixels. Should reflect dimensions of largest image
-	imagearray: [
-		["http://localhost:8080/GoFastServtlet/image/app2.jpg", "", "", "Nothing beats relaxing next to the pool when the weather is hot."],
-		["http://i29.tinypic.com/xp3hns.jpg", "http://en.wikipedia.org/wiki/Cave", "_new", "Some day I'd like to explore these caves!"],
-		["http://i30.tinypic.com/531q3n.jpg"],
-		["http://i31.tinypic.com/119w28m.jpg", "", "", "What a beautiful scene with everything changing colors."] //<--no trailing comma after very last image element!
-	],
-	displaymode: {type:'manual', pause:2500, cycles:0, wraparound:false},
-	persist: false, //remember last viewed slide and recall within same session?
-	fadeduration: 500, //transition duration (milliseconds)
-	descreveal: "always",
-	togglerid: "fadeshow2toggler"
-})
+
 
 </script>
 <link href="<%=request.getContextPath()%>/css/style.css"
@@ -166,7 +230,7 @@ a.button:hover span {
  
 </style>
 <script>
-	var _path='<%=request.getContextPath()%>';
+	
 	//alert(_path)
 	function goBack() {
 		//	alert("goPage")
@@ -174,7 +238,7 @@ a.button:hover span {
 	}
 	function goPage(_page) {
 		//alert("goPage")
-		window.location.href = _path + "/promotion?page=" + _page;
+		window.location.href = _path + "/promotion?page=" + _page+"&lat=1&long=2&key=99&cateId="+cateId+"&gfiId="+gfiId;
 	} 
 </script>
 
@@ -194,10 +258,10 @@ a.button:hover span {
 		<tr>
 			<td align="left" width="100%" colspan="3">
 			<table width="100%">
-				<tr>
+				<tr>				
 					<td><button class="rounded"  onclick="goPage('items&brand=bb&direction=1')" ><span>Back</span></button>
 			</td>
-			<td align="center"><span class="topic">Nronguwanu Restaurant</span></td>
+			<td align="center"><span class="topic" id="nameDiv">Nronguwanu Restaurant</span></td>
 			<td align="right"><button class="rounded"  onclick="goPage('map&brand=bb&direction=1')" ><span>Map</span></button></td>
 				</tr>
 			</table> 
@@ -213,10 +277,10 @@ a.button:hover span {
 </div>
 				</td>
 				<td  colspan="2" valign="top"  width="50%">
-				<span class="detail2"> Discount 10 %</span><br/>
-				<span class="detail3">Expires Mar 22, 2011
-Limit 2 per person. Limit 1 per visit. Not valid towards delivery. Tax and gratuity not included. Not valid with other offers</span><br/><br/><br/>
-				<span class="detail3">Klong Ton Nua, Wattana, Bangkok <br/>027147938,<br/></span>
+				<span class="detail2" id="discountDiv"> Discount 10 %</span><br/>
+				<span class="detail3" id="detailDiv">Expires Mar 22, 2011
+Limit 2 per person. Limit 1 per visit. Not valid towards delivery. Tax and gratuity not included. Not valid with other offers<br/><br/><br/>
+				Klong Ton Nua, Wattana, Bangkok <br/>027147938,<br/></span>
 				</td>
 			</tr>  
 		</table>
@@ -235,7 +299,10 @@ Help</span> |<span class=more> Contact Us</span> <br/>
 
 	</tbody>
 </table>
+<script>
 
+getItems(gfiId)
+</script>
 
 </body>
 </html>

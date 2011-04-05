@@ -85,11 +85,13 @@ a.button:hover span {
 }
 </style>
 <script>
+	var gfiId = '<%=request.getParameter("gfiId")%>';
 	var _path='<%=request.getContextPath()%>';
 	function goBack() {
 		//	alert("goPage")
 		//window.location.href = _path+"/listitems";
-		window.location.href = _path+"/promotion?page=itemdetail&brand=bb&direction=1";
+		window.location.href = _path+"/promotion?page=itemdetail&brand=bb&direction=1&gfiId="+gfiId;
+		//brand=bb&direction=1&page=itemdetail&gfiId=1
 	}
 	function goPage(_page) {
 		//alert("goPage")
@@ -117,5 +119,8 @@ Help</span> |<span class=more> Contact Us</span> <br/>
 		</tr>
  
 </table>
+<script>
+
+</script>
 </body>
 </html>
