@@ -60,10 +60,14 @@
    		 <property name="annotatedClasses">
      		<list>
      			<value>com.moogle.gofast.hibernate.domain.GoFastArea</value>
-				<value>com.moogle.gofast.hibernate.domain.GoFastCat</value>
+				<value>com.moogle.gofast.hibernate.domain.GoFastCate</value>
 				<value>com.moogle.gofast.hibernate.domain.GoFastCustomer</value>
 				<value>com.moogle.gofast.hibernate.domain.GoFastItem</value>
-				<value>com.moogle.gofast.hibernate.domain.GoFastLocation</value> 
+				<value>com.moogle.gofast.hibernate.domain.GoFastItemImage</value>
+				<value>com.moogle.gofast.hibernate.domain.GoFastLocation</value>
+				<value>com.moogle.gofast.hibernate.domain.GoFastSetting</value> 
+				<value>com.moogle.gofast.hibernate.domain.GoFastSettingCate</value>
+				<value>com.moogle.gofast.hibernate.domain.GoFastSettingTran</value>
 			</list>
    		</property>
    		<property name="eventListeners">
