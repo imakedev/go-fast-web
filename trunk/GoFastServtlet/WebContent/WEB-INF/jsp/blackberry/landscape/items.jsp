@@ -155,13 +155,106 @@ a.button:hover span {
 	top:1px;
 }
 </style>
+<script type="text/javascript"
+        src='<%= request.getContextPath()%>/dwr/interface/GoFastAjax.js'> 
+</script>
+<script type="text/javascript"
+        src='<%= request.getContextPath() %>/dwr/engine.js'> 
+</script>
+<script type="text/javascript"
+        src='<%= request.getContextPath() %>/dwr/util.js'>
+</script>
 <script>
+var lat_value = '<%=request.getParameter("lat")%>';
+var long_value = '<%=request.getParameter("long")%>';
+var key = '<%=request.getParameter("key")%>';
+var cateId = '<%=request.getParameter("cateId")%>';
+var searchCriteria={
+			 key:key,
+			 lat_vale:lat_value,
+			 long_value:long_value
+	 };
+	 
+	var pageNo=1;
+	var cateName="";
+	var oldContent="" ;// oldContent+content;
 	var _path='<%=request.getContextPath()%>';
-
+	function listItems(cateId,searchCriteria){
+	 var page={
+			 pageNo:pageNo,
+			 pageSize:2 
+	 };
+	
+ //alert(page)
+ var str=""; 
+	 //alert(page)
+//	 var str="<table border=\"0\" width=\"100%\" cellspacing=\"2\" cellpadding=\"0\">"; 	 
+		
+	 GoFastAjax.listItems(cateId,searchCriteria,page,{
+	                        callback:function(dataFromServer){
+	                                if(dataFromServer!=null && dataFromServer.length>0){
+									  var dataList = dataFromServer[0];
+									  if(dataList!=null && dataList.length>0){
+									  var size = dataList.length; 
+	                                	for(var i=0; i<size;i++){
+	                                		//alert(i)
+	                                		str=str+"<tr valign=\"top\" onclick=\"goPage('itemdetail','"+dataList[i].gfiId+"')\">"+
+	                            					"	<td width=\"115\" align=\"center\">"+
+	                            					"	<img src=\""+_path+""+dataList[i].goFastItemImages[0].gfiiPath+"\""+
+	                        				 		"		width=\"110px\"></img></td> "+
+	                        						"	<td align=\"left\"><span class=\"topic\">"+dataList[i].gfiName+"</span> <br />"+
+	                        						"		<span class=\"detail2\">"+dataList[i].gfiDiscount+"<br />"+
+	                        						"		</span> <span class=\"detail\">"+dataList[i].gfiDetail+"</span>"+
+	                        						"	</td>"+
+	                        						"</tr>"+
+	                        						"<tr>"+
+	                        						"	<td colspan=\"3\">"+
+	                        						"		<hr style=\"color: #000099; width: 98%;\" />"+
+	                        						"	</td>"+
+	                        						"</tr>";	
+	                        						cateName=dataList[i].goFastCate.gfcaName;
+	                    					//alert(str)
+	                                	} 
+									  }
+	                                	//str=str+"</table>";
+	                                	// alert(str)
+	                                	// var contentDiv = document.getElementById("contentDiv");
+	                                	// contentDiv.innerHTML=str;
+	                                	 document.getElementById("cateNameElement").innerHTML =cateName
+	                                	 
+	                                	 oldContent = oldContent+str;
+	                                	 var contentDiv = document.getElementById("contentDiv");
+	                                	 var moreDiv = document.getElementById("moreDiv");
+	                                	 var moreImgDiv = document.getElementById("moreImgDiv");   
+	                             		contentDiv.innerHTML =  "<table border=\"0\" width=\"100%\" cellspacing=\"2\" cellpadding=\"0\">"+oldContent+"</table>";
+	                             		moreDiv.innerHTML='More...';
+	                             		moreImgDiv.innerHTML="";
+	                             		var moreTd = document.getElementById("moreTd"); 
+	                             		moreTd.style.backgroundColor="#C0C0C0";
+	                             		pageNo++;
+	                                }
+	                        }
+	 });
+	 
+	}
 	//alert(_path)
-	function goPage(_page) {
+	function loadItems(){
+		listItems(cateId,searchCriteria);
+	}
+	function loadingMore(){
+		var moreImgDiv = document.getElementById("moreImgDiv"); 
+		var moreDiv = document.getElementById("moreDiv");
+		var moreTd = document.getElementById("moreTd"); 
+		moreTd.style.backgroundColor="#ffffff";
+		moreImgDiv.innerHTML="<img src=\""+_path+"/image/loading_icon2.gif\"></img>";
+		//moreImgDiv.innerHTML="<img src=\""+_path+"/image/icon_loading.gif\"></img>";		
+		moreDiv.innerHTML="";
+		//setTimeout("feedMore()",3000);
+		setTimeout("loadItems()",3000);
+	}
+	function goPage(_page,gfiId) {
 		//alert("goPage")
-		window.location.href = _path + "/promotion?brand=bb&direction=1&page=" + _page;
+		window.location.href = _path + "/promotion?brand=bb&direction=1&page=" + _page+"&gfiId="+gfiId;
 	}
 
 	function goBack() {
@@ -178,19 +271,20 @@ a.button:hover span {
 <table border=0 width=100% height=50 style="border: #003399 1px solid; background-color: #F3F8FF;">
 	<tr> 
 		<td align=left>
-		<!-- 
-			<a  onclick="goBack()" href="#" class="myButton">Back</a>
-	     -->
 			<button class="rounded" onclick=goBack();><span>Back</span></button>
 		  </td>
-		<td align=left width=60% class=header-topic>Restraurant</td>
+		<td align=left width=60% class=header-topic><div id="cateNameElement"></div></td>
 	</tr>  
 </table>
-
 <table border="0" width="100%" cellspacing="2" cellpadding="0">
+  <tr>
+  	<td>
+  	<div id="contentDiv">
+  	<%--  
+   <table border="0" width="100%" cellspacing="2" cellpadding="0">
 	<tr valign="top" onclick="goPage('itemdetail')">
 		<td width="115" align="center"><img
-			src="<%=request.getContextPath()%>/image/app1.jpg"
+			src="/image/app1.jpg"
 			 width=110px></img></td>
 		<td align="left"><span class="topic">นาทอง สวนอาหาร</span> <br />
 		<span class="detail2">ส่วนลด 10%<br />
@@ -204,7 +298,7 @@ a.button:hover span {
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
 		<td width="115" align="center"><img
-			src="<%=request.getContextPath()%>/image/app2.jpg"
+			src="/image/app2.jpg"
 			 width=110px /></td>
 		<td align="left"><span class="topic">นางกวัก ร้านอาหาร</span> <br />
 		<span class="detail2">ส่วนลด 10 % สำหรับค่าอาหาร<br />
@@ -218,14 +312,11 @@ a.button:hover span {
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
 		<td width="115" align="center"><img
-			src="<%=request.getContextPath()%>/image/app3.jpg"
+			src="/image/app3.jpg"
 			 width=110px /></td>
 		<td align="left"><span class="topic">De Facto View </span> <br />
 		<span class="detail2">ส่วนลด 5% <br />
 		</span> <span class=detail> ซื้อสินค้าครบ 300 บาท แถมฟรี เค้ก 1 ชิ้น</span></td>
-		<%--  
-		<td width="75" height="75" align="center"><img  width="50" height="50" src="<%=request.getContextPath()%>/image/10_percent_discount3.jpg"></img></td>
-		 --%>
 	</tr>
 	<tr>
 		<td colspan="3">
@@ -234,15 +325,12 @@ a.button:hover span {
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
 		<td width="115" align="center"><img
-			src="<%=request.getContextPath()%>/image/app4.jpg"
+			src="/image/app4.jpg"
 			 width=110px /></td>
 		<td align="left"><span class="topic">เรือนสำราญรีสอร์ท</span> <br />
 		<span class="detail2">ส่วนลด 25 %<br />
 		</span> <span class=detail> ใช้ได้เฉพาะ วันอาทิตย์-พฤหัสบดี
 		(ตั้งแต่เดือน ก.พ. 54- ต.ค. 54)</span></td>
-		<%--  
-		<td width="75" height="75" align="center"><img  width="50" height="50" src="<%=request.getContextPath()%>/image/10_percent_discount4.png"></img></td>
-		 --%>
 	</tr>
 	<tr>
 		<td colspan="3">
@@ -251,15 +339,12 @@ a.button:hover span {
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
 		<td width="115" align="center"><img
-			src="<%=request.getContextPath()%>/image/app5.jpg"
+			src="/image/app5.jpg"
 			 width=110px /></td>
 		<td align="left"><span class="topic">กินเส้น ร้านอาหาร</span> <br />
 		<span class="detail2">ส่วนลด 10%<br />
 		</span> <span class=detail> เฉพาะค่าอาหาร
 		เมื่อแสดงคูปองแถมฟรีเปาะเปี๊ยะทอด 1 จาน</span></td>
-		<%--  
-		<td width="75" height="75" align="center"><img  width="50" height="50" src="<%=request.getContextPath()%>/image/10_percent_discount5.jpg"></img></td>
-		 --%>
 	</tr>
 	<tr>
 		<td colspan="3">
@@ -268,42 +353,42 @@ a.button:hover span {
 	</tr>
 	<tr valign="top" onclick="goPage('itemdetail')">
 		<td width="115" align="center"><img
-			src="<%=request.getContextPath()%>/image/app6.jpg"
+			src="/image/app6.jpg"
 			 width=110px /></td>
 		<td align="left"><span class="topic">Lee Cafe @ Number 1</span> <br />
 		<span class="detail2">ส่วนลด 10 % สำหรับค่าอาหาร<br />
 		</span> <span class=detail> โปรโมชั่นช่วงเทศกาลปีใหม่ Set 5 ท่าน
 		ราคาเพียง 1,102 บาท และ Set 10 ท่าน ราคาเพียง 2,011 บาท</span></td>
-		<%-- 
-		<td width="75" height="75" align="center"><img  width="50" height="50" src="<%=request.getContextPath()%>/image/20_percent_discount6.jpg"></img></td>
-		 --%>
 	</tr>
 	<tr>
 		<td colspan="2">
 		<hr style="color: #000099; width: 98%;" />
 		</td>
 	</tr>
-	<%-- 
-	<tr valign="top">
-		<td height="25" colspan="2" align="right"><span class="more">More...</span></td>
-	</tr>
-	--%>
 	
+</table>
+--%>
+</div>
+</td>
+</tr>
 	<tr>
 		<td valign=middle height="30" colspan="3" align="left" bgcolor=#FFFFFF><span
 			class="detail3" valign=center>Distance : 5-10 Km. , Area : Thong lor</span></td>
-	</tr>
-	
+	</tr>	
 	<tr>
-		<td valign=middle height="30" colspan="3" align="left" bgcolor=#C0C0C0><span
-			class="more" valign=center>More...</span></td>
+		<td id="moreTd" valign=middle height="30" colspan="3" align="left" bgcolor=#C0C0C0><span id="moreDiv"
+			class="more" valign=center  onclick="loadingMore();">More...</span><div id="moreImgDiv" align="center"></div></td>
 	</tr>
 	<tr bgcolor=#C0C0C0>
 		<td width=100% colspan=3 height=40 valign=bottom><span class=more>Term
 		of use</span> |<span class=more> Help</span> |<span class=more>
-		Contact Us</span> <br> <span class=copyright>copyright 2011</span>
+		Contact Us</span> <br/> <span class=copyright>copyright 2011</span>
 		</td>
 	</tr>
 </table>
+<script>
+
+listItems(cateId,searchCriteria)
+</script>
 </body>
 </html>

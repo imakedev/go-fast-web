@@ -102,8 +102,67 @@ span {
 	top:1px;
 }
 </style>
+<script type="text/javascript"
+        src='<%= request.getContextPath()%>/dwr/interface/GoFastAjax.js'> 
+</script>
+<script type="text/javascript"
+        src='<%= request.getContextPath() %>/dwr/engine.js'> 
+</script>
+<script type="text/javascript"
+        src='<%= request.getContextPath() %>/dwr/util.js'>
+</script>
 <script>
-	var _path='<%=request.getContextPath()%>';
+var _path='<%=request.getContextPath()%>';
+var oldContent="" ;// oldContent+content;
+var pageNo=1;
+function getCatalogues(){
+ var page={
+		 pageNo:pageNo,
+		 pageSize:2
+ };
+ //alert(page)
+ var str=""; 
+		
+ GoFastAjax.listCatalogues(page,{
+                        callback:function(dataFromServer){
+                                if(dataFromServer!=null && dataFromServer.length>0){
+								  var dataList = dataFromServer[0];
+								  var size = dataList.length; 
+                                	for(var i=0; i<size;i++){
+                                		//alert(i)
+                                		str=str+"<tr valign=\"top\" onclick=\"goPage('items','"+dataList[i].gfcaId+"')\">"+
+                            			"	<td width=\"15%\" align=\"center\" height=\"50px\">"+
+                            			"	<img src=\""+_path+""+dataList[i].gfcaIconPath+"\""+
+                    			 		"		width=\"50px\" height=\"50px\"></img></td>"+
+                    					"	<td align=\"left\"><span class=\"topic\">"+dataList[i].gfcaName+"</span> <br />"+
+                    		  			"		<span class=\"detail\">"+dataList[i].gfcaDetail+"</span></td>"+
+                    					"	<td width=\"10%\" align=\"right\" valign=middle><img src=\""+_path+"/image/next.png\" width=\"20\" height=\"20\"/></td>"+
+                    					"</tr>"+
+                    					"<tr>"+
+                    					"	<td colspan=\"3\">"+
+                    					"		<hr style=\"color: #000099; width: 98%;\" />"+
+                    					"	</td>"+
+                    					"</tr>";	
+                    					//alert(str)
+                                	} 
+                                	oldContent = oldContent+str;
+                                	 var contentDiv = document.getElementById("contentDiv");
+                                	 var moreDiv = document.getElementById("moreDiv");
+                                	 var moreImgDiv = document.getElementById("moreImgDiv");   
+                             		contentDiv.innerHTML =  "<table border=\"0\" width=\"100%\" cellspacing=\"2\" cellpadding=\"0\">"+oldContent+"</table>";
+                             		moreDiv.innerHTML='More...';
+                             		moreImgDiv.innerHTML="";
+                             		var moreTd = document.getElementById("moreTd"); 
+                             		moreTd.style.backgroundColor="#C0C0C0";
+                             		pageNo++;
+                                }
+                        }
+ });
+ 
+}
+</script>
+<script>
+/*
 	var oldContent =//"<table border=\"0\" width=\"100%\" cellspacing=\"2\" cellpadding=\"0\">"+
 					"	<tr valign=\"top\" onclick=\"goPage('items')\">"+
 					"		<td width=\"15%\" align=\"center\" height=\"50px\"><img"+
@@ -185,17 +244,17 @@ span {
 					"	</tr>";					 
 		//"</table>";
 	var indexMore=0;
+	*/
 	function loadingMore(){
 		var moreImgDiv = document.getElementById("moreImgDiv"); 
 		var moreDiv = document.getElementById("moreDiv");
 		var moreTd = document.getElementById("moreTd"); 
 		moreTd.style.backgroundColor="#ffffff";
 		moreImgDiv.innerHTML="<img src=\""+_path+"/image/loading_icon2.gif\"></img>";
-		//moreImgDiv.innerHTML="<img src=\""+_path+"/image/icon_loading.gif\"></img>";
-		
+		//moreImgDiv.innerHTML="<img src=\""+_path+"/image/icon_loading.gif\"></img>";		
 		moreDiv.innerHTML="";
-		setTimeout("feedMore()",3000);
-		//setMoreTd("setMoreTd()",3000);
+		//setTimeout("feedMore()",3000);
+		setTimeout("getCatalogues()",3000);
 	}
 	function setMoreTd(){
 		alert("into set more td")
@@ -203,12 +262,11 @@ span {
 		alert(moreTd.style.backgroundColor);
 		moreTd.style.backgroundColor="#ffffff";
 	}
+	/*
 	function feedMore() {
 		var moreDiv = document.getElementById("moreDiv"); 
 		var contentDiv = document.getElementById("contentDiv");
-		var moreImgDiv = document.getElementById("moreImgDiv");  
-		//var oldStr =;
-		//alert("content old=" + oldStr);
+		var moreImgDiv = document.getElementById("moreImgDiv");   
 		var content= "";
 		var index = indexMore;
 		for ( var i = index; i < index+7; i++) {
@@ -293,17 +351,17 @@ span {
 			indexMore++;
 		}
 		oldContent = oldContent+content;
-		//alert(oldStr);
 		contentDiv.innerHTML =  "<table border=\"0\" width=\"100%\" cellspacing=\"2\" cellpadding=\"0\">"+oldContent+"</table>";
 		moreDiv.innerHTML='More...';
 		moreImgDiv.innerHTML="";
 		var moreTd = document.getElementById("moreTd"); 
 		moreTd.style.backgroundColor="#C0C0C0";
 	}
+	*/
 	//alert(_path)
-	function goPage(_page) {
+	function goPage(_page,_cateId) {
 		//alert("goPage")
-		window.location.href = _path + "/promotion?brand=bb&direction=1&page=" + _page;
+		window.location.href = _path + "/promotion?brand=bb&direction=1&page=" + _page+"&cateId="+_cateId+"&lat=1&long=2&key=99";
 	}
 
 	function goBack() {
@@ -320,10 +378,11 @@ span {
   <tr>
   	<td>
   	<div id="contentDiv">
-  		<table border="0" width="100%" cellspacing="2" cellpadding="0">
-  			<tr valign="top" onclick="goPage('items')">
+  	<%--
+  	 <table border="0" width="100%" cellspacing="2" cellpadding="0">
+  		<tr valign="top" onclick="goPage('items')">
 		<td width="15%" align="center" height="50px"><img
-			src="<%=request.getContextPath()%>/image/category/restaurant-icon.png"
+			src="/image/category/restaurant-icon.png"
 			 width=50px height="50px"></img></td>
 		<td align="left"><span class="topic">Restraurant</span> <br />
 		  <span class=detail>ร้านอาหาร</span></td>
@@ -336,7 +395,7 @@ span {
 	</tr>
 	<tr valign="top" onclick="goPage('items')">
 		<td width="15%" align="center" height="50px"><img
-			src="<%=request.getContextPath()%>/image/category/sport.jpg"
+			src="/image/category/sport.jpg"
 			 width=50px height="50px"/></td>
 		<td align="left"><span class="topic">Sport</span> <br /> 
 		<span class=detail>ร้านอุปกรณ์กีฬา, คลับ, บัตรเข้าชมกีฬา</span></td>
@@ -349,7 +408,7 @@ span {
 	</tr>
 	<tr valign="top" onclick="goPage('items')">
 		<td width="15%" align="center" height="50px"><img
-			src="<%=request.getContextPath()%>/image/category/house-icon.png"
+			src="/image/category/house-icon.png"
 			 width=50px height="50px"/></td>
 		<td align="left"><span class="topic">House</span> <br />
 		 <span class=detail>อุปกรณ์บ้าน, บ้าน ...</span></td>
@@ -363,7 +422,7 @@ span {
 	</tr>
 	<tr valign="top" onclick="goPage('items')">
 		<td width="15%" align="center" height="50px"><img
-			src="<%=request.getContextPath()%>/image/category/dog-icon.png"
+			src="/image/category/dog-icon.png"
 			 width=50px height="50px"/></td>
 		<td align="left"><span class="topic">Pet</span> <br />
 		  <span class=detail>สัตว์เลี้ยง, บริการสัตว์เลี้ยง ...</span></td>
@@ -376,7 +435,7 @@ span {
 	</tr>
 	<tr valign="top" onclick="goPage('items')">
 		<td width="15%" align="center" height="50px"><img
-			src="<%=request.getContextPath()%>/image/category/hospital.jpg"
+			src="/image/category/hospital.jpg"
 			 width=50px height="50px"/></td>
 		<td align="left"><span class="topic">Medical</span> <br />
 		  <span class=detail>รักษาพยาบาล</span></td>
@@ -389,7 +448,7 @@ span {
 	</tr>
 	<tr valign="top" onclick="goPage('items')">
 		<td width="15%" align="center" height="50px"><img
-			src="<%=request.getContextPath()%>/image/category/fashion-icon.png"
+			src="/image/category/fashion-icon.png"
 			 width=50px height="50px"/></td>
 		<td align="left"><span class="topic">Fasion</span> <br />
 		  <span class=detail>เสื้อผ้า</span></td>
@@ -401,6 +460,7 @@ span {
 		</td>
 	</tr>
   		</table>
+  		 --%>
   </div>
   	</td>
   </tr> 	 
@@ -415,5 +475,10 @@ span {
 		</td>
 	</tr>
 </table>
+<script>
+ var lat = '<%=request.getParameter("lat")%>';
+ //alert(lat)
+ getCatalogues();
+</script>
 </body>
 </html>
