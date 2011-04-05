@@ -1,8 +1,10 @@
 package com.moogle.gofast.hibernate;
 
+
 import java.util.List;
 
 import com.moogle.gofast.dto.GoFastFilterDTO;
+import com.moogle.gofast.dto.GoFastItemDTO;
 import com.moogle.gofast.dto.SearchCriteria;
 import com.moogle.gofast.hibernate.domain.GoFastArea;
 import com.moogle.gofast.hibernate.domain.GoFastCate;
@@ -19,10 +21,10 @@ public interface GoFastService {
 	public List listItems(Integer cateId, SearchCriteria criteria,Paging paging);
 	
 	//Get Items
-	public List getItems(Integer itemId);
+	public GoFastItemDTO getItems(Integer itemId);
 	
 	// List Filter
-	public GoFastFilterDTO getFilter(String key);
+	public List<GoFastFilterDTO> getFilter(String key);
 	
 	//Set Filter
 	public void setFilter(String key,Integer settingId,String settingValue);
