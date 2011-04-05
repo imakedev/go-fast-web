@@ -17,13 +17,17 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.moogle.gofast.dto.GoFastFilterDTO;
+import com.moogle.gofast.dto.GoFastItemDTO;
 import com.moogle.gofast.dto.SearchCriteria;
 import com.moogle.gofast.hibernate.GoFastService;
 import com.moogle.gofast.hibernate.domain.GoFastArea;
 import com.moogle.gofast.hibernate.domain.GoFastCate;
 import com.moogle.gofast.hibernate.domain.GoFastCustomer;
 import com.moogle.gofast.hibernate.domain.GoFastItem;
+import com.moogle.gofast.hibernate.domain.GoFastItemImage;
 import com.moogle.gofast.hibernate.domain.GoFastLocation;
+import com.moogle.gofast.hibernate.domain.GoFastSetting;
+import com.moogle.gofast.hibernate.domain.GoFastSettingTran;
 import com.moogle.gofast.utils.Paging;
  
  
@@ -1252,22 +1256,153 @@ FoodOrder.java
 		}
 		return null;
 	}
+	
+	@Transactional(readOnly = true)
 	public List listItems(Integer cateId, SearchCriteria criteria, Paging paging) {
 		// TODO Auto-generated method stub
+		ArrayList transList = new ArrayList(); 
+		Session  session = sessionAnnotationFactory.getCurrentSession();
+		try { 
+			StringBuffer queryStr = new StringBuffer("from GoFastItem item ");
+			StringBuffer queryCountStr = new StringBuffer("select count(item) from GoFastItem item ");
+			boolean haveCateId =false;
+			String condition="";
+			if(cateId!=null){
+				condition= " where item.goFastCustomer.gfcId =? ";
+				haveCateId= true;
+			}
+			queryStr.append(condition);
+			queryCountStr.append(condition);
+			Query query = session.createQuery(queryStr.toString());			
+			if(haveCateId){
+				query.setParameter(0, cateId);
+			}
+			query.setFirstResult(paging.getPageSize() * (paging.getPageNo() - 1));
+			query.setMaxResults(paging.getPageSize());
+			List<GoFastItem> list = query.list();
+			List<GoFastItemDTO> dtos =null;
+			if(list!=null && list.size()>0){ 
+				int size=list.size();
+				dtos = new ArrayList<GoFastItemDTO>(size);
+				for (GoFastItem item : list) {
+					GoFastItemDTO dto =new GoFastItemDTO();
+					dto.setGfiId(item.getGfiId());
+					dto.setGfiName(item.getGfiName());
+					dto.setGfiDetail(item.getGfiDetail());
+					dto.setGfiDiscount(item.getGfiDiscount());
+					dto.setGfiPriority(item.getGfiPriority());
+					dto.setGfiStatus(item.getGfiStatus());
+					dto.setGoFastArea(item.getGoFastArea());
+					dto.setGoFastCustomer(item.getGoFastCustomer());
+					dto.setGoFastCate(item.getGoFastCate());
+					query = session.createQuery("from GoFastItemImage itemImage where itemImage.goFastItem.gfiId=?");
+					query.setParameter(0, item.getGfiId());
+					List<GoFastItemImage> itemImages = query.list();
+					if(itemImages!=null && itemImages.size()>0)
+						dto.setGoFastItemImages(itemImages);
+					dtos.add(dto);
+				}
+			}
+			transList.add(dtos);
+			query = session.createQuery(queryCountStr.toString());
+			if(haveCateId){
+				query.setParameter(0, cateId);
+			}
+			transList.add(query.uniqueResult());  
+			return transList;
+		} catch (Exception re) {
+			re.printStackTrace();
+		}finally{
+			paging=null;
+		}
 		return null;
 	}
-	public List getItems(Integer itemId) {
+	
+	@Transactional(readOnly = true)
+	public GoFastItemDTO getItems(Integer itemId) {
 		// TODO Auto-generated method stub
+		Session  session = sessionAnnotationFactory.getCurrentSession();
+		try { 
+			Query query = session.createQuery("from GoFastItem item where gfiId=?");
+			query.setParameter(0, itemId);
+			Object obj= query.uniqueResult();
+			GoFastItem item=null;
+			GoFastItemDTO dto = null;
+		    if(obj!=null){
+		    	item=(GoFastItem)obj;
+		    	dto =new GoFastItemDTO();
+		    	dto.setGfiId(item.getGfiId());
+		    	dto.setGfiDetail(item.getGfiDetail());
+		    	dto.setGfiDiscount(item.getGfiDiscount());
+		    	dto.setGfiName(item.getGfiName());
+		    	dto.setGfiStatus(item.getGfiStatus());
+		    	dto.setGfiPriority(item.getGfiPriority());
+		    	dto.setGoFastCustomer(item.getGoFastCustomer());
+		    	dto.setGoFastCate(item.getGoFastCate());
+		    	dto.setGoFastArea(item.getGoFastArea());
+		    	query = session.createQuery("from GoFastItemImage image where image.goFastItem.gfiId=?");
+		    	query.setParameter(0, item.getGfiId());
+		    	List images = query.list();
+		    	if(images!=null && images.size()>0)
+		    		dto.setGoFastItemImages(images);
+		    }	
+			return dto;
+		} catch (Exception re) {
+			re.printStackTrace();
+		}finally{
+		}
 		return null;
 	}
-	public GoFastFilterDTO getFilter(String key) {
+	@Transactional(readOnly = true)
+	public List<GoFastFilterDTO>  getFilter(String key) {
 		// TODO Auto-generated method stub
+		List transList = new ArrayList<GoFastFilterDTO>(); 
+		Session  session = sessionAnnotationFactory.getCurrentSession();
+		try { 
+			Query query = session.createQuery("from GoFastSettingTran settings where settings.gfstKey=?");
+			query.setParameter(0, key);
+			List<GoFastSettingTran> list = query.list();
+		
+		    if(list!=null && list.size()>0){
+		    	int size = list.size();
+		    	for (GoFastSettingTran setting : list) {
+		    		GoFastFilterDTO dto = new GoFastFilterDTO();
+		    		dto.setGfstId(setting.getGfstId());
+		    		dto.setGoFastSetting(setting.getGoFastSetting());
+		    		transList.add(dto);
+				} 
+		    }	
+			return transList;
+		} catch (Exception re) {
+			re.printStackTrace();
+		}finally{
+		}
 		return null;
 	}
+	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
 	public void setFilter(String key, Integer settingId, String settingValue) {
+		if(settingValue!=null){
+			Query query  =null;
+			Session  session = sessionAnnotationFactory.getCurrentSession();
+			if(settingValue.equals("0")){ // delete 
+				query =session.createQuery("delete GoFastSettingTran setting where setting.gfstKey=? and setting.goFastSetting.gfsId=?");
+				query.setParameter(0, key);
+				query.setParameter(1, settingId);
+				query.executeUpdate();
+			}else{ // insert
+				GoFastSettingTran settingTran =new GoFastSettingTran();
+				settingTran.setGfstKey(key);
+				GoFastSetting setting = new GoFastSetting();
+				setting.setGfsId(settingId);
+				settingTran.setGoFastSetting(setting);
+				session.save(settingTran);
+			}
+		}
+		
 		// TODO Auto-generated method stub
 		
 	}
+	@Transactional(readOnly = true)
 	public GoFastCate findGoFastCatById(Integer gfcaId) {
 		// TODO Auto-generated method stub
 		return null;
@@ -1284,6 +1419,8 @@ FoodOrder.java
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Transactional(readOnly = true)
 	public List searchGoFastCat(GoFastCate persistentInstance, Paging paging) {
 		// TODO Auto-generated method stub
 		return null;
