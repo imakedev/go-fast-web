@@ -11,8 +11,20 @@
     </create> 
     <convert converter="exception" match="java.lang.Exception"/>
     <convert converter="bean" match="java.lang.StackTraceElement"/>
+    <convert converter="bean" match="com.moogle.gofast.hibernate.domain.GoFastCate"/>
+    <convert converter="bean" match="com.moogle.gofast.hibernate.domain.GoFastArea"/>
+	<convert converter="bean" match="com.moogle.gofast.hibernate.domain.GoFastCustomer"/>
+	<convert converter="bean" match="com.moogle.gofast.hibernate.domain.GoFastItem"/>
+	<convert converter="bean" match="com.moogle.gofast.hibernate.domain.GoFastItemImage"/>
+	<convert converter="bean" match="com.moogle.gofast.hibernate.domain.GoFastLocation"/>
+	<convert converter="bean" match="com.moogle.gofast.hibernate.domain.GoFastSetting"/>
+	<convert converter="bean" match="com.moogle.gofast.hibernate.domain.GoFastSettingCate"/>
+	<convert converter="bean" match="com.moogle.gofast.hibernate.domain.GoFastSettingTran"/> 
+	<convert converter="bean" match="com.moogle.gofast.dto.GoFastFilterDTO"/>
+	<convert converter="bean" match="com.moogle.gofast.dto.GoFastItemDTO"/>
+    <convert converter="bean" match="com.moogle.gofast.dto.SearchCriteria"/>
+    <convert converter="bean" match="com.moogle.gofast.utils.Paging"/>
   <!-- 
-    <convert converter="bean" match="th.co.food.dto.FoodMenuDTO"/>
     <convert converter="bean" match="th.co.food.dto.FoodCustomerDTO"/> 
     <convert converter="bean" match="th.co.food.dto.BaseDTO"/> 
     <convert converter="bean" match="th.co.food.dto.FoodBillDTO"/>
