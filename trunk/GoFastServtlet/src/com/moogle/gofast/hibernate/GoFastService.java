@@ -3,7 +3,6 @@ package com.moogle.gofast.hibernate;
 
 import java.util.List;
 
-import com.moogle.gofast.dto.GoFastFilterDTO;
 import com.moogle.gofast.dto.GoFastItemDTO;
 import com.moogle.gofast.dto.SearchCriteria;
 import com.moogle.gofast.hibernate.domain.GoFastArea;
@@ -11,6 +10,7 @@ import com.moogle.gofast.hibernate.domain.GoFastCate;
 import com.moogle.gofast.hibernate.domain.GoFastCustomer;
 import com.moogle.gofast.hibernate.domain.GoFastItem;
 import com.moogle.gofast.hibernate.domain.GoFastLocation;
+import com.moogle.gofast.hibernate.domain.GoFastSettingCate;
 import com.moogle.gofast.utils.Paging;
 
 public interface GoFastService {
@@ -24,10 +24,16 @@ public interface GoFastService {
 	public GoFastItemDTO getItems(Integer itemId);
 	
 	// List Filter
-	public List<GoFastFilterDTO> getFilter(String key);
+	public List getFilter(String key,Integer cateId);
+	 
+	//List SettingCatalogues
+	public List<GoFastSettingCate>getSettingCatalogues();
 	
 	//Set Filter
 	public void setFilter(String key,Integer settingId,String settingValue);
+
+	//Set clearCateSetting
+	public int  clearCateSetting(String key,Integer cateId);
 	
 	// GO_FAST_LOCATION
 	public GoFastLocation findGoFastLocationById(Integer gflId);
