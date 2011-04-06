@@ -1443,7 +1443,6 @@ FoodOrder.java
 				query.setParameter(0, key);
 				query.setParameter(1, cateId);
 				List<GoFastSettingTran> goFastSettingTrans=query.list();
-				System.out.println(goFastSettingTrans);
 				for (GoFastSettingTran goFastSettingTran : goFastSettingTrans) {
 					session.delete(goFastSettingTran);
 				} 
