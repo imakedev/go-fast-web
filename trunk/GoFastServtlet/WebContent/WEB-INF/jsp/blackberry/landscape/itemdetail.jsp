@@ -300,7 +300,6 @@ Help</span> |<span class=more> Contact Us</span> <br/>
 	</tbody>
 </table>
 <script>
-
 getItems(gfiId)
 </script>
 
