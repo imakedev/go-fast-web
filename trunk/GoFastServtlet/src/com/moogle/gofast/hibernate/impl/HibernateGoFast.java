@@ -27,7 +27,9 @@ import com.moogle.gofast.hibernate.domain.GoFastItem;
 import com.moogle.gofast.hibernate.domain.GoFastItemImage;
 import com.moogle.gofast.hibernate.domain.GoFastLocation;
 import com.moogle.gofast.hibernate.domain.GoFastSetting;
+import com.moogle.gofast.hibernate.domain.GoFastSettingCate;
 import com.moogle.gofast.hibernate.domain.GoFastSettingTran;
+import com.moogle.gofast.hibernate.domain.GoFastSettingTranPK;
 import com.moogle.gofast.utils.Paging;
  
  
@@ -1354,25 +1356,51 @@ FoodOrder.java
 		return null;
 	}
 	@Transactional(readOnly = true)
-	public List<GoFastFilterDTO>  getFilter(String key) {
+	public List  getFilter(String key,Integer cateId) {
 		// TODO Auto-generated method stub
-		List transList = new ArrayList<GoFastFilterDTO>(); 
+		ArrayList transList = new ArrayList();
+		List goFastFilters = new ArrayList<GoFastFilterDTO>(); 
 		Session  session = sessionAnnotationFactory.getCurrentSession();
 		try { 
-			Query query = session.createQuery("from GoFastSettingTran settings where settings.gfstKey=?");
+			Query query = session.createQuery("from GoFastSettingTran settings where settings.id.gfstKey=? and " +
+					" settings.id.goFastSetting.goFastSettingCate.gfscId=?");
 			query.setParameter(0, key);
+			query.setParameter(1, cateId);
 			List<GoFastSettingTran> list = query.list();
 		
 		    if(list!=null && list.size()>0){
 		    	int size = list.size();
 		    	for (GoFastSettingTran setting : list) {
 		    		GoFastFilterDTO dto = new GoFastFilterDTO();
-		    		dto.setGfstId(setting.getGfstId());
-		    		dto.setGoFastSetting(setting.getGoFastSetting());
-		    		transList.add(dto);
+		    		GoFastSettingTranPK pk = setting.getId();
+		    		dto.setGfstKey(pk.getGfstKey());
+		    		dto.setGoFastSetting(pk.getGoFastSetting());
+		    		goFastFilters.add(dto);
 				} 
 		    }	
+		    query = session.createQuery("from GoFastSetting setting where setting.goFastSettingCate.gfscId=?");
+		    query.setParameter(0, cateId);
+		    List<GoFastSetting> goFastSettings = query.list();
+		    transList.add(goFastFilters);
+		    transList.add(goFastSettings);
 			return transList;
+		} catch (Exception re) {
+			re.printStackTrace();
+		}finally{
+		}
+		return null;
+	}
+	
+	@Transactional(readOnly = true)
+	public List<GoFastSettingCate>  getSettingCatalogues() {
+		// TODO Auto-generated method stub
+		ArrayList transList = new ArrayList();
+		List goFastFilters = new ArrayList<GoFastFilterDTO>(); 
+		Session  session = sessionAnnotationFactory.getCurrentSession();
+		try { 
+			Query query = session.createQuery("from GoFastSettingCate cate order by cate.gfscId asc"); 
+			List<GoFastSettingCate> list = query.list(); 
+			return list;
 		} catch (Exception re) {
 			re.printStackTrace();
 		}finally{
@@ -1385,16 +1413,18 @@ FoodOrder.java
 			Query query  =null;
 			Session  session = sessionAnnotationFactory.getCurrentSession();
 			if(settingValue.equals("0")){ // delete 
-				query =session.createQuery("delete GoFastSettingTran setting where setting.gfstKey=? and setting.goFastSetting.gfsId=?");
+				query =session.createQuery("delete GoFastSettingTran setting where setting.id.gfstKey=? and setting.id.goFastSetting.gfsId=?");
 				query.setParameter(0, key);
 				query.setParameter(1, settingId);
 				query.executeUpdate();
 			}else{ // insert
 				GoFastSettingTran settingTran =new GoFastSettingTran();
-				settingTran.setGfstKey(key);
+				GoFastSettingTranPK pk = new GoFastSettingTranPK();
+				pk.setGfstKey(key);
 				GoFastSetting setting = new GoFastSetting();
 				setting.setGfsId(settingId);
-				settingTran.setGoFastSetting(setting);
+				pk.setGoFastSetting(setting);
+				settingTran.setId(pk);
 				session.save(settingTran);
 			}
 		}
@@ -1402,6 +1432,23 @@ FoodOrder.java
 		// TODO Auto-generated method stub
 		
 	}
+	@Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor={RuntimeException.class})
+	public int clearCateSetting(String key, Integer cateId) {
+			Query query  =null;
+			Session  session = sessionAnnotationFactory.getCurrentSession();
+			GoFastSettingCate cate = new GoFastSettingCate();
+			cate.setGfscId(cateId);
+				query =session.createQuery("from GoFastSettingTran " +
+						" setting where setting.id.gfstKey=? and setting.id.goFastSetting.goFastSettingCate.gfscId =?");
+				query.setParameter(0, key);
+				query.setParameter(1, cateId);
+				List<GoFastSettingTran> goFastSettingTrans=query.list();
+				System.out.println(goFastSettingTrans);
+				for (GoFastSettingTran goFastSettingTran : goFastSettingTrans) {
+					session.delete(goFastSettingTran);
+				} 
+				return 1; 
+	} 
 	@Transactional(readOnly = true)
 	public GoFastCate findGoFastCatById(Integer gfcaId) {
 		// TODO Auto-generated method stub
