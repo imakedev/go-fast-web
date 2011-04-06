@@ -13,6 +13,7 @@ import com.moogle.gofast.dto.GoFastFilterDTO;
 import com.moogle.gofast.dto.GoFastItemDTO;
 import com.moogle.gofast.dto.SearchCriteria;
 import com.moogle.gofast.hibernate.GoFastService;
+import com.moogle.gofast.hibernate.domain.GoFastSettingCate;
 import com.moogle.gofast.utils.Paging;
 
 public class GoFastAjax {
@@ -42,15 +43,23 @@ public class GoFastAjax {
 	public GoFastItemDTO getItems(Integer itemId){
 		return goFastService.getItems(itemId);
 	}
+	// List SettingCatalogues
+	public List<GoFastSettingCate> getSettingCatalogues(){		
+		return goFastService.getSettingCatalogues();
+	}
 	
 	// List Filter
-	public List<GoFastFilterDTO> getFilter(String key){		
-		return goFastService.getFilter(key);
+	public List getFilter(String key,Integer cateId){		
+		return goFastService.getFilter(key,cateId);
 	}
 	
 	//Set Filter
 	public void setFilter(String key,Integer settingId,String settingValue){
 		goFastService.setFilter(key,settingId,settingValue);
+	}
+	
+	public int clearCateSetting(String key,Integer cateId){
+		return goFastService.clearCateSetting(key,cateId);
 	}
 	
 }
