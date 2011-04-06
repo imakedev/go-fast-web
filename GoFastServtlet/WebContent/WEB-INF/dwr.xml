@@ -20,6 +20,7 @@
 	<convert converter="bean" match="com.moogle.gofast.hibernate.domain.GoFastSetting"/>
 	<convert converter="bean" match="com.moogle.gofast.hibernate.domain.GoFastSettingCate"/>
 	<convert converter="bean" match="com.moogle.gofast.hibernate.domain.GoFastSettingTran"/> 
+	<convert converter="bean" match="com.moogle.gofast.hibernate.domain.GoFastSettingTranPK"/>
 	<convert converter="bean" match="com.moogle.gofast.dto.GoFastFilterDTO"/>
 	<convert converter="bean" match="com.moogle.gofast.dto.GoFastItemDTO"/>
     <convert converter="bean" match="com.moogle.gofast.dto.SearchCriteria"/>

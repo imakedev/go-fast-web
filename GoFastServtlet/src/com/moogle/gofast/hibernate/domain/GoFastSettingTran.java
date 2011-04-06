@@ -2,13 +2,8 @@ package com.moogle.gofast.hibernate.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -21,44 +16,18 @@ import javax.persistence.Table;
 public class GoFastSettingTran implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="GFST_ID")
-	private Integer gfstId;
-
-	@Column(name="GFST_KEY")
-	private String gfstKey;
-
-	//bi-directional many-to-one association to GoFastSetting
-    @ManyToOne
-	@JoinColumn(name="GFS_ID")
-	private GoFastSetting goFastSetting;
+	@EmbeddedId
+	private GoFastSettingTranPK id;
 
     public GoFastSettingTran() {
     }
 
-	public Integer getGfstId() {
-		return this.gfstId;
+	public GoFastSettingTranPK getId() {
+		return id;
 	}
 
-	public void setGfstId(Integer gfstId) {
-		this.gfstId = gfstId;
+	public void setId(GoFastSettingTranPK id) {
+		this.id = id;
 	}
-
-	public String getGfstKey() {
-		return this.gfstKey;
-	}
-
-	public void setGfstKey(String gfstKey) {
-		this.gfstKey = gfstKey;
-	}
-
-	public GoFastSetting getGoFastSetting() {
-		return this.goFastSetting;
-	}
-
-	public void setGoFastSetting(GoFastSetting goFastSetting) {
-		this.goFastSetting = goFastSetting;
-	}
-	
+    
 }

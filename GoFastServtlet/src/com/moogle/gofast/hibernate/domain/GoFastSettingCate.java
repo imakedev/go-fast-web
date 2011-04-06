@@ -27,9 +27,19 @@ public class GoFastSettingCate implements Serializable {
 	@Column(name="GFSC_NAME")
 	private String gfscName;
  
+	@Column(name="GFSC_TYPE")
+	private String gfscType;
 
     public GoFastSettingCate() {
     }
+
+	public String getGfscType() {
+		return gfscType;
+	}
+
+	public void setGfscType(String gfscType) {
+		this.gfscType = gfscType;
+	}
 
 	public Integer getGfscId() {
 		return this.gfscId;
