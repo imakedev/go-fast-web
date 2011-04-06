@@ -14,7 +14,58 @@
 	src='<%=request.getContextPath()%>/dwr/util.js'>
 	
 </script>
- 
+<script>
+var cateId;
+var key='<%=request.getParameter("key") %>';
+function getSettingCatalogues(){
+	 GoFastAjax.getSettingCatalogues({
+         callback:function(data){
+                 if(data!=null ){ 
+                	 var str="";
+                     for(var i = 0 ;i< data.length;i++){
+                      //  alert(data[i].gfscName)
+                    	 str=str+"<div class=\"menutitle\"  onclick=\"SwitchMenu('sub_"+data[i].gfscId+"')\">"+data[i].gfscName+"</div>"+
+                    	 		 "<span class=\"submenu\" id=\"sub_"+data[i].gfscId+"\">"+
+                    			 "</span>";
+                     }
+                    var masterdiv= document.getElementById("masterdiv");
+                    masterdiv.innerHTML=str;
+                 }
+         }
+	});
+}
+function getItems(key){
+	  GoFastAjax.getFilter(key,{
+	                        callback:function(dataFromServer){
+	                                if(dataFromServer!=null ){
+	                                	var fillters=  dataFromServer[0];
+	                                	var settings = dataFromServer[1];
+	                                    for(var i = 0 ;i< settings.length;i++){
+	                                       alert(settings[i].goFastSettingCate.gfscName)
+	                                    }
+	                                }
+	                        }
+	  });
+}
+function settingChange(obj){
+	if(obj.type=='radio'){
+		var radios = document.getElementsByName(obj.name);
+		// clearCateSetting before
+		GoFastAjax.clearCateSetting(key,cateId,{
+			 callback:function(dataFromServer){
+                if(dataFromServer!=null ){
+                			// after clear old select then insert new setting
+            				 GoFastAjax.setFilter(key,obj.value,"1");
+                }
+         }
+		});		
+	}else{//checkbox 
+		// check if checked
+		var value = (obj.checked)?"1":"0"; 
+		GoFastAjax.setFilter(key,obj.value,value);
+	} 
+}
+</script>
 <style type="text/css">
 .menutitle{
 cursor:pointer;
@@ -70,6 +121,36 @@ function SwitchMenu(obj){
 				ar[i].style.display = "none";
 			}
 			el.style.display = "block";
+			var cateIdSplit = obj.split("_");
+			//getFilter(String key,Integer cateId){
+			 cateId = cateIdSplit[1];
+			 GoFastAjax.getFilter(key,cateId,{
+                 callback:function(dataFromServer){
+                         if(dataFromServer!=null ){
+                         	var fillters=  dataFromServer[0];
+                         	var settings = dataFromServer[1];
+                         	var str="";
+                             for(var i = 0 ;i< settings.length;i++){
+                            	var isChecked  = false; 
+                            	var isCheckedStr="";
+                            	var inputType=(settings[i].goFastSettingCate.gfscType=='1')?
+                            			"<input type=\"radio\" name=\"input_"+settings[i].goFastSettingCate.gfscId+"\" OnChange=\"settingChange(this)\" value=\""+settings[i].gfsId+"\" ":
+                            			"<input type=\"checkbox\" name=\"input_"+settings[i].goFastSettingCate.gfscId+"\" OnChange=\"settingChange(this)\" value=\""+settings[i].gfsId+"\" ";                            	for(var j=0;j<fillters.length;j++){
+                            		if(fillters[j].goFastSetting.gfsId==settings[i].gfsId){
+                            			//alert(settings[i].gfsId)
+                            			isChecked=true;
+                            			break;
+                            		} 
+                            	} 
+                            	if(isChecked)
+                        			isCheckedStr="checked=\"checked\"";
+                            	if(settings)
+                        		str=str+inputType+isCheckedStr+"/>"+settings[i].gfsName+"<br/>";                         		 
+                             }
+                             el.innerHTML=str;
+                         }
+                 }
+			});
 		}else{
 			el.style.display = "none";
 		}
@@ -166,5 +247,7 @@ window.onunload=savemenustate
 		</td>
 	</tr>
 </table>
-</body>
+<script>
+	getSettingCatalogues();
+</script></body>
 </html>
